@@ -2,6 +2,37 @@
 
 ## [Unreleased]
 
+### Changed — Refactor v3 (feature/fase2-header-hero)
+
+- **Hero — Container de Projecao Anti-Distorcao** (2026-05-06)
+  - Substituido `max-w-[1920px] mx-auto` por `absolute left-1/2 -translate-x-1/2 w-[1920px]`
+  - Coordenadas absolutas do Figma preservadas em qualquer resolucao (fix quebra em 1360px)
+  - Altura da secao reduzida: 1150px -> 1050px
+  - Imagens do mosaico: removido `rounded-[20px]` (sem bordas arredondadas)
+  - Menino: top 100 -> 80
+  - Pessoa vacinada: top 150 -> 130
+  - Bebe: top 460 -> 440
+  - Titulo: `font-black`, `leading-[90px]`, cor base `text-vacina-dark`, quebras manuais em 3 linhas
+  - Botao CTA: `font-extrabold` -> `font-black`
+  - Divisor: top 850 -> 800
+  - Carrossel: top 920 -> 870
+
+- **LaboratoryCarousel — Loop Infinito + Setas Funcionais + Drag** (2026-05-06)
+  - Substituido `useState offset` por `useAnimation` + `useRef` para controle preciso do x
+  - Loop automatico: `x: [xRef, xRef - STRIP_WIDTH]`, 20s linear, repeat Infinity
+  - Pausa no hover: `onMouseEnter` para animacao, `onMouseLeave` retoma
+  - Setas funcionais: spring animation (stiffness 300, damping 30) + retoma loop apos spring
+  - Prev limitado a x=0 para nao ultrapassar o inicio
+  - Drag habilitado: `drag="x"`, `dragConstraints left: -STRIP_WIDTH*2, right: 0`
+  - 4 repeticoes da lista para garantir continuidade visual sem gap branco
+  - STRIP_WIDTH calculado: 1447px (soma real das larguras + 4 gaps de 100px)
+
+- **Header — Sticky com Sombra Premium** (2026-05-06)
+  - `absolute top-0 left-0` -> `sticky top-0`
+  - Sombra: `shadow-[0_2px_12px_rgba(0,0,0,0.06)]`
+  - `pt-[90px]` removido do `main` (sticky ocupa fluxo normal)
+
+---
 ### Added
 
 - **Setup Inicial do Projeto** (2026-05-06)
