@@ -14,7 +14,7 @@ const config: Config = {
           gold: "#F0B954",
           dark: "#1A3858",
           gray: "#5A5A5A",
-          lightGray: "#EAF4EB",
+          border: "#EAF4EB",
         },
       },
       fontFamily: {

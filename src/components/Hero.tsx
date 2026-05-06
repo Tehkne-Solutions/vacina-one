@@ -3,55 +3,57 @@ import LaboratoryCarousel from './LaboratoryCarousel';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[1393px] bg-white overflow-hidden font-franie">
+    <section className="relative w-full h-[1200px] bg-white overflow-hidden font-franie">
       <div className="max-w-[1920px] mx-auto h-full relative">
 
-        {/* MOSAICO DE IMAGENS */}
+        {/* MOSAICO */}
         <div className="absolute left-0 top-0 w-full h-full pointer-events-none">
 
-          {/* Imagem 1: Pessoa sendo vacinada — left:164 top:209 w:355 h:518 z:10 */}
-          <div className="absolute left-[164px] top-[209px] w-[355px] h-[518px] z-10">
+          {/* 1. Menino — superior esquerda, z-20 */}
+          <div className="absolute left-[164px] top-[140px] w-[355px] h-[518px] z-20">
             <Image
-              src="/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png"
-              alt="Vacinacao"
+              src="/images/vacina-one-homepage-hero-mosaico-imagem-menino.png"
+              alt="Menino"
               fill
               className="object-cover rounded-[20px]"
               priority
             />
           </div>
 
-          {/* Imagem 2: Menino — left:544 top:269 w:362 h:544 z:20 */}
-          <div className="absolute left-[544px] top-[269px] w-[362px] h-[544px] z-20">
+          {/* 2. Pessoa sendo vacinada — centro, z-30, com card 75% */}
+          <div className="absolute left-[544px] top-[180px] w-[362px] h-[544px] z-30">
             <Image
-              src="/images/vacina-one-homepage-hero-mosaico-imagem-menino.png"
-              alt="Atendimento Infantil"
+              src="/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png"
+              alt="Vacinacao"
               fill
               className="object-cover rounded-[20px]"
             />
             {/* Card 75% — left:32 top:407 w:297 h:194 */}
-            <div className="absolute left-[32px] top-[407px] w-[297px] h-[194px] bg-vacina-teal p-[20px] flex flex-col justify-center">
-              <h3 className="text-white text-[52px] font-bold leading-[118.52%] tracking-[-0.02em]">75%</h3>
-              <p className="text-white text-[16px] font-medium leading-[144.52%] mt-2">
+            <div className="absolute left-[32px] top-[407px] w-[297px] h-[194px] bg-vacina-teal p-[25px] flex flex-col justify-center shadow-xl">
+              <h3 className="text-white text-[52px] font-bold leading-none tracking-tighter">75%</h3>
+              <p className="text-white text-[15px] font-medium leading-[140%] mt-2">
                 of doctors surveyed said their inclusiveness had increased with 41% saying it had increases significantly
               </p>
             </div>
           </div>
 
-          {/* Imagem 3: Bebe — left:-139 top:536 w:1017 h:570 z:0 */}
-          <div className="absolute left-[-139px] top-[536px] w-[1017px] h-[570px] z-0">
+          {/* 3. Bebe — 272x272, z-10 */}
+          <div className="absolute left-[245px] top-[597px] w-[272px] h-[272px] z-10">
             <Image
               src="/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png"
-              alt="Cuidado Infantil"
+              alt="Bebe"
               fill
-              className="object-cover"
+              className="object-cover rounded-[20px]"
             />
           </div>
         </div>
 
-        {/* CONTEUDO TEXTUAL — left:984 top:272 w:766 */}
-        <div className="absolute left-[984px] top-[272px] w-[766px] flex flex-col gap-[40px]">
-          <h1 className="text-hero-title font-bold text-vacina-teal">
-            Prote&#231;&#227;o e cuidado <br />
+        {/* CONTEUDO TEXTUAL — left:984 top:180 */}
+        <div className="absolute left-[984px] top-[180px] w-[766px] flex flex-col gap-[30px]">
+          <h1 className="text-[80px] font-bold leading-[100px] tracking-[-0.03em]">
+            <span className="text-vacina-teal">Prote&#231;&#227;o</span>{' '}
+            <span className="text-vacina-dark">e</span>{' '}
+            <span className="text-vacina-teal">cuidado</span><br />
             <span className="text-vacina-dark">para todas as fases da vida</span>
           </h1>
 
@@ -59,16 +61,16 @@ export default function Hero() {
             Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas
           </p>
 
-          <button className="w-[339px] h-[63px] bg-vacina-gold rounded-[50px] text-white text-[22px] font-bold flex items-center justify-center hover:brightness-110 transition-all">
+          <button className="w-[339px] h-[63px] bg-vacina-gold rounded-[50px] text-white text-[22px] font-bold flex items-center justify-center hover:brightness-105 transition-all">
             Agendar Vacina&#231;&#227;o
           </button>
         </div>
 
-        {/* Linha divisora — left:163 top:970 w:1595 */}
-        <div className="absolute left-[163px] top-[970px] w-[1595px] h-0 border-t-2 border-vacina-lightGray" />
+        {/* Divisor — left:163 top:950 */}
+        <div className="absolute left-[163px] top-[950px] w-[1595px] h-[2px] bg-vacina-border" />
 
-        {/* Carrossel de laboratorios — left:163 top:1070 w:1595 */}
-        <div className="absolute left-[163px] top-[1070px] w-[1595px]">
+        {/* Carrossel — left:163 top:1020 */}
+        <div className="absolute left-[163px] top-[1020px] w-[1595px]">
           <LaboratoryCarousel />
         </div>
       </div>
