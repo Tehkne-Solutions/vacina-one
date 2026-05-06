@@ -1,46 +1,38 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="w-full h-[110px] bg-white flex items-center justify-between px-4 lg:px-8">
-      <div className="flex items-center">
-        <Image
-          src="/images/vacina-one-logo.png"
-          alt="Vacina One Logo"
-          width={221}
-          height={53}
-          priority
-          className="object-contain"
-        />
-      </div>
+    <header className="absolute top-0 left-0 w-full h-[110px] z-50 flex items-center bg-white">
+      <div className="max-w-[1920px] w-full mx-auto px-[112px] flex items-center justify-between">
+        {/* Logo 221x53 */}
+        <div className="relative w-[221px] h-[53px]">
+          <Image
+            src="/images/vacina-one-logo.png"
+            alt="Vacina One"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
 
-      <nav className="hidden lg:flex items-center space-x-[50px]">
-        <Link href="#home" className="text-black font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Home</Link>
-        <Link href="#vacinaone" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">VacinaOne</Link>
-        <Link href="#unidades" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Unidades</Link>
-        <Link href="#vacinas" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Vacinas</Link>
-        <Link href="#calendario" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Calend&#225;rio</Link>
-        <Link href="#empresas" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Empresas</Link>
-        <Link href="#blog" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Blog</Link>
-        <Link href="#contato" className="text-[#5A5A5A] font-medium text-[18px] leading-[180%] hover:text-[#56B0BB] transition-colors">Contato</Link>
-      </nav>
+        {/* Nav - gap 50px, fonte Franie 18px */}
+        <nav className="flex items-center gap-[50px] font-franie font-medium text-[18px] leading-[180%]">
+          <Link href="/" className="text-black">Home</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">VacinaOne</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Unidades</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Vacinas</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Calend&#225;rio</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Empresas</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Blog</Link>
+          <Link href="#" className="text-vacina-gray hover:text-vacina-teal transition">Contato</Link>
+        </nav>
 
-      <div className="hidden lg:flex">
-        <button className="px-10 py-5 border border-[#56B0BB] rounded-full text-[#56B0BB] font-medium text-xl leading-[102.52%] hover:bg-[#56B0BB] hover:text-white transition-colors">
+        {/* CTA - 314x61, border vacina-teal, radius 50px */}
+        <button className="w-[314px] h-[61px] border border-vacina-teal rounded-[50px] flex items-center justify-center font-franie font-medium text-[20px] text-vacina-teal hover:bg-vacina-teal hover:text-white transition-all">
           Seja um Franqueado
-        </button>
-      </div>
-
-      <div className="lg:hidden">
-        <button className="text-[#5A5A5A]">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
         </button>
       </div>
     </header>
   );
-};
-
-export default Header;
+}

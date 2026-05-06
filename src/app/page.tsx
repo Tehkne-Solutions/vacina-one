@@ -5,7 +5,7 @@ import Services from '@/components/Services';
 
 export default function Home() {
   return (
-    <main className='min-h-screen'>
+    <main className="relative min-h-screen pt-[110px]">
       <Header />
       <Hero />
       <Features />

@@ -1,107 +1,77 @@
-"use client";
+import Image from 'next/image';
+import LaboratoryCarousel from './LaboratoryCarousel';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-
-const Hero = () => {
+export default function Hero() {
   return (
-    <motion.section
-      className="relative w-full min-h-[1393.69px] bg-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 lg:px-8 py-16">
-        {/* Left Column: Image Mosaic */}
-        <div className="relative flex flex-col items-center justify-center space-y-4">
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.6 }}>
+    <section className="relative w-full h-[1393px] bg-white overflow-hidden font-franie">
+      <div className="max-w-[1920px] mx-auto h-full relative">
+
+        {/* MOSAICO DE IMAGENS */}
+        <div className="absolute left-0 top-0 w-full h-full pointer-events-none">
+
+          {/* Imagem 1: Pessoa sendo vacinada — left:164 top:209 w:355 h:518 z:10 */}
+          <div className="absolute left-[164px] top-[209px] w-[355px] h-[518px] z-10">
             <Image
               src="/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png"
-              alt="Profissional aplicando vacina em paciente"
-              width={362}
-              height={544}
+              alt="Vacinacao"
+              fill
+              className="object-cover rounded-[20px]"
               priority
-              className="object-contain"
             />
-          </motion.div>
+          </div>
 
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.4, duration: 0.6 }}>
+          {/* Imagem 2: Menino — left:544 top:269 w:362 h:544 z:20 */}
+          <div className="absolute left-[544px] top-[269px] w-[362px] h-[544px] z-20">
             <Image
               src="/images/vacina-one-homepage-hero-mosaico-imagem-menino.png"
-              alt="Crianca sorrindo"
-              width={355}
-              height={518}
-              className="object-contain"
+              alt="Atendimento Infantil"
+              fill
+              className="object-cover rounded-[20px]"
             />
-          </motion.div>
+            {/* Card 75% — left:32 top:407 w:297 h:194 */}
+            <div className="absolute left-[32px] top-[407px] w-[297px] h-[194px] bg-vacina-teal p-[20px] flex flex-col justify-center">
+              <h3 className="text-white text-[52px] font-bold leading-[118.52%] tracking-[-0.02em]">75%</h3>
+              <p className="text-white text-[16px] font-medium leading-[144.52%] mt-2">
+                of doctors surveyed said their inclusiveness had increased with 41% saying it had increases significantly
+              </p>
+            </div>
+          </div>
 
-          <motion.div initial={{ x: -50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.6, duration: 0.6 }}>
+          {/* Imagem 3: Bebe — left:-139 top:536 w:1017 h:570 z:0 */}
+          <div className="absolute left-[-139px] top-[536px] w-[1017px] h-[570px] z-0">
             <Image
               src="/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png"
-              alt="Bebe sorrindo"
-              width={272}
-              height={272}
-              className="object-contain"
+              alt="Cuidado Infantil"
+              fill
+              className="object-cover"
             />
-          </motion.div>
-
-          <motion.div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#56B0BB] text-white p-4 rounded-lg shadow-lg"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-          >
-            <div className="text-center">
-              <div className="text-4xl font-bold">75%</div>
-              <div className="text-sm mt-2 max-w-[257px]">
-                of doctors surveyed said their inclusiveness had increased with 41% saying it had increases significantly
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Text Content */}
-        <div className="flex flex-col justify-center space-y-8">
-          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.3, duration: 0.6 }}>
-            <h1 className="text-[80px] font-bold text-[#56B0BB] leading-[100px] tracking-[-0.03em] mb-4">
-              Prote&#231;&#227;o e cuidado para todas as fases da vida
-            </h1>
-            <p className="text-[22px] font-medium text-[#5A5A5A] leading-[160.4%] tracking-[-0.02em] mb-8">
-              Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas
-            </p>
-          </motion.div>
-
-          <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5, duration: 0.6 }}>
-            <button className="bg-[#F0B954] text-white font-bold text-[22px] leading-[102.52%] tracking-[-0.02em] px-10 py-5 rounded-full hover:bg-opacity-90 transition-colors">
-              Agendar Vacina&#231;&#227;o
-            </button>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Social Proof */}
-      <motion.div
-        className="relative z-10 px-4 lg:px-8 py-16"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-      >
-        <hr className="border-gray-200 mb-8" />
-        <div className="text-center">
-          <h2 className="text-[22px] font-medium text-[#1A1A2E] leading-[160.4%] tracking-[-0.02em] mb-8">
-            Marcas dos laborat&#243;rios
-          </h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-75">
-            <Image src="/images/vacina-one-homepage-hero-marcas-dos-laboratorios-marca-earth-2.0.png" alt="Laboratorio Earth 2.0" width={218} height={52} className="object-contain" />
-            <Image src="/images/vacina-one-homepage-hero-marcas-dos-laboratorios-marca-goldline.png" alt="Laboratorio Goldline" width={223} height={52} className="object-contain" />
-            <Image src="/images/vacina-one-homepage-hero-marcas-dos-laboratorios-marca-kanba.png" alt="Laboratorio Kanba" width={187} height={52} className="object-contain" />
-            <Image src="/images/vacina-one-homepage-hero-marcas-dos-laboratorios-marca-nirastate.png" alt="Laboratorio Nirastate" width={257} height={52} className="object-contain" />
-            <Image src="/images/vacina-one-homepage-hero-marcas-dos-laboratorios-marca-solaytic.png" alt="Laboratorio Solaytic" width={162} height={52} className="object-contain" />
           </div>
         </div>
-      </motion.div>
-    </motion.section>
-  );
-};
 
-export default Hero;
+        {/* CONTEUDO TEXTUAL — left:984 top:272 w:766 */}
+        <div className="absolute left-[984px] top-[272px] w-[766px] flex flex-col gap-[40px]">
+          <h1 className="text-hero-title font-bold text-vacina-teal">
+            Prote&#231;&#227;o e cuidado <br />
+            <span className="text-vacina-dark">para todas as fases da vida</span>
+          </h1>
+
+          <p className="text-vacina-gray text-[22px] font-medium leading-[160.4%] w-[648px] tracking-[-0.02em]">
+            Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas
+          </p>
+
+          <button className="w-[339px] h-[63px] bg-vacina-gold rounded-[50px] text-white text-[22px] font-bold flex items-center justify-center hover:brightness-110 transition-all">
+            Agendar Vacina&#231;&#227;o
+          </button>
+        </div>
+
+        {/* Linha divisora — left:163 top:970 w:1595 */}
+        <div className="absolute left-[163px] top-[970px] w-[1595px] h-0 border-t-2 border-vacina-lightGray" />
+
+        {/* Carrossel de laboratorios — left:163 top:1070 w:1595 */}
+        <div className="absolute left-[163px] top-[1070px] w-[1595px]">
+          <LaboratoryCarousel />
+        </div>
+      </div>
+    </section>
+  );
+}
