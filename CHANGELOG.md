@@ -2,7 +2,31 @@
 
 ## [Unreleased]
 
-### Changed — Refactor v4 Responsivo (feature/fase2-header-hero)
+### Changed — Refactor v5 Responsivo (feature/fase2-header-hero)
+
+- **Header — Container 90% e Menu Corrigido** (2026-05-06)
+  - Container: max-w-[1440px] px-[112px] -> w-[90%] mx-auto (padding 5% constante)
+  - Altura: h-[80px] mobile / h-[110px] desktop
+  - Nav: gap-4 xl / gap-8 2xl, font-size 15px xl / 16px 2xl, whitespace-nowrap
+  - CTA desktop: px-6 h-[50px], font-size responsivo 15px xl / 18px 2xl
+  - Mobile overlay: w-[90%] mx-auto para alinhar com o container
+  - Botao 'Seja um Franqueado' corrigido no mobile (estava sumindo)
+
+- **Hero — Tipografia 2xl, Ordem Mobile e Bebe Ancorado** (2026-05-06)
+  - Container: max-w-[1440px] px-[112px] -> w-[90%] mx-auto
+  - Tipografia corrigida: text-[38px] mobile / lg:text-[65px] notebook 1360px / 2xl:text-[80px] desktop 1920px
+    (2xl = 1536px, garante que 1360px caia no lg e exiba 65px)
+  - Quebras de linha fieis ao Figma: 'Protecao e' / 'cuidado para' / 'todas as fases' / 'da vida'
+  - Ordem mobile invertida: texto order-1 (aparece primeiro), imagens order-2 (abaixo)
+  - Mosaico: menino w-[52%], pessoa vacinada w-[52%] h-[88%], bebe w-[40%] com border-[8px] border-white
+  - Bebe ancorado: border branca de 8px impede separacao visual em telas largas
+  - Card 75%: hidden sm:block para nao aparecer em mobile muito pequeno
+  - pt responsivo: pt-[100px] mobile / pt-[160px] desktop
+
+- **page.tsx** (2026-05-06)
+  - pt-[80px] md:pt-[90px] -> pt-[80px] md:pt-[110px]
+
+---
 
 - **Header — Menu Mobile + Fixed** (2026-05-06)
   - sticky -> fixed (garante sobreposicao em qualquer scroll)
