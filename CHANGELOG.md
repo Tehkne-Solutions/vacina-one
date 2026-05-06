@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 ### Added
+
 - **Setup Inicial do Projeto** (2026-05-06)
   - Inicialização do projeto Next.js 14 com TypeScript, ESLint, Tailwind CSS
   - Estrutura de diretórios: src/app, src/components
@@ -34,6 +35,7 @@
   - Estrutura semântica HTML
 
 ### Technical Details
+
 - **Framework:** Next.js 14.2.3 (App Router)
 - **Styling:** Tailwind CSS 3.4.0
 - **Animations:** Framer Motion 11.0.0
@@ -43,11 +45,13 @@
 - **Linting:** ESLint configurado
 
 ### Branch Strategy
+
 - **main:** Código de produção estável
 - **develop:** Integração de features
 - **feature/header-hero:** Desenvolvimento atual (a ser merged após testes)
 
 ### Next Steps
+
 - Testes visuais contra design Figma
 - Validação de performance (Lighthouse)
 - Implementação de menu mobile
@@ -56,6 +60,7 @@
 ---
 
 ## Guidelines
+
 - Commits devem ser comentados em português
 - Branches feature/ para desenvolvimento
 - Merge para main apenas após testes e validação
