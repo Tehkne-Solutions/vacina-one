@@ -2,7 +2,45 @@
 
 ## [Unreleased]
 
-### Changed — Refactor v3 (feature/fase2-header-hero)
+### Changed — Refactor v4 Responsivo (feature/fase2-header-hero)
+
+- **Header — Menu Mobile + Fixed** (2026-05-06)
+  - sticky -> fixed (garante sobreposicao em qualquer scroll)
+  - Altura responsiva: h-[80px] mobile / h-[90px] desktop
+  - Logo responsivo: 150x36 mobile / 221x53 desktop
+  - Nav desktop: hidden ate xl, gap-8, font-size 16px
+  - CTA desktop: hidden ate xl
+  - Menu hamburger: 3 barras com animacao CSS (rotate/opacity)
+  - Mobile overlay: max-h transition para abrir/fechar suavemente
+  - Links mobile com onClick para fechar o menu
+  - Botao CTA no mobile overlay com bg-vacina-teal
+  - Adicionado "use client" (necessario para useState)
+
+- **Hero — Grid System Responsivo** (2026-05-06)
+  - Substituido container absoluto 1920px por grid-cols-1 xl:grid-cols-2
+  - max-w-[1440px] com px-6 mobile / px-[112px] desktop
+  - Mosaico: coordenadas absolutas em % e aspect-square (proporcional)
+    - Menino: left-0 top-0 w-[45%] aspect-square
+    - Pessoa vacinada: right-0 top-[8%] w-[50%] h-[82%]
+    - Bebe: left-[15%] bottom-0 w-[35%] aspect-square
+  - Card 75%: padding responsivo p-4 md:p-6, texto responsivo
+  - Titulo: text-[40px] mobile / text-[65px] md / text-[80px] xl
+  - Texto centralizado no mobile, alinhado a esquerda no desktop
+  - Botao CTA: w-full mobile / w-[339px] desktop
+  - Divisor e carrossel via margin (mt-16 md:mt-24) em vez de top absoluto
+
+- **LaboratoryCarousel — Responsivo** (2026-05-06)
+  - Larguras dos logos reduzidas para caber em telas menores
+  - Gap responsivo: gap-16 mobile / gap-[80px] desktop
+  - Altura da faixa: h-8 mobile / h-[52px] desktop
+  - Setas ocultas no mobile (hidden md:flex)
+  - STRIP_WIDTH recalculado: 1170px
+  - Logica de loop/pausa/setas mantida do Refactor v3
+
+- **page.tsx** (2026-05-06)
+  - pt-[80px] md:pt-[90px] para compensar header fixed
+
+---
 
 - **Hero — Container de Projecao Anti-Distorcao** (2026-05-06)
   - Substituido `max-w-[1920px] mx-auto` por `absolute left-1/2 -translate-x-1/2 w-[1920px]`
