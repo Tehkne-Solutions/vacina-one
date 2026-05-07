@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 6 Carrossel cuidado família
+
+- Substituído o slider anterior por carrossel contínuo com Framer Motion.
+- Adicionados autoplay suave, pausa no hover/foco, drag/swipe e setas funcionais.
+- Corrigido loop para evitar espaço branco no final do trilho.
+- Direcionados cards e CTAs `Acessar calendário` para `/calendario`.
+- Corrigido mobile para evitar corte de cards, ícones e texto em formato de pente no bloco empresas.
+
 ### Added - Fase 6 Cuidado família e vacinação empresas
 
 - Criada a seção `FamilyCareAndCorporate` conforme referência do Figma.
