@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 3 Ajuste final de tipografia
+
+- Reduzido o peso dos titulos dos cards da secao `WhyChoose`.
+- Aumentado o line-height dos titulos para evitar sobreposicao entre linhas.
+- Suavizado o peso dos textos e ajustado o respiro vertical entre titulo e descricao.
+
 ### Fixed - Fase 3 Pixel Perfect Por que escolher a VacinaOne
 
 - Removidos os círculos duplicados ao redor dos SVGs oficiais.

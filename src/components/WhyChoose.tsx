@@ -49,14 +49,14 @@ export default function WhyChoose() {
                 height={112}
                 className="h-[clamp(76px,5.84vw,112px)] w-[clamp(76px,5.84vw,112px)]"
               />
-              <h3 className="mt-[28px] text-[clamp(25px,1.95vw,38px)] font-black leading-[0.9] text-vacina-teal">
+              <h3 className="mt-[28px] text-[clamp(24px,1.82vw,35px)] font-bold leading-[1.08] text-vacina-teal">
                 {feature.titleLines.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
                 ))}
               </h3>
-              <p className="mt-[22px] text-[clamp(17px,1.35vw,26px)] font-medium leading-[1.12] text-white">
+              <p className="mt-[20px] text-[clamp(16px,1.2vw,23px)] font-normal leading-[1.24] text-white">
                 {feature.descriptionLines.map((line) => (
                   <span key={line} className="block">
                     {line}
