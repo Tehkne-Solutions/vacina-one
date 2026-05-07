@@ -118,7 +118,7 @@ export default function FamilyCareCarousel() {
       </button>
 
       <div className="overflow-visible pt-12">
-        <div className="overflow-hidden px-1">
+        <div className="-mt-12 overflow-hidden px-1 pt-12">
           <motion.div
             className="flex cursor-grab items-stretch active:cursor-grabbing"
             style={{ x }}
@@ -143,7 +143,7 @@ export default function FamilyCareCarousel() {
                     key={`${card.title}-${groupIndex}`}
                     href="/calendario"
                     aria-label={`Acessar calendário para ${card.title}`}
-                    className="group relative flex min-h-[166px] w-[78vw] min-w-[230px] max-w-[260px] flex-shrink-0 flex-col justify-end rounded-[10px] border border-[#1A3858]/70 bg-white px-[clamp(18px,1.4vw,26px)] pb-5 pt-[72px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(26,56,88,0.12)] sm:w-[240px] sm:max-w-none md:w-[250px] lg:w-[220px] xl:w-[245px]"
+                    className="group relative flex min-h-[166px] w-[78vw] min-w-[230px] max-w-[260px] flex-shrink-0 flex-col justify-end rounded-[10px] border border-[#1A3858]/70 bg-white px-[clamp(18px,1.4vw,26px)] pb-5 pt-[72px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(26,56,88,0.12)] sm:w-[240px] md:w-[250px] lg:w-[220px] xl:w-[245px]"
                   >
                     <div className="absolute left-4 top-[-38px] flex h-[80px] w-[80px] items-center justify-center overflow-visible rounded-[18px] bg-[#56B0BB] p-[14px]">
                       <Image
