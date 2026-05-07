@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Changed - Refino visual e animações
+
+- Padronizados containers principais para `w-[85%]`.
+- Aumentado proporcionalmente o mascote da seção `AboutVacinaOne`.
+- Adicionadas animações sutis de entrada com Framer Motion em seções validadas.
+- Aplicados efeitos hover leves em cards, ícones, botões e mascote.
+- Preservados textos, cores e assets oficiais.
+
 ### Added - Fase 4 Sobre a VacinaOne
 
 - Criada a seção `AboutVacinaOne` conforme referência do Figma.

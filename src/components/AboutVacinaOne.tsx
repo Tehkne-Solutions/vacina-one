@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, slideFromRight, staggerContainer } from "@/lib/animations";
 
 const aboutItems = [
   {
@@ -25,14 +29,20 @@ const aboutItems = [
 
 export default function AboutVacinaOne() {
   return (
-    <section className="w-full bg-white py-[clamp(56px,6vw,110px)] font-franie">
-      <div className="mx-auto grid w-[90%] max-w-[1500px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] xl:gap-16 2xl:gap-20">
-        <div className="max-w-[720px]">
-          <h2 className="mb-5 text-[clamp(34px,3vw,48px)] font-black leading-[1.08] tracking-[-0.03em] text-[#1A3858]">
+    <motion.section
+      className="w-full bg-white py-[clamp(56px,6vw,110px)] font-franie"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.18 }}
+      variants={fadeUp}
+    >
+      <div className="mx-auto grid w-[85%] max-w-[1500px] grid-cols-1 items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] xl:gap-16 2xl:gap-20">
+        <motion.div className="max-w-[720px]" variants={staggerContainer}>
+          <motion.h2 className="mb-5 text-[clamp(34px,3vw,48px)] font-black leading-[1.08] tracking-[-0.03em] text-[#1A3858]" variants={fadeUp}>
             Sobre a VacinaOne
-          </h2>
+          </motion.h2>
 
-          <div className="space-y-6 text-[clamp(16px,1.1vw,19px)] font-medium leading-[1.45] tracking-[-0.02em] text-[#5A5A5A]">
+          <motion.div className="space-y-6 text-[clamp(16px,1.1vw,19px)] font-medium leading-[1.45] tracking-[-0.02em] text-[#5A5A5A]" variants={fadeUp}>
             <p>
               A VacinaOne nasceu para transformar a experiência de vacinação em algo seguro, acolhedor e inovador. Com sede em
               Campinas, no bairro Taquaral, oferecemos um espaço futurista com ambientes minimalistas, tecnologia de ponta e um
@@ -43,13 +53,16 @@ export default function AboutVacinaOne() {
               Inspirada em conceitos montessorianos, acreditamos que o cuidado começa no ambiente. Por isso, nosso espaço foi
               criado para transmitir tranquilidade, clareza e confiança para toda a sua família.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="mt-10">
+          <motion.div className="mt-10" variants={staggerContainer}>
             {aboutItems.map((item, index) => (
-              <div
+              <motion.div
                 key={item.title}
                 className={`py-5 ${index !== aboutItems.length - 1 ? "border-b border-[#EAF4EB]" : ""}`}
+                variants={fadeUp}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 <h3 className="mb-2 inline-block bg-[#56B0BB] px-1.5 py-0.5 text-[clamp(17px,1.2vw,21px)] font-black leading-none tracking-[-0.02em] text-[#1A3858]">
                   {item.title}
@@ -58,23 +71,23 @@ export default function AboutVacinaOne() {
                 <p className="text-[clamp(15px,1.05vw,18px)] font-medium leading-[1.45] tracking-[-0.02em] text-[#5A5A5A]">
                   {item.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative aspect-[0.82] w-full max-w-[520px] sm:max-w-[600px] lg:max-w-[610px] xl:max-w-[680px]">
+        <motion.div className="flex justify-center lg:justify-end" variants={slideFromRight}>
+          <div className="relative aspect-[0.82] w-full max-w-[620px] transition-transform duration-300 hover:scale-[1.01] sm:max-w-[680px] lg:max-w-[720px] xl:max-w-[780px] 2xl:max-w-[820px]">
             <Image
               src="/images/vacina-one-homepage-sobre-a-vacina-one-imagem-mascote.png"
               alt="Mascote VacinaOne"
               fill
-              sizes="(max-width: 768px) 90vw, (max-width: 1360px) 45vw, 680px"
+              sizes="(max-width: 768px) 85vw, (max-width: 1360px) 48vw, 820px"
               className="object-contain"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

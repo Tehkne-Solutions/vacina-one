@@ -11,8 +11,8 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-      {/* Container 90% — padding 5% cada lado */}
-      <div className="w-[90%] h-[80px] md:h-[110px] mx-auto flex items-center justify-between">
+      {/* Container 85% */}
+      <div className="w-[85%] h-[80px] md:h-[110px] mx-auto flex items-center justify-between">
 
         {/* Logo */}
         <div className="relative w-[150px] h-[36px] md:w-[221px] md:h-[53px] shrink-0">
@@ -33,7 +33,7 @@ export default function Header() {
         </nav>
 
         {/* CTA desktop */}
-        <button className="hidden xl:flex items-center justify-center px-6 h-[50px] border border-vacina-teal rounded-full font-franie font-medium text-[15px] 2xl:text-[18px] text-vacina-teal hover:bg-vacina-teal hover:text-white transition-all shrink-0">
+        <button className="hidden xl:flex items-center justify-center px-6 h-[50px] border border-vacina-teal rounded-full font-franie font-medium text-[15px] 2xl:text-[18px] text-vacina-teal hover:bg-vacina-teal hover:text-white hover:scale-[1.02] transition-all duration-300 shrink-0">
           Seja um Franqueado
         </button>
 
@@ -51,7 +51,7 @@ export default function Header() {
 
       {/* Menu mobile overlay */}
       <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'} bg-white shadow-xl`}>
-        <div className="w-[90%] mx-auto flex flex-col py-4 gap-3">
+        <div className="w-[85%] mx-auto flex flex-col py-4 gap-3">
           {navLinks.map((item, i) => (
             <Link
               key={item}
@@ -63,7 +63,7 @@ export default function Header() {
             </Link>
           ))}
           {/* Botao que estava sumindo */}
-          <button className="w-full h-[55px] bg-vacina-teal text-white rounded-full font-franie font-medium text-[18px] mt-3 hover:brightness-105 transition-all">
+          <button className="w-full h-[55px] bg-vacina-teal text-white rounded-full font-franie font-medium text-[18px] mt-3 hover:brightness-105 hover:scale-[1.02] transition-all duration-300">
             Seja um Franqueado
           </button>
         </div>

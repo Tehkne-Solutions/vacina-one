@@ -4,7 +4,7 @@ import LaboratoryCarousel from './LaboratoryCarousel';
 export default function Hero() {
   return (
     <section className="relative w-full pt-[5vh] pb-[5vh] bg-white overflow-hidden font-franie min-h-[calc(100vh-110px)] flex flex-col justify-between">
-      <div className="w-[90%] max-w-[1220px] 2xl:max-w-[1560px] mx-auto grid grid-cols-1 xl:grid-cols-[minmax(0,520px)_minmax(0,560px)] 2xl:grid-cols-[minmax(0,650px)_minmax(0,750px)] items-center justify-between gap-6 xl:gap-16 2xl:gap-20 flex-1">
+      <div className="w-[85%] max-w-[1220px] 2xl:max-w-[1560px] mx-auto grid grid-cols-1 xl:grid-cols-[minmax(0,520px)_minmax(0,560px)] 2xl:grid-cols-[minmax(0,650px)_minmax(0,750px)] items-center justify-between gap-6 xl:gap-16 2xl:gap-20 flex-1">
 
         {/* COLUNA TEXTO — order-1 mobile */}
         <div className="w-full xl:max-w-[560px] 2xl:max-w-[750px] text-center xl:text-left order-1 xl:order-2 z-50 flex flex-col items-center xl:items-start gap-4 md:gap-6 justify-self-center xl:justify-self-end">
@@ -22,7 +22,7 @@ export default function Hero() {
             Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas.
           </p>
 
-          <button className="w-full md:w-[339px] h-[65px] bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all">
+          <button className="w-full md:w-[339px] h-[65px] bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300">
             Agendar Vacina&#231;&#227;o
           </button>
         </div>
@@ -74,7 +74,7 @@ export default function Hero() {
       </div>
 
       {/* Divisor + Carrossel */}
-      <div className="w-[90%] mx-auto mt-[5vh]">
+      <div className="w-[85%] mx-auto mt-[5vh]">
         <div className="w-full h-[2px] bg-vacina-border mb-8 md:mb-12" />
         <LaboratoryCarousel />
       </div>

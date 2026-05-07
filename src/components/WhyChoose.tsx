@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const features = [
   {
@@ -25,9 +29,15 @@ const features = [
 
 export default function WhyChoose() {
   return (
-    <section className="bg-vacina-dark py-[70px] font-franie text-white md:py-[86px] xl:py-[96px] 2xl:py-[108px]">
-      <div className="mx-auto w-[90%] max-w-[1640px]">
-        <div className="mx-auto text-center">
+    <motion.section
+      className="bg-vacina-dark py-[70px] font-franie text-white md:py-[86px] xl:py-[96px] 2xl:py-[108px]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeUp}
+    >
+      <div className="mx-auto w-[85%] max-w-[1640px]">
+        <motion.div className="mx-auto text-center" variants={fadeUp}>
           <h2 className="text-[clamp(34px,3.35vw,64px)] font-black leading-[1.02] text-white md:whitespace-nowrap">
             <span className="text-vacina-teal">Por que escolher a</span>{" "}
             <span>VacinaOne?</span>
@@ -37,18 +47,29 @@ export default function WhyChoose() {
             <br className="hidden md:block" />
             experiência que você queira repetir.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-[62px] grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:mt-[74px] xl:gap-12 2xl:gap-16">
+        <motion.div
+          className="mt-[62px] grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:mt-[74px] xl:gap-12 2xl:gap-16"
+          variants={staggerContainer}
+        >
           {features.map((feature) => (
-            <article key={feature.titleLines.join(" ")} className="flex flex-col items-center text-center">
-              <Image
-                src={feature.icon}
-                alt=""
-                width={112}
-                height={112}
-                className="h-[clamp(76px,5.84vw,112px)] w-[clamp(76px,5.84vw,112px)]"
-              />
+            <motion.article
+              key={feature.titleLines.join(" ")}
+              className="flex flex-col items-center text-center"
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            >
+              <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25, ease: "easeOut" }}>
+                <Image
+                  src={feature.icon}
+                  alt=""
+                  width={112}
+                  height={112}
+                  className="h-[clamp(76px,5.84vw,112px)] w-[clamp(76px,5.84vw,112px)]"
+                />
+              </motion.div>
               <h3 className="mt-[28px] text-[clamp(24px,1.82vw,35px)] font-bold leading-[1.08] text-vacina-teal">
                 {feature.titleLines.map((line) => (
                   <span key={line} className="block">
@@ -63,10 +84,10 @@ export default function WhyChoose() {
                   </span>
                 ))}
               </p>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

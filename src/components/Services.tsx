@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const services = [
   {
@@ -22,20 +24,29 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-[100px] bg-[#F8FAFB]">
-      <div className="max-w-[1280px] mx-auto px-6">
-        <h2 className="text-[40px] font-bold text-[#56B0BB] leading-[120%] tracking-[-0.02em] text-center mb-4">
+    <motion.section
+      className="py-[100px] bg-[#F8FAFB]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeUp}
+    >
+      <div className="w-[85%] max-w-[1280px] mx-auto">
+        <motion.h2 className="text-[40px] font-bold text-[#56B0BB] leading-[120%] tracking-[-0.02em] text-center mb-4" variants={fadeUp}>
           Nossos Servicos
-        </h2>
-        <p className="text-[18px] text-[#5A5A5A] text-center mb-16 max-w-[600px] mx-auto">
+        </motion.h2>
+        <motion.p className="text-[18px] text-[#5A5A5A] text-center mb-16 max-w-[600px] mx-auto" variants={fadeUp}>
           Solucoes completas de vacinacao para cada necessidade.
-        </p>
+        </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8" variants={staggerContainer}>
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-sm transition-shadow hover:shadow-md"
+              variants={fadeUp}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <Image
                 src={service.image}
@@ -47,15 +58,15 @@ const Services = () => {
               <div className="p-6">
                 <h3 className="text-[20px] font-semibold text-[#1A1A2E] mb-2">{service.title}</h3>
                 <p className="text-[15px] text-[#5A5A5A] leading-[160%] mb-4">{service.description}</p>
-                <button className="text-[#56B0BB] font-medium text-[15px] hover:underline">
+                <button className="text-[#56B0BB] font-medium text-[15px] transition-all duration-300 hover:scale-[1.02] hover:underline">
                   Saiba mais &rarr;
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
