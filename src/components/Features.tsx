@@ -1,25 +1,23 @@
 "use client";
 
-import Image from "next/image";
-
 const features = [
   {
-    icon: "https://placehold.co/64x64/56B0BB/FFFFFF?text=1",
+    icon: "01",
     title: "Atendimento Humanizado",
     description: "Profissionais treinados para oferecer o melhor cuidado em cada etapa da vacinacao.",
   },
   {
-    icon: "https://placehold.co/64x64/56B0BB/FFFFFF?text=2",
+    icon: "02",
     title: "Vacinas para Todas as Idades",
     description: "Do recem-nascido ao idoso, temos o calendario vacinal completo para cada fase da vida.",
   },
   {
-    icon: "https://placehold.co/64x64/56B0BB/FFFFFF?text=3",
+    icon: "03",
     title: "Agendamento Online",
     description: "Agende sua vacinacao de forma rapida e pratica pelo nosso sistema digital.",
   },
   {
-    icon: "https://placehold.co/64x64/56B0BB/FFFFFF?text=4",
+    icon: "04",
     title: "Laboratorios Certificados",
     description: "Trabalhamos apenas com vacinas de laboratorios reconhecidos e certificados pela ANVISA.",
   },
@@ -40,15 +38,11 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow"
+              className="flex flex-col items-center text-center p-6 rounded-lg border border-gray-100 hover:shadow-md transition-shadow"
             >
-              <Image
-                src={feature.icon}
-                alt={feature.title}
-                width={64}
-                height={64}
-                className="mb-4"
-              />
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-vacina-teal text-white text-lg font-black">
+                {feature.icon}
+              </div>
               <h3 className="text-[18px] font-semibold text-[#1A1A2E] mb-2">{feature.title}</h3>
               <p className="text-[15px] text-[#5A5A5A] leading-[160%]">{feature.description}</p>
             </div>

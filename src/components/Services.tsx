@@ -4,17 +4,17 @@ import Image from "next/image";
 
 const services = [
   {
-    image: "https://placehold.co/400x300/56B0BB/FFFFFF?text=Vacinacao+Infantil",
+    image: "/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png",
     title: "Vacinacao Infantil",
     description: "Calendario completo de vacinas para criancas de 0 a 12 anos, com acompanhamento especializado.",
   },
   {
-    image: "https://placehold.co/400x300/56B0BB/FFFFFF?text=Vacinacao+Adulto",
+    image: "/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png",
     title: "Vacinacao para Adultos",
     description: "Mantenha sua imunizacao em dia com as vacinas recomendadas para adultos e idosos.",
   },
   {
-    image: "https://placehold.co/400x300/56B0BB/FFFFFF?text=Vacinacao+Empresarial",
+    image: "/images/vacina-one-homepage-hero-mosaico-imagem-menino.png",
     title: "Vacinacao Empresarial",
     description: "Programas de vacinacao corporativa para proteger sua equipe e aumentar a produtividade.",
   },
@@ -35,14 +35,14 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <Image
                 src={service.image}
                 alt={service.title}
                 width={400}
                 height={300}
-                className="w-full object-cover"
+                className="h-[260px] w-full object-cover"
               />
               <div className="p-6">
                 <h3 className="text-[20px] font-semibold text-[#1A1A2E] mb-2">{service.title}</h3>
