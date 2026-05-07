@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Added - Fase 3 Por que escolher a Vacina One
+
+- Criado componente `WhyChoose` com layout fiel a faixa azul-escura do Figma.
+- Adicionados os quatro diferenciais com SVGs oficiais em `public/images`.
+- Atualizada a Home para posicionar a seção entre Hero/carrossel e `Services`.
+- Atualizado `docs/content-map-home.md` com textos e paths oficiais da seção.
+
 ### Changed — Refactor v5 Responsivo (feature/fase2-header-hero)
 
 - **Header — Container 90% e Menu Corrigido** (2026-05-06)

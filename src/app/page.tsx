@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Features from '@/components/Features';
+import WhyChoose from '@/components/WhyChoose';
 import Services from '@/components/Services';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <main className="relative min-h-screen pt-[80px] md:pt-[110px]">
       <Header />
       <Hero />
-      <Features />
+      <WhyChoose />
       <Services />
     </main>
   );
