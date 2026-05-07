@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import WhyChoose from '@/components/WhyChoose';
 import AboutVacinaOne from '@/components/AboutVacinaOne';
+import PopularVaccines from '@/components/PopularVaccines';
 import Services from '@/components/Services';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <WhyChoose />
       <AboutVacinaOne />
+      <PopularVaccines />
       <Services />
     </main>
   );

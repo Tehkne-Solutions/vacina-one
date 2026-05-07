@@ -64,3 +64,16 @@
 
 4. Tarja: "Vacinas para viagens"
    Texto: "Vai viajar? A gente cuida do seu calendário vacinal completo para que você aproveite cada destino com segurança."
+
+## VACINAS MAIS PROCURADAS
+
+- Título: "Vacinas mais procuradas"
+- Subtítulo: "We work with doctors who are specialist in their fields to help you"
+- Itens:
+  - "Gripe (Influenza)"
+  - "Febre Amarela"
+  - "Meningocócica B"
+  - "Hexavalente"
+  - "Pneumocócica 13"
+  - "HPV"
+- CTA: "Agendar Vacinação"

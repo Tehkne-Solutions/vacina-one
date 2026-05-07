@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Added - Fase 5 Vacinas mais procuradas
+
+- Criada a seção `PopularVaccines` conforme referência do Figma.
+- Implementado grid responsivo com 6 vacinas em cards com CTA.
+- Aplicadas cores, tipografia, espaçamentos, animações e hover sutis.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da seção.
+
 ### Changed - Refino visual e animações
 
 - Padronizados containers principais para `w-[85%]`.
