@@ -4,6 +4,8 @@
 
 ### Fixed - Fase 6 Carrossel cuidado família
 
+- Corrigido corte dos ícones no carrossel `Cuidado para toda a família`.
+- Ajustados wrappers de overflow para preservar ícones absolutos no desktop e mobile.
 - Substituído o slider anterior por carrossel contínuo com Framer Motion.
 - Adicionados autoplay suave, pausa no hover/foco, drag/swipe e setas funcionais.
 - Corrigido loop para evitar espaço branco no final do trilho.

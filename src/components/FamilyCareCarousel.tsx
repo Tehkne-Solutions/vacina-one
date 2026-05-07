@@ -102,7 +102,7 @@ export default function FamilyCareCarousel() {
 
   return (
     <div
-      className="relative mt-[clamp(56px,6vw,92px)] w-full"
+      className="relative mt-[clamp(56px,6vw,92px)] w-full overflow-visible"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
@@ -112,12 +112,12 @@ export default function FamilyCareCarousel() {
         type="button"
         aria-label="Ver calendário anterior"
         onClick={() => nudgeCarousel("prev")}
-        className="absolute left-[-54px] top-1/2 z-20 hidden h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full bg-[#56B0BB] text-[24px] text-white transition hover:scale-105 hover:brightness-105 xl:flex"
+        className="absolute left-[-54px] top-[calc(50%+24px)] z-20 hidden h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full bg-[#56B0BB] text-[24px] text-white transition hover:scale-105 hover:brightness-105 xl:flex"
       >
         ←
       </button>
 
-      <div className="overflow-visible pt-10">
+      <div className="overflow-visible pt-12">
         <div className="overflow-hidden px-1">
           <motion.div
             className="flex cursor-grab items-stretch active:cursor-grabbing"
@@ -143,9 +143,9 @@ export default function FamilyCareCarousel() {
                     key={`${card.title}-${groupIndex}`}
                     href="/calendario"
                     aria-label={`Acessar calendário para ${card.title}`}
-                    className="group relative flex min-h-[166px] w-[82vw] min-w-[230px] max-w-[260px] flex-shrink-0 flex-col justify-end rounded-[10px] border border-[#1A3858]/70 bg-white px-[clamp(18px,1.4vw,26px)] pb-5 pt-[72px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(26,56,88,0.12)] sm:w-[240px] sm:max-w-none md:w-[250px] lg:w-[220px] xl:w-[245px]"
+                    className="group relative flex min-h-[166px] w-[78vw] min-w-[230px] max-w-[260px] flex-shrink-0 flex-col justify-end rounded-[10px] border border-[#1A3858]/70 bg-white px-[clamp(18px,1.4vw,26px)] pb-5 pt-[72px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(26,56,88,0.12)] sm:w-[240px] sm:max-w-none md:w-[250px] lg:w-[220px] xl:w-[245px]"
                   >
-                    <div className="absolute left-4 top-[-32px] flex h-[80px] w-[80px] items-center justify-center overflow-visible rounded-[18px] bg-[#56B0BB] p-[14px]">
+                    <div className="absolute left-4 top-[-38px] flex h-[80px] w-[80px] items-center justify-center overflow-visible rounded-[18px] bg-[#56B0BB] p-[14px]">
                       <Image
                         src={card.icon}
                         alt={`Ícone ${card.title}`}
@@ -174,7 +174,7 @@ export default function FamilyCareCarousel() {
         type="button"
         aria-label="Ver próximo calendário"
         onClick={() => nudgeCarousel("next")}
-        className="absolute right-[-54px] top-1/2 z-20 hidden h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full bg-[#1A3858] text-[24px] text-white transition hover:scale-105 hover:brightness-105 xl:flex"
+        className="absolute right-[-54px] top-[calc(50%+24px)] z-20 hidden h-[44px] w-[44px] -translate-y-1/2 items-center justify-center rounded-full bg-[#1A3858] text-[24px] text-white transition hover:scale-105 hover:brightness-105 xl:flex"
       >
         →
       </button>
@@ -184,7 +184,7 @@ export default function FamilyCareCarousel() {
           type="button"
           aria-label="Ver calendário anterior"
           onClick={() => nudgeCarousel("prev")}
-          className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#56B0BB] text-[24px] text-white transition hover:scale-105 hover:brightness-105"
+          className="flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#56B0BB] text-white transition hover:scale-105 hover:brightness-105"
         >
           ←
         </button>
@@ -192,7 +192,7 @@ export default function FamilyCareCarousel() {
           type="button"
           aria-label="Ver próximo calendário"
           onClick={() => nudgeCarousel("next")}
-          className="flex h-[44px] w-[44px] items-center justify-center rounded-full bg-[#1A3858] text-[24px] text-white transition hover:scale-105 hover:brightness-105"
+          className="flex h-[36px] w-[36px] items-center justify-center rounded-full bg-[#1A3858] text-white transition hover:scale-105 hover:brightness-105"
         >
           →
         </button>
