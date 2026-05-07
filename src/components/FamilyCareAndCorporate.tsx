@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
@@ -28,20 +28,71 @@ const familyCards = [
   },
 ];
 
+const AUTOPLAY_DELAY = 3200;
+
 export default function FamilyCareAndCorporate() {
   const cardsRef = useRef<HTMLDivElement>(null);
+  const dragStartX = useRef(0);
+  const dragStartScroll = useRef(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const scrollCards = (direction: "prev" | "next") => {
+  const scrollCards = useCallback((direction: "prev" | "next") => {
     const container = cardsRef.current;
     if (!container) return;
 
     const firstCard = container.querySelector<HTMLElement>("[data-family-card]");
     const distance = firstCard ? firstCard.offsetWidth + 28 : 280;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    if (maxScroll <= 2) return;
 
-    container.scrollBy({
-      left: direction === "next" ? distance : -distance,
+    const nextLeft = direction === "next"
+      ? container.scrollLeft + distance
+      : container.scrollLeft - distance;
+
+    container.scrollTo({
+      left: direction === "next" && nextLeft >= maxScroll - 8
+        ? 0
+        : direction === "prev" && nextLeft <= 0
+          ? maxScroll
+          : nextLeft,
       behavior: "smooth",
     });
+  }, []);
+
+  useEffect(() => {
+    if (isPaused || isDragging) return;
+
+    const autoplay = window.setInterval(() => {
+      scrollCards("next");
+    }, AUTOPLAY_DELAY);
+
+    return () => window.clearInterval(autoplay);
+  }, [isPaused, isDragging, scrollCards]);
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const container = cardsRef.current;
+    if (!container) return;
+
+    setIsDragging(true);
+    setIsPaused(true);
+    dragStartX.current = event.clientX;
+    dragStartScroll.current = container.scrollLeft;
+    container.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const container = cardsRef.current;
+    if (!container || !isDragging) return;
+
+    container.scrollLeft = dragStartScroll.current - (event.clientX - dragStartX.current);
+  };
+
+  const stopDragging = (event: React.PointerEvent<HTMLDivElement>) => {
+    const container = cardsRef.current;
+    setIsDragging(false);
+    setIsPaused(false);
+    container?.releasePointerCapture(event.pointerId);
   };
 
   return (
@@ -63,7 +114,13 @@ export default function FamilyCareAndCorporate() {
           </p>
         </motion.div>
 
-        <div className="relative mt-[clamp(56px,6vw,92px)]">
+        <div
+          className="relative mt-[clamp(56px,6vw,92px)]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
           <button
             type="button"
             aria-label="Ver calendário anterior"
@@ -75,8 +132,12 @@ export default function FamilyCareAndCorporate() {
 
           <motion.div
             ref={cardsRef}
-            className="flex snap-x snap-mandatory gap-7 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden xl:grid xl:grid-cols-5 xl:overflow-visible xl:pb-0"
+            className={`flex snap-x snap-mandatory gap-7 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden xl:grid xl:grid-cols-5 xl:overflow-visible xl:pb-0 ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
             variants={staggerContainer}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={stopDragging}
+            onPointerCancel={stopDragging}
           >
             {familyCards.map((card) => (
               <motion.article
