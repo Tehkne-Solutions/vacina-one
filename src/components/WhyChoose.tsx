@@ -3,56 +3,65 @@ import Image from "next/image";
 const features = [
   {
     icon: "/images/vacina-one-homepage-por-que-escolher-vacinaone-icone-atendimento-humanizado.svg",
-    title: "Atendimento humanizado",
-    description: "Ouvir, acolher e acompanhar. É assim que a gente trabalha na VacinaOne.",
+    titleLines: ["Atendimento", "humanizado"],
+    descriptionLines: ["Ouvir, acolher e", "acompanhar. É assim", "que a gente trabalha na", "VacinaOne."],
   },
   {
     icon: "/images/vacina-one-homepage-por-que-escolher-vacinaone-icone-ambiente-seguro-e-acolhedor.svg",
-    title: "Ambiente seguro e acolhedor",
-    description: "Espaço futurista e minimalista, com elementos pensados para deixar crianças e famílias à vontade.",
+    titleLines: ["Ambiente seguro", "e acolhedor"],
+    descriptionLines: ["Espaço futurista e", "minimalista, com", "elementos pensados", "para deixar crianças e", "famílias à vontade."],
   },
   {
     icon: "/images/vacina-one-homepage-por-que-escolher-vacinaone-icone-vacinas-certificadas-e-aprovadas.svg",
-    title: "Vacinas certificadas e aprovadas",
-    description: "Todas as vacinas são aprovadas pela Anvisa, com controle rigoroso de qualidade e cadeia de frio.",
+    titleLines: ["Vacinas certificadas", "e aprovadas"],
+    descriptionLines: ["Todas as vacinas são", "aprovadas pela Anvisa,", "com controle rigoroso", "de qualidade e cadeia", "de frio."],
   },
   {
     icon: "/images/vacina-one-homepage-por-que-escolher-vacinaone-icone-tecnologia-e-conforto.svg",
-    title: "Tecnologia e conforto",
-    description: "Amenizadores de dor, óculos de realidade virtual e agendamento sem espera.",
+    titleLines: ["Tecnologia e", "conforto"],
+    descriptionLines: ["Amenizadores de dor,", "óculos de realidade", "virtual e agendamento", "sem espera."],
   },
 ];
 
 export default function WhyChoose() {
   return (
-    <section className="bg-vacina-dark py-16 font-franie text-white md:py-20 xl:py-24">
-      <div className="mx-auto w-[90%] max-w-[1440px]">
-        <div className="mx-auto max-w-[720px] text-center">
-          <h2 className="text-[34px] font-black leading-[1.12] text-white md:text-[44px] xl:text-[50px]">
-            <span className="text-vacina-teal">Por que escolher a</span> VacinaOne?
+    <section className="bg-vacina-dark py-[70px] font-franie text-white md:py-[86px] xl:py-[96px] 2xl:py-[108px]">
+      <div className="mx-auto w-[90%] max-w-[1640px]">
+        <div className="mx-auto text-center">
+          <h2 className="text-[clamp(34px,3.35vw,64px)] font-black leading-[1.02] text-white md:whitespace-nowrap">
+            <span className="text-vacina-teal">Por que escolher a</span>{" "}
+            <span>VacinaOne?</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-[600px] text-[16px] font-medium leading-[1.45] text-white md:text-[18px]">
-            A VacinaOne nasceu para que cuidar da saúde da sua família seja uma experiência que você queira repetir.
+          <p className="mx-auto mt-[22px] max-w-[760px] text-[clamp(17px,1.35vw,25px)] font-medium leading-[1.18] text-white">
+            A VacinaOne nasceu para que cuidar da saúde da sua familia seja uma
+            <br className="hidden md:block" />
+            experiência que você queira repetir.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12 xl:mt-20">
+        <div className="mt-[62px] grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:mt-[74px] xl:gap-12 2xl:gap-16">
           {features.map((feature) => (
-            <article key={feature.title} className="flex flex-col items-center text-center">
-              <div className="flex h-[74px] w-[74px] items-center justify-center rounded-full border border-white/90">
-                <Image
-                  src={feature.icon}
-                  alt=""
-                  width={34}
-                  height={34}
-                  className="h-[34px] w-[34px]"
-                />
-              </div>
-              <h3 className="mt-5 max-w-[230px] text-[24px] font-black leading-[0.98] text-vacina-teal md:text-[25px] xl:text-[27px]">
-                {feature.title}
+            <article key={feature.titleLines.join(" ")} className="flex flex-col items-center text-center">
+              <Image
+                src={feature.icon}
+                alt=""
+                width={112}
+                height={112}
+                className="h-[clamp(76px,5.84vw,112px)] w-[clamp(76px,5.84vw,112px)]"
+              />
+              <h3 className="mt-[28px] text-[clamp(25px,1.95vw,38px)] font-black leading-[0.9] text-vacina-teal">
+                {feature.titleLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
               </h3>
-              <p className="mt-4 max-w-[230px] text-[16px] font-medium leading-[1.35] text-white md:text-[17px]">
-                {feature.description}
+              <p className="mt-[22px] text-[clamp(17px,1.35vw,26px)] font-medium leading-[1.12] text-white">
+                {feature.descriptionLines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
               </p>
             </article>
           ))}

@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 3 Pixel Perfect Por que escolher a VacinaOne
+
+- Removidos os círculos duplicados ao redor dos SVGs oficiais.
+- Corrigidos título bicolor, quebras de linha, espaçamentos e tipografia responsiva.
+- Mantido o grid responsivo sem alterar Header, Hero, carrossel ou `Services`.
+
 ### Added - Fase 3 Por que escolher a Vacina One
 
 - Criado componente `WhyChoose` com layout fiel a faixa azul-escura do Figma.
