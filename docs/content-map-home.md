@@ -77,3 +77,22 @@
   - "Pneumocócica 13"
   - "HPV"
 - CTA: "Agendar Vacinação"
+
+## CUIDADO PARA TODA A FAMÍLIA
+
+- Título: "Acesse o cuidado para toda a família"
+- Subtítulo: "Somos especializados em atendimento infantil e adulto"
+- Cards:
+  - "bebê" / "Acessar calendário"
+  - "crianças" / "Acessar calendário"
+  - "60+" / "Acessar calendário"
+  - "adultos" / "Acessar calendário"
+  - "gestante" / "Acessar calendário"
+
+## VACINAÇÃO PARA EMPRESAS
+
+- Título: "Vacinação para empresas"
+- Parágrafo 1: "O agendamento é rápido, organizado e sem espera. Escolha o horário que for melhor para você e apareça, a gente cuida do resto."
+- Parágrafo 2: "Tem dúvidas sobre qual vacina tomar, quando reforçar ou como funciona a vacinação para a sua empresa? Nossa equipe está pronta para te orientar antes mesmo de você marcar um horário."
+- CTA 1: "Agendar Vacinação"
+- CTA 2: "Falar no WhatsApp"

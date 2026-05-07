@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added - Fase 6 Cuidado família e vacinação empresas
+
+- Criada a seção `FamilyCareAndCorporate` conforme referência do Figma.
+- Adicionados cards de cuidado para toda a família com ícones oficiais.
+- Criado bloco `Vacinação para empresas` com imagem destaque oficial.
+- Implementados CTAs oficiais, responsividade e animações/hover sutis.
+- Configurado slider responsivo com snap/swipe sem autoplay para os cards de família.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da fase.
+
 ### Added - Fase 5 Vacinas mais procuradas
 
 - Criada a seção `PopularVaccines` conforme referência do Figma.
