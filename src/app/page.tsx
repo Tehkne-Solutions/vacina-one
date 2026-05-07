@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import WhyChoose from '@/components/WhyChoose';
+import AboutVacinaOne from '@/components/AboutVacinaOne';
 import Services from '@/components/Services';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <Hero />
       <WhyChoose />
+      <AboutVacinaOne />
       <Services />
     </main>
   );

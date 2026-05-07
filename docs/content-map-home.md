@@ -40,3 +40,27 @@
 4. Icone: "/images/vacina-one-homepage-por-que-escolher-vacinaone-icone-tecnologia-e-conforto.svg"
    Título: "Tecnologia e conforto"
    Texto: "Amenizadores de dor, óculos de realidade virtual e agendamento sem espera."
+
+## SOBRE A VACINAONE
+
+- Título: "Sobre a VacinaOne"
+- Imagem: "/images/vacina-one-homepage-sobre-a-vacina-one-imagem-mascote.png"
+
+### Texto introdutório
+
+- Parágrafo 1: "A VacinaOne nasceu para transformar a experiência de vacinação em algo seguro, acolhedor e inovador. Com sede em Campinas, no bairro Taquaral, oferecemos um espaço futurista com ambientes minimalistas, tecnologia de ponta e um atendimento profundamente humanizado."
+- Parágrafo 2: "Inspirada em conceitos montessorianos, acreditamos que o cuidado começa no ambiente. Por isso, nosso espaço foi criado para transmitir tranquilidade, clareza e confiança para toda a sua família."
+
+### Blocos com tarja azul
+
+1. Tarja: "Clínica premium em Campinas"
+   Texto: "Localizada no Taquaral, pertinho do Mansões Santo Antônio, com estacionamento gratuito e fácil acesso para toda a família."
+
+2. Tarja: "Para todas as idades"
+   Texto: "Atendemos desde os primeiros meses de vida até a melhor idade, com protocolos específicos e atenção dedicada em cada etapa."
+
+3. Tarja: "Soluções para empresas e instituições"
+   Texto: "Campanhas corporativas para empresas, escolas, condomínios e casas de repouso. A VacinaOne vai até onde o cuidado é necessário."
+
+4. Tarja: "Vacinas para viagens"
+   Texto: "Vai viajar? A gente cuida do seu calendário vacinal completo para que você aproveite cada destino com segurança."

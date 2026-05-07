@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added - Fase 4 Sobre a VacinaOne
+
+- Criada a seção `AboutVacinaOne` conforme referência do Figma.
+- Incluído o mascote oficial da seção em `public/images`.
+- Implementados blocos com tarja azul retangular e divisórias sutis.
+- Ajustada responsividade para desktop, notebook e mobile.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da seção.
+
 ### Fixed - Fase 3 Ajuste final de tipografia
 
 - Reduzido o peso dos titulos dos cards da secao `WhyChoose`.
