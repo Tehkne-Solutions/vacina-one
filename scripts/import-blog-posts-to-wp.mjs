@@ -152,6 +152,8 @@ async function uploadFeaturedImage(post) {
   }
 
   const filename = path.basename(imagePath);
+  // O WordPress define o caminho final da imagem (com ou sem /ano/mes/)
+  // conforme a configuracao de uploads do painel. Nao hardcodamos datas aqui.
   const media = await wpBinaryFetch("/media", {
     method: "POST",
     filePath: imagePath,
