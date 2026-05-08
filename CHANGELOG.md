@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 12 Merge Hotfix Layout Global
+
+- Aplicado merge da branch `fix/fase-12-layout-global-footer-1360` na `feature/fase-12-validacao-wp-conteudo-real`.
+- Resolvido conflito no CHANGELOG.md preservando ambas as entradas.
+- Header global e Footer responsivo agora aplicados na branch de validação WP.
+- Build validado com sucesso após merge.
+- Branch pronta para deploy na Vercel com layout corrigido.
+
 ### Added - Fase 12 Validação Conteúdo Real WordPress
 
 - Adicionado parâmetro `_embed=1` em todos os endpoints para melhor renderização de dados aninhados.
