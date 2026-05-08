@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added - WP Headless CMS
+
+- Criado plugin versionado `Vacina One Headless CMS`.
+- Registrados CPTs, taxonomias e grupos ACF para o WordPress Headless.
+- Adicionada tela de seed em `Ferramentas > Vacina One Seed`.
+- Incluídos conteúdos iniciais para vacinas, unidades, calendário vacinal, FAQ e campanhas para empresas.
+- Documentados endpoints REST esperados e bloqueio HTML observado no domínio público.
+
 ### Added - Fase 10 Footer Global
 
 - Criado o componente `Footer` conforme referência do Figma.
