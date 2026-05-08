@@ -52,7 +52,7 @@ export default function RelatedPostsCarousel({
                   {img ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={img.url.replace(/^http:\/\//, 'https://')}
+                      src={img.url}
                       alt={img.alt}
                       className="h-full w-full object-cover"
                       loading="lazy"

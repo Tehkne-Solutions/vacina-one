@@ -1,15 +1,14 @@
 import { WordPressPost } from '@/types/wordpress';
+import { getLocalBlogImageUrl } from '@/lib/blog-images';
 
 const WP_HOST = 'vacina-one-bkend.page.gd';
 
 /**
- * Normaliza URLs de imagens do WordPress:
+ * Normaliza URLs de imagens do WordPress no conteúdo HTML:
  * - Força https://
- * - Remove sufixos dimensionais (-1024x683, -300x200, etc.)
- * - Adiciona ?i=1 para imagens do InfinityFree (bypass de cache/proteção)
- * - Compatível com uploads com e sem pasta /ano/mês
- *   Ex: /wp-content/uploads/2026/05/imagem.webp  (padrão antigo)
- *       /wp-content/uploads/imagem.webp           (novo padrão)
+ * - Remove sufixos dimensionais (-1024x683, etc.)
+ * - Adiciona ?i=1 para imagens do InfinityFree
+ * Usado apenas para imagens dentro do contentHtml (não para featured image).
  */
 export function normalizeWpImageUrl(url: string): string {
   let normalized = url
@@ -30,8 +29,13 @@ export function normalizeWpImageUrl(url: string): string {
 export function getFeaturedImage(post: WordPressPost) {
   const media = post._embedded?.['wp:featuredmedia']?.[0];
   if (!media?.source_url) return null;
+
+  // Prioriza imagem local para evitar bloqueio de hotlink do staging
+  const url = getLocalBlogImageUrl(media.source_url);
+  if (!url) return null;
+
   return {
-    url: normalizeWpImageUrl(media.source_url),
+    url,
     alt:
       media.alt_text ||
       media.title?.rendered?.replace(/<[^>]*>/g, '') ||
