@@ -4,7 +4,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const navLinks = ['Home', 'VacinaOne', 'Unidades', 'Vacinas', 'Calend\u00e1rio', 'Empresas', 'Blog', 'Contato'];
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'VacinaOne', href: '/#sobre' },
+  { label: 'Unidades', href: '/unidades' },
+  { label: 'Vacinas', href: '/vacinas' },
+  { label: 'Calendário', href: '/calendario' },
+  { label: 'Empresas', href: '/empresas' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contato', href: '/contato' },
+];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,13 +30,13 @@ export default function Header() {
 
         {/* Nav desktop — gap menor em xl, maior em 2xl */}
         <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 font-franie font-medium text-[15px] 2xl:text-[16px]">
-          {navLinks.map((item, i) => (
+          {navLinks.map((item) => (
             <Link
-              key={item}
-              href={i === 0 ? '/' : '#'}
-              className={`whitespace-nowrap transition-colors ${i === 0 ? 'text-black' : 'text-vacina-gray hover:text-vacina-teal'}`}
+              key={item.label}
+              href={item.href}
+              className={`whitespace-nowrap transition-colors ${item.label === 'Home' ? 'text-black' : 'text-vacina-gray hover:text-vacina-teal'}`}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </nav>
@@ -52,14 +61,14 @@ export default function Header() {
       {/* Menu mobile overlay */}
       <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'} bg-white shadow-xl`}>
         <div className="w-[85%] mx-auto flex flex-col py-4 gap-3">
-          {navLinks.map((item, i) => (
+          {navLinks.map((item) => (
             <Link
-              key={item}
-              href={i === 0 ? '/' : '#'}
+              key={item.label}
+              href={item.href}
               className="text-[18px] font-medium text-vacina-dark border-b border-gray-100 pb-3 hover:text-vacina-teal transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           {/* Botao que estava sumindo */}

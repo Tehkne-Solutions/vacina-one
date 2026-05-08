@@ -30,6 +30,7 @@ const aboutItems = [
 export default function AboutVacinaOne() {
   return (
     <motion.section
+      id="sobre"
       className="w-full bg-white py-[clamp(56px,6vw,110px)] font-franie"
       initial="hidden"
       whileInView="visible"

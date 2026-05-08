@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -20,8 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`${plusJakartaSans.variable} font-franie`}>
-        {children}
+      <body className={`${plusJakartaSans.variable} font-franie overflow-x-clip`}>
+        <Header />
+        <div className="pt-[80px] md:pt-[110px] overflow-x-clip">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
