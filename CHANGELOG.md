@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added - Fase 13 Blog Content Seed
+
+- Criado `content/blog-posts.vacina-one.json` com 10 posts educativos para importacao como rascunho no WordPress.
+- Criado `scripts/download-blog-images.mjs` para baixar imagens do Pexels e gerar manifest em `public/images/blog`.
+- Criado `scripts/import-blog-posts-to-wp.mjs` para importar posts no WordPress com status `draft`.
+- Adicionado `.env.example` sem credenciais reais para variaveis Pexels e WordPress.
+- Sem alteracao visual na Home, Header, Hero, Footer ou secoes validadas.
+
 ### Fixed - Hotfix Home/Footer
 
 - Removida a seção `Services` / `Nossos Serviços` da renderização da Home por não pertencer ao Figma atual.
