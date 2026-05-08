@@ -120,6 +120,39 @@ export interface WordPressCustomPost {
   _links?: Record<string, unknown>;
 }
 
+export interface VaccineAcf {
+  nome_popular?: string;
+  descricao_curta?: string;
+  indicacao?: string;
+  faixa_etaria?: string;
+  numero_de_doses?: string;
+  esquema_vacinal?: string;
+  reforco?: string;
+  contraindicacoes?: string;
+  cuidados_antes?: string;
+  cuidados_depois?: string;
+  disponivel_para_agendamento?: boolean;
+  cta_texto?: string;
+}
+
+export interface WordPressVaccine {
+  id: number;
+  date: string;
+  slug: string;
+  status: string;
+  title: WordPressRendered;
+  content: WordPressRendered;
+  excerpt: WordPressRendered;
+  featured_media: number;
+  acf?: VaccineAcf;
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{
+      source_url?: string;
+      alt_text?: string;
+    }>;
+  };
+}
+
 export interface UnitAcf {
   nome_da_unidade?: string;
   endereco_completo?: string;
