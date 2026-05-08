@@ -3,32 +3,12 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { WordPressPost } from '@/types/wordpress';
+import { getLocalBlogImageUrl } from '@/lib/blog-images';
+import { getAuthorName } from '@/lib/wp-helpers';
 
 interface BlogPostCardProps {
   post: WordPressPost;
   index?: number;
-}
-
-function getFeaturedImageUrl(post: WordPressPost): string | null {
-  const embedded = (post as unknown as Record<string, unknown>)['_embedded'] as
-    | Record<string, unknown>
-    | undefined;
-  if (!embedded) return null;
-  const media = embedded['wp:featuredmedia'] as
-    | Array<{ source_url?: string }>
-    | undefined;
-  return media?.[0]?.source_url ?? null;
-}
-
-function getAuthorName(post: WordPressPost): string {
-  const embedded = (post as unknown as Record<string, unknown>)['_embedded'] as
-    | Record<string, unknown>
-    | undefined;
-  if (!embedded) return 'VacinaOne';
-  const authors = embedded['author'] as
-    | Array<{ name?: string }>
-    | undefined;
-  return authors?.[0]?.name ?? 'VacinaOne';
 }
 
 function formatDate(dateStr: string): string {
@@ -40,7 +20,8 @@ function formatDate(dateStr: string): string {
 }
 
 export default function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
-  const imageUrl = getFeaturedImageUrl(post);
+  const rawImageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url ?? null;
+  const imageUrl = getLocalBlogImageUrl(rawImageUrl);
   const author = getAuthorName(post);
   const date = formatDate(post.date);
   const title = post.title.rendered.replace(/<[^>]*>/g, '');
@@ -65,7 +46,7 @@ export default function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
           {imageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={imageUrl.replace(/^http:\/\//, 'https://')}
+              src={imageUrl}
               alt={title}
               className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               loading="lazy"
