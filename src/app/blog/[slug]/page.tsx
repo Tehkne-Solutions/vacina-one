@@ -92,8 +92,8 @@ export default async function BlogPostPage({
         )}
 
         {/* Conteúdo WordPress */}
-        <div
-          className="wp-content"
+        <article
+          className="prose-vacinaone"
           dangerouslySetInnerHTML={{ __html: post.content.rendered }}
         />
 
