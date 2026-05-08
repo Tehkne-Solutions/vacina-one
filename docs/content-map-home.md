@@ -144,3 +144,37 @@
    Título: "Vacina da gripe: o que muda todo ano e como se proteger"
    Texto: "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente."
    Imagem: "/images/vacina-one-homepage-blog-post-vacina-da-gripe-3.png"
+
+## FAQ / DÚVIDAS FREQUENTES
+
+- Título: "Dúvidas Frequentes"
+
+### Itens
+
+1. Pergunta: "Vocês atendem crianças de qual idade?"
+   Resposta: "Atendemos desde os primeiros meses de vida. Seguimos o calendário vacinal da Sociedade Brasileira de Pediatria e orientamos os pais sobre cada etapa com muita atenção e calma."
+   Link: "Learn more"
+
+2. Pergunta: "Preciso de receita médica para tomar uma vacina?"
+   Resposta: "Na maioria dos casos, não é necessário apresentar receita médica. Nossa equipe avalia o calendário vacinal, a idade, o histórico de saúde e orienta sobre a melhor conduta. Quando alguma vacina exigir indicação ou cuidado específico, avisamos antes da aplicação."
+   Link: "Learn more"
+
+3. Pergunta: "Como funciona a vacinação para empresas?"
+   Resposta: "Organizamos campanhas de vacinação para empresas, escolas, condomínios e instituições. A equipe da VacinaOne pode ir até o local ou receber os colaboradores na clínica, com agendamento, controle das doses e emissão dos comprovantes de vacinação."
+   Link: "Learn more"
+
+4. Pergunta: "As vacinas são seguras e registradas?"
+   Resposta: "Sim. Trabalhamos apenas com vacinas de laboratórios reconhecidos, registradas e aprovadas pelos órgãos competentes. Também seguimos protocolos rigorosos de conservação, armazenamento e aplicação para garantir segurança em todas as etapas."
+   Link: "Learn more"
+
+5. Pergunta: "Preciso agendar ou posso chegar sem hora marcada?"
+   Resposta: "Recomendamos o agendamento para garantir mais conforto, organização e menor tempo de espera. Assim, nossa equipe consegue preparar o atendimento com antecedência e confirmar a disponibilidade da vacina desejada."
+   Link: "Learn more"
+
+6. Pergunta: "Vocês têm vacinas para viagem internacional?"
+   Resposta: "Sim. A VacinaOne orienta sobre vacinas importantes para viagens nacionais e internacionais, de acordo com o destino, idade e histórico vacinal. Nossa equipe ajuda você a revisar o calendário antes da viagem para embarcar com mais segurança."
+   Link: "Learn more"
+
+7. Pergunta: "Vocês emitem carteirinha ou comprovante de vacinação?"
+   Resposta: "Sim. Após a aplicação, emitimos o comprovante de vacinação com as informações necessárias sobre a dose aplicada. Também orientamos sobre o registro no calendário vacinal e próximos reforços, quando houver necessidade."
+   Link: "Learn more"

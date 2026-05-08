@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added - Fase 9 FAQ / Dúvidas Frequentes
+
+- Criada a seção `FaqSection` conforme referência do Figma.
+- Implementado accordion responsivo com acessibilidade via botões e `aria-expanded`.
+- Mantido o primeiro item aberto por padrão conforme o Figma.
+- Adicionadas as respostas oficiais aprovadas para todos os itens, sem conteúdo placeholder.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da fase.
+
 ### Added - Fase 8 Blog da Home
 
 - Criada a seção `BlogSection` conforme referência do Figma.
