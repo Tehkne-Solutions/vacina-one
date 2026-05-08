@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
           <figure className="mb-10 overflow-hidden rounded-[24px] shadow-sm bg-[#EAF4EB]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={img.url.replace(/^http:\/\//, 'https://')}
+              src={img.url}
               alt={img.alt}
               className="block w-full h-auto object-cover"
               loading="eager"
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
         <article
           className="prose-vacinaone"
           dangerouslySetInnerHTML={{
-            __html: normalizeWpImageUrl(contentHtml.replace(/http:\/\//g, 'https://')),
+            __html: normalizeWpImageUrl(contentHtml),
           }}
         />
 
