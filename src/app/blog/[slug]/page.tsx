@@ -1,5 +1,5 @@
 import { getPostBySlug, getPosts } from '@/lib/wordpress';
-import { getFeaturedImage, getAuthorName } from '@/lib/wp-helpers';
+import { getFeaturedImage, getAuthorName, normalizeWpImageUrl } from '@/lib/wp-helpers';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import BlogPostHero from './BlogPostHero';
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
         <article
           className="prose-vacinaone"
           dangerouslySetInnerHTML={{
-            __html: contentHtml.replace(/http:\/\//g, 'https://'),
+            __html: normalizeWpImageUrl(contentHtml.replace(/http:\/\//g, 'https://')),
           }}
         />
 
