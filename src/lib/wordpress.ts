@@ -6,6 +6,7 @@ import {
   WordPressUnit,
   WordPressVaccine,
   WordPressCalendar,
+  WordPressCorporateCampaign,
 } from '@/types/wordpress';
 
 const _WP_API = process.env.WORDPRESS_API_URL;
@@ -196,11 +197,20 @@ export async function getFaqs(): Promise<WordPressCustomPost[]> {
 }
 
 // CAMPANHAS PARA EMPRESAS (Custom Post Type)
-export async function getCorporateCampaigns(): Promise<WordPressCustomPost[]> {
-  const data = await fetchFromWordPress<WordPressCustomPost[]>(
-    '/campanhas_empresas?_embed=1'
+export async function getCorporateCampaigns(): Promise<WordPressCorporateCampaign[]> {
+  const data = await fetchFromWordPress<WordPressCorporateCampaign[]>(
+    '/campanhas_empresas?_embed=1&per_page=100'
   );
   return data || [];
+}
+
+export async function getCorporateCampaignBySlug(
+  slug: string
+): Promise<WordPressCorporateCampaign | null> {
+  const items = await fetchFromWordPress<WordPressCorporateCampaign[]>(
+    `/campanhas_empresas?slug=${slug}&_embed=1`
+  );
+  return items && items.length > 0 ? items[0] : null;
 }
 
 // CALENDÁRIO VACINAL (Custom Post Type)

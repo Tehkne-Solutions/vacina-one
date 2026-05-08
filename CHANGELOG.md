@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Added - Fase 14: Páginas Internas de Empresas
+
+- Criação das páginas /empresas e /empresas/[slug].
+- Consumo do CPT campanhas_empresas via WordPress Headless.
+- Layout premium alinhado à identidade visual da Home.
+- Cards de campanhas empresariais com hover e animações suaves.
+- Página individual com resumo, benefícios, público-alvo, modelo de atendimento e CTA.
+- Estado vazio defensivo com bloco centralizado.
+- Tratamento seguro para campos ACF opcionais.
+- Preservação de Home, Header, Footer, Blog, Unidades, Vacinas e Calendário.
+- SEO com generateMetadata dinâmico.
+- Responsividade testada em desktop, tablet e mobile.
+- Build validado sem erros.
+
 ### Fixed - Hotfix fetch WordPress contra challenge HTML do InfinityFree
 
 - Reescrito `src/lib/wordpress.ts` para tratar resposta HTML/challenge do InfinityFree.

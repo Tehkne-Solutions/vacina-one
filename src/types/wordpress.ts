@@ -179,6 +179,37 @@ export interface WordPressCalendar {
   acf?: CalendarAcf;
 }
 
+export interface CorporateCampaignAcf {
+  titulo_publico?: string;
+  descricao_curta?: string;
+  beneficios?: string | string[];
+  publico_alvo?: string;
+  vacinas_disponiveis?: string | unknown[];
+  modelo_de_atendimento?: string;
+  regioes_atendidas?: string;
+  quantidade_minima_colaboradores?: string | number;
+  prazo_para_agendamento?: string;
+  whatsapp_cta?: string;
+  cta_primario_texto?: string;
+  cta_primario_url?: string;
+  cta_secundario_texto?: string;
+  cta_secundario_url?: string;
+  faq_relacionado?: unknown;
+  ativo_no_site?: boolean;
+}
+
+export interface WordPressCorporateCampaign {
+  id: number;
+  date: string;
+  slug: string;
+  status: string;
+  title: WordPressRendered;
+  content: WordPressRendered;
+  excerpt: WordPressRendered;
+  featured_media: number;
+  acf?: CorporateCampaignAcf;
+}
+
 export interface UnitAcf {
   nome_da_unidade?: string;
   endereco_completo?: string;
