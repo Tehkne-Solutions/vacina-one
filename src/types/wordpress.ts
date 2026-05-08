@@ -119,3 +119,38 @@ export interface WordPressCustomPost {
   acf?: Record<string, unknown>;
   _links?: Record<string, unknown>;
 }
+
+export interface UnitAcf {
+  nome_da_unidade?: string;
+  endereco_completo?: string;
+  cidade?: string;
+  bairro?: string;
+  estado?: string;
+  cep?: string;
+  telefone?: string;
+  whatsapp?: string;
+  email?: string;
+  horario_de_funcionamento?: string;
+  google_maps_url?: string;
+  google_maps_embed?: string;
+  unidade_ativa?: boolean;
+  cta_texto?: string;
+}
+
+export interface WordPressUnit {
+  id: number;
+  date: string;
+  slug: string;
+  status: string;
+  title: WordPressRendered;
+  content: WordPressRendered;
+  excerpt: WordPressRendered;
+  featured_media: number;
+  acf?: UnitAcf;
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{
+      source_url?: string;
+      alt_text?: string;
+    }>;
+  };
+}

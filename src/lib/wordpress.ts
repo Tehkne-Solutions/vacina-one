@@ -3,6 +3,7 @@ import {
   WordPressPost,
   WordPressCategory,
   WordPressCustomPost,
+  WordPressUnit,
 } from '@/types/wordpress';
 
 const _WP_API = process.env.WORDPRESS_API_URL;
@@ -172,15 +173,15 @@ export async function getVaccineBySlug(
 }
 
 // UNIDADES (Custom Post Type)
-export async function getUnits(): Promise<WordPressCustomPost[]> {
-  const data = await fetchFromWordPress<WordPressCustomPost[]>('/unidades?_embed=1');
+export async function getUnits(): Promise<WordPressUnit[]> {
+  const data = await fetchFromWordPress<WordPressUnit[]>('/unidades?_embed=1&per_page=100');
   return data || [];
 }
 
 export async function getUnitBySlug(
   slug: string
-): Promise<WordPressCustomPost | null> {
-  const units = await fetchFromWordPress<WordPressCustomPost[]>(
+): Promise<WordPressUnit | null> {
+  const units = await fetchFromWordPress<WordPressUnit[]>(
     `/unidades?slug=${slug}&_embed=1`
   );
   return units && units.length > 0 ? units[0] : null;
