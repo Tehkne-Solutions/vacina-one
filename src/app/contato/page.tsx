@@ -52,30 +52,50 @@ export default async function ContactPage() {
               </div>
             </div>
 
-            {/* Imagem ou Fallback */}
+            {/* Card Visual */}
             <div className="relative">
-              <div className="bg-white rounded-[32px] p-8 shadow-lg">
-                <div className="w-16 h-16 bg-[#56B0BB] rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-white rounded-full"></div>
+              <div className="bg-white rounded-[32px] p-8 shadow-lg min-h-[320px] flex flex-col justify-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-[#56B0BB] rounded-full flex items-center justify-center">
+                      <div className="w-6 h-6 bg-white rounded-full"></div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-[#1A3858]">
+                        Atendimento humanizado
+                      </h3>
+                      <p className="text-sm text-[#5A5A5A]">
+                        Orientação clara para cada etapa
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-[#F9FCFB] rounded-[16px] p-4 text-center">
+                      <div className="w-8 h-8 bg-[#56B0BB] rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <span className="text-white text-sm">⚡</span>
+                      </div>
+                      <p className="text-xs font-semibold text-[#1A3858]">Resposta rápida</p>
+                    </div>
+                    <div className="bg-[#F9FCFB] rounded-[16px] p-4 text-center">
+                      <div className="w-8 h-8 bg-[#F0B954] rounded-full mx-auto mb-2 flex items-center justify-center">
+                        <span className="text-white text-sm">👥</span>
+                      </div>
+                      <p className="text-xs font-semibold text-[#1A3858]">Famílias e empresas</p>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <p className="text-sm text-[#5A5A5A]">
+                      Nossa equipe está pronta para ajudar
+                    </p>
+                  </div>
                 </div>
-                <div className="w-12 h-12 bg-[#F0B954] rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <div className="w-6 h-6 bg-white rounded-full"></div>
-                </div>
-                <h3 className="text-xl font-bold text-[#1A3858] text-center mb-2">
-                  Atendimento humanizado
-                </h3>
-                <p className="text-[#5A5A5A] text-center">
-                  Orientação clara para cada etapa.
-                </p>
               </div>
 
-              {/* Elementos sobrepostos */}
-              <div className="absolute -top-4 -right-4 bg-[#56B0BB] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Resposta rápida
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-[#F0B954] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Famílias e empresas
-              </div>
+              {/* Elementos decorativos */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#F0B954] rounded-full opacity-20"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-[#56B0BB] rounded-full opacity-30"></div>
             </div>
           </div>
         </div>
@@ -93,7 +113,7 @@ export default async function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
             {[
               {
                 title: 'WhatsApp',
@@ -126,11 +146,11 @@ export default async function ContactPage() {
             ].map((card, index) => (
               <div
                 key={index}
-                className="bg-white border border-[#EAF4EB] rounded-[28px] p-6 text-center hover:shadow-lg hover:-translate-y-1.5 hover:border-[#56B0BB] transition-all duration-300"
+                className="bg-white border border-[#EAF4EB] rounded-[28px] p-8 text-center hover:shadow-xl hover:-translate-y-2 hover:border-[#56B0BB] transition-all duration-300"
               >
-                <div className="text-4xl mb-4">{card.icon}</div>
-                <h3 className="text-xl font-bold text-[#1A3858] mb-3">{card.title}</h3>
-                <p className="text-[#5A5A5A] mb-4 leading-relaxed">{card.text}</p>
+                <div className="text-5xl mb-6">{card.icon}</div>
+                <h3 className="text-xl font-bold text-[#1A3858] mb-4">{card.title}</h3>
+                <p className="text-[#5A5A5A] mb-6 leading-relaxed">{card.text}</p>
                 <Link
                   href={card.href}
                   className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
@@ -144,17 +164,52 @@ export default async function ContactPage() {
       </section>
 
       {/* Formulário */}
-      <section id="formulario-contato" className="py-16 md:py-24 bg-[#F2FBFA]">
-        <div className="w-[85%] max-w-[1280px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section id="formulario-contato" className="py-20 md:py-28 bg-[#EAF4EB]">
+        <div className="w-[85%] max-w-[1370px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
             {/* Info */}
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-black text-[#1A3858]">
-                Envie sua mensagem
-              </h2>
-              <p className="text-lg text-[#5A5A5A] leading-relaxed">
-                Preencha o formulário e nossa equipe retornará com as orientações necessárias.
-              </p>
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-black text-[#1A3858] mb-4">
+                  Envie sua mensagem
+                </h2>
+                <p className="text-lg text-[#5A5A5A] leading-relaxed">
+                  Preencha o formulário e nossa equipe retornará com as orientações necessárias.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    title: 'Retorno com orientação clara',
+                    text: 'Nossa equipe analisa sua solicitação e responde com cuidado.',
+                    icon: '💬',
+                  },
+                  {
+                    title: 'Atendimento para famílias e empresas',
+                    text: 'Tire dúvidas sobre vacinas, campanhas e agendamentos.',
+                    icon: '👥',
+                  },
+                  {
+                    title: 'Canal direto com a equipe',
+                    text: 'Use o formulário ou fale pelo WhatsApp.',
+                    icon: '📞',
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white border border-[#DDEFEA] rounded-[20px] p-6 shadow-sm"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="text-2xl">{item.icon}</div>
+                      <div>
+                        <h3 className="font-bold text-[#1A3858] mb-1">{item.title}</h3>
+                        <p className="text-sm text-[#5A5A5A]">{item.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Form */}
@@ -165,85 +220,62 @@ export default async function ContactPage() {
 
       {/* Unidades */}
       <section className="py-16 md:py-24">
-        <div className="w-[85%] max-w-[1570px] mx-auto">
+        <div className="w-[85%] max-w-[1370px] mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-[#1A3858] mb-4">
               Informações de atendimento
             </h2>
           </div>
 
-          {activeUnits.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {activeUnits.slice(0, 3).map((unit) => (
-                <div
-                  key={unit.id}
-                  className="bg-white border border-[#EAF4EB] rounded-[28px] p-6 shadow-sm"
-                >
-                  <h3 className="text-xl font-bold text-[#1A3858] mb-3">
-                    {unit.acf?.nome_da_unidade || unit.title.rendered.replace(/<[^>]*>/g, '')}
-                  </h3>
-
-                  {unit.acf?.endereco_completo && (
-                    <p className="text-[#5A5A5A] mb-2">
-                      📍 {unit.acf.endereco_completo}
-                    </p>
-                  )}
-
-                  {unit.acf?.telefone && (
-                    <p className="text-[#5A5A5A] mb-2">
-                      📞 {unit.acf.telefone}
-                    </p>
-                  )}
-
-                  {unit.acf?.whatsapp && (
-                    <p className="text-[#5A5A5A] mb-2">
-                      💬 {unit.acf.whatsapp}
-                    </p>
-                  )}
-
-                  {unit.acf?.horario_de_funcionamento && (
-                    <p className="text-[#5A5A5A] mb-4">
-                      🕒 {unit.acf.horario_de_funcionamento}
-                    </p>
-                  )}
-
-                  {unit.acf?.google_maps_url && (
-                    <a
-                      href={unit.acf.google_maps_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
-                    >
-                      Abrir no mapa
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="bg-[#EAF4EB] rounded-[28px] p-12 text-center max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-[#1A3858] mb-4">
-                Atendimento VacinaOne
-              </h3>
-              <p className="text-lg text-[#5A5A5A] mb-6">
-                Em breve, as informações completas de atendimento estarão disponíveis aqui.
-              </p>
-              <Link
-                href="#formulario-contato"
-                className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Unidade',
+                subtitle: 'Vacina One Campinas',
+                text: 'Endereço a definir · Campinas - SP',
+                icon: '🏥',
+              },
+              {
+                title: 'Horário',
+                subtitle: 'Atendimento sob agendamento',
+                text: 'Confirme disponibilidade antes de se deslocar.',
+                icon: '🕒',
+              },
+              {
+                title: 'Canais',
+                subtitle: 'WhatsApp e formulário',
+                text: 'Escolha o canal mais confortável para falar com a equipe.',
+                icon: '💬',
+              },
+            ].map((info, index) => (
+              <div
+                key={index}
+                className="bg-white border border-[#EAF4EB] rounded-[24px] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
-                Falar com a equipe
-              </Link>
-            </div>
-          )}
+                <div className="text-4xl mb-4">{info.icon}</div>
+                <h3 className="text-xl font-bold text-[#1A3858] mb-2">{info.title}</h3>
+                <h4 className="text-lg font-semibold text-[#56B0BB] mb-3">{info.subtitle}</h4>
+                <p className="text-[#5A5A5A] leading-relaxed">{info.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/unidades"
+              className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-semibold px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
+            >
+              Ver unidades →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
       {contactFaqs.length > 0 && (
         <section className="py-16 md:py-24 bg-[#F2FBFA]">
-          <div className="w-[85%] max-w-[1280px] mx-auto">
-            <div className="text-center mb-12">
+          <div className="w-[85%] max-w-[1120px] mx-auto">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-black text-[#1A3858] mb-4">
                 Dúvidas frequentes
               </h2>
@@ -254,27 +286,29 @@ export default async function ContactPage() {
       )}
 
       {/* CTA Final */}
-      <section className="py-16 md:py-24 bg-[#1A3858]">
-        <div className="w-[85%] max-w-[1570px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Pronto para cuidar da sua saúde?
-          </h2>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            Fale com a VacinaOne e receba orientação para agendar sua vacinação com tranquilidade.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="#formulario-contato"
-              className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
-            >
-              Agendar Vacinação
-            </Link>
-            <Link
-              href="/vacinas"
-              className="inline-flex items-center justify-center border-2 border-white text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white hover:text-[#1A3858] transition-colors duration-200"
-            >
-              Ver vacinas
-            </Link>
+      <section className="py-16 md:py-24 bg-[#F2FBFA]">
+        <div className="w-[85%] max-w-[1120px] mx-auto">
+          <div className="bg-white border border-[#EAF4EB] rounded-[32px] p-12 md:p-16 shadow-sm text-center">
+            <h2 className="text-3xl md:text-4xl font-black text-[#1A3858] mb-4">
+              Pronto para cuidar da sua saúde?
+            </h2>
+            <p className="text-lg text-[#5A5A5A] mb-8 max-w-2xl mx-auto">
+              Fale com a VacinaOne e receba orientação para agendar sua vacinação com tranquilidade.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="#formulario-contato"
+                className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
+              >
+                Agendar Vacinação
+              </Link>
+              <Link
+                href="/vacinas"
+                className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
+              >
+                Ver vacinas
+              </Link>
+            </div>
           </div>
         </div>
       </section>
