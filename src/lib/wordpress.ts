@@ -4,6 +4,7 @@ import {
   WordPressCategory,
   WordPressCustomPost,
   WordPressUnit,
+  WordPressVaccine,
 } from '@/types/wordpress';
 
 const _WP_API = process.env.WORDPRESS_API_URL;
@@ -158,15 +159,15 @@ export async function getCategories(): Promise<WordPressCategory[]> {
 }
 
 // VACINAS (Custom Post Type)
-export async function getVaccines(): Promise<WordPressCustomPost[]> {
-  const data = await fetchFromWordPress<WordPressCustomPost[]>('/vacinas?_embed=1');
+export async function getVaccines(): Promise<WordPressVaccine[]> {
+  const data = await fetchFromWordPress<WordPressVaccine[]>('/vacinas?_embed=1&per_page=100');
   return data || [];
 }
 
 export async function getVaccineBySlug(
   slug: string
-): Promise<WordPressCustomPost | null> {
-  const vaccines = await fetchFromWordPress<WordPressCustomPost[]>(
+): Promise<WordPressVaccine | null> {
+  const vaccines = await fetchFromWordPress<WordPressVaccine[]>(
     `/vacinas?slug=${slug}&_embed=1`
   );
   return vaccines && vaccines.length > 0 ? vaccines[0] : null;
