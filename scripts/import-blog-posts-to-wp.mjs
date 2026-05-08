@@ -6,6 +6,11 @@ import path from "node:path";
 const ROOT = process.cwd();
 const POSTS_PATH = path.join(ROOT, "content", "blog-posts.vacina-one.json");
 const DRAFT_STATUS = "draft";
+const FORCE_MEDIA_UPLOAD = process.argv.includes("--force-media-upload");
+
+if (FORCE_MEDIA_UPLOAD) {
+  console.log("Modo --force-media-upload ativo: posts existentes terao imagem destacada reenviada e atualizada.");
+}
 
 loadLocalEnv();
 
@@ -37,8 +42,17 @@ for (const post of posts) {
     const existing = await getExistingPost(post.slug);
 
     if (existing) {
-      report.skipped.push(post.slug);
-      console.log(`Ignorado, slug ja existe: ${post.slug}`);
+      if (FORCE_MEDIA_UPLOAD) {
+        console.log(`Post ja existe: ${post.slug}. Reenviando imagem destacada...`);
+        const mediaId = await uploadFeaturedImage(post);
+        if (mediaId) {
+          await updatePostFeaturedMedia(existing.id, mediaId);
+          console.log(`Imagem atualizada para: ${post.slug} (media ID ${mediaId})`);
+        }
+      } else {
+        report.skipped.push(post.slug);
+        console.log(`Ignorado, slug ja existe: ${post.slug}`);
+      }
       continue;
     }
 
@@ -106,6 +120,13 @@ if (report.failed.length > 0) {
   process.exitCode = 1;
 }
 
+async function updatePostFeaturedMedia(postId, mediaId) {
+  await wpJsonFetch(`/posts/${postId}`, {
+    method: "POST",
+    body: { featured_media: mediaId }
+  });
+}
+
 async function getExistingPost(slug) {
   const postsBySlug = await wpJsonFetch("/posts", {
     searchParams: {
@@ -163,6 +184,7 @@ async function uploadFeaturedImage(post) {
     }
   });
 
+  console.log(`Imagem enviada: ${media.source_url}`);
   if (post.imageAlt) {
     try {
       await wpJsonFetch(`/media/${media.id}`, {
