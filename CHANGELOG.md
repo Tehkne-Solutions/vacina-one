@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added - Fase 7 Histórias de quem já confia na VacinaOne
+
+- Criada a seção `TestimonialsSection` conforme referência do Figma.
+- Implementados os depoimentos oficiais com imagens de Mariana Souza, Yussef Monasab e Camila Rodrigues.
+- Adicionado carrossel responsivo com autoplay, pause hover/foco, drag/swipe e dots funcionais.
+- Aplicadas cores, tipografia, espaçamentos, estrelas e imagens oficiais da seção.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da fase.
+- Validada responsividade desktop, notebook e mobile.
+
 ### Fixed - Fase 6 Carrossel cuidado família
 
 - Corrigido corte dos ícones no carrossel `Cuidado para toda a família`.

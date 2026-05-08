@@ -96,3 +96,26 @@
 - Parágrafo 2: "Tem dúvidas sobre qual vacina tomar, quando reforçar ou como funciona a vacinação para a sua empresa? Nossa equipe está pronta para te orientar antes mesmo de você marcar um horário."
 - CTA 1: "Agendar Vacinação"
 - CTA 2: "Falar no WhatsApp"
+
+## HISTÓRIAS DE QUEM JÁ CONFIA NA VACINAONE
+
+- Título: "Histórias de quem já confia na VacinaOne"
+- Destaque do título: "confia" em #1A3858
+- Subtítulo: "Nada melhor do que ouvir de quem já viveu a experiência VacinaOne. Veja o que nossos pacientes e parceiros falam sobre a gente."
+
+### Depoimentos
+
+1. Texto: "“Fui extremamente bem atendida na VacinaOne! Desde a recepção até a aplicação, tudo foi feito com muito cuidado e carinho. Me senti segura o tempo todo. Atendimento humanizado de verdade!”"
+   Nome: "Mariana Souza"
+   Cargo: "Doctor"
+   Imagem: "/images/vacina-one-homepage-historias-depoimento-mariana-souza.png"
+
+2. Texto: "“Levei minha filha para vacinar na VacinaOne e fiquei impressionado com a atenção da equipe. Explicaram cada etapa, foram pacientes e muito profissionais. Atendimento impecável!”"
+   Nome: "Yussef Monasab"
+   Cargo: "Muslim Patient"
+   Imagem: "/images/vacina-one-homepage-historias-depoimento-paciente-yussef-monasab.png"
+
+3. Texto: "“A VacinaOne superou minhas expectativas! Ambiente organizado, equipe atenciosa e aplicação tranquila. Dá pra perceber o cuidado com cada paciente. Recomendo de olhos fechados!”"
+   Nome: "Camila Rodrigues"
+   Cargo: "Nurse"
+   Imagem: "/images/vacina-one-homepage-historias-depoimento-camila-rodrigues.png"
