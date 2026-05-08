@@ -59,7 +59,6 @@
 - Adicionado `id="sobre"` no componente `AboutVacinaOne` sem alterar visual.
 - Preservada a Home e todas as seções já validadas sem alteração visual.
 - Build validado localmente com sucesso.
->>>>>>> origin/feature/fase-12-validacao-wp-conteudo-real
 
 ### Fixed - Hotfix Home/Footer
 
