@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 13 Merge Correções Layout Global
+
+- Aplicado merge da branch `feature/fase-12-validacao-wp-conteudo-real` na `feature/blog-content-seed`.
+- Resolvidos conflitos em `.env.example` e `CHANGELOG.md` preservando todas as variáveis e entradas.
+- Header global e Footer responsivo agora aplicados no branch de seed de conteúdo do blog.
+- Build validado com sucesso após merge.
+- Branch pronta para deploy na Vercel com layout corrigido e scripts de seed intactos.
+
 ### Added - Fase 13 Blog Content Seed
 
 - Criado `content/blog-posts.vacina-one.json` com 10 posts educativos para importacao como rascunho no WordPress.
