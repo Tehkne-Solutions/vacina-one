@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Validated - WP Headless CMS Staging
+
+- Validado o plugin WordPress Headless CMS no staging `https://vacina-one-bkend.page.gd/`.
+- Confirmados os CPTs `vacinas`, `unidades`, `calendario_vacinal`, `faq` e `campanhas_empresas` retornando JSON via REST API no navegador.
+- Confirmado seed inicial com 6 vacinas, 1 unidade, 5 calendários, 7 FAQs e 1 campanha para empresas.
+- Confirmadas chaves ACF de `vacinas` expostas no payload REST.
+- Nenhuma alteração visual realizada no Next.js.
+
 ### Added - WP Headless CMS
 
 - Criado plugin versionado `Vacina One Headless CMS`.
