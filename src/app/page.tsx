@@ -7,7 +7,6 @@ import FamilyCareAndCorporate from '@/components/FamilyCareAndCorporate';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import BlogSection from '@/components/BlogSection';
 import FaqSection from '@/components/FaqSection';
-import Services from '@/components/Services';
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <TestimonialsSection />
       <BlogSection />
       <FaqSection />
-      <Services />
     </main>
   );
 }

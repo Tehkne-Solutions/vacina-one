@@ -10,6 +10,12 @@
 - Incluídos conteúdos iniciais para vacinas, unidades, calendário vacinal, FAQ e campanhas para empresas.
 - Documentados endpoints REST esperados e bloqueio HTML observado no domínio público.
 
+### Fixed - Hotfix Home/Footer
+
+- Removida a seção `Services` / `Nossos Serviços` da renderização da Home por não pertencer ao Figma atual.
+- Ajustado o `Footer` global para dimensões, escala e hierarquia visual mais fiéis ao Figma.
+- Mantido o `Footer` global em `src/app/layout.tsx`.
+- Preservadas as seções validadas sem alteração.
 ### Added - Fase 10 Footer Global
 
 - Criado o componente `Footer` conforme referência do Figma.
