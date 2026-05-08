@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Added - Fase 13 Blog Content Seed Concluída
+
+- Executado download de 10 imagens do Pexels para posts do blog.
+- Imagens salvas em `public/images/blog/` com nomes padronizados.
+- Criado manifest `blog-images-manifest.json` com metadados das imagens.
+- Importados 10 posts como rascunhos no WordPress Headless CMS.
+- Posts criados com status "draft" conforme regras de segurança.
+- Todas as imagens e posts validados e funcionando corretamente.
+- Branch `feature/blog-content-seed` pronta para merge ou deploy.
+
 ### Fixed - Fase 13 Merge Correções Layout Global
 
 - Aplicado merge da branch `feature/fase-12-validacao-wp-conteudo-real` na `feature/blog-content-seed`.
