@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+### Fixed - Fase 12 Hotfix Layout Global
+
+- Corrigido overflow horizontal do Footer em notebook 1360px através de ajustes de responsividade.
+- Larguras fixas do Footer movidas de `xl` para `2xl`, permitindo layout fluido em telas menores.
+- Header movida para `layout.tsx` (layout global) — agora aparece em todas as páginas internas.
+- Footer mantido como global em `layout.tsx`.
+- Removida Header local de `src/app/page.tsx` para evitar duplicação.
+- Ajustado padding global (`pt-[80px] md:pt-[110px]`) no wrapper de `layout.tsx` para compensar Header fixed.
+- Removido padding redundante do `main` da Home.
+- Adicionado `overflow-x-clip` no body e wrapper para prevenir barra horizontal residual.
+- Build validado localmente — sem erros.
+- Preservada a Home pixel-perfect sem deslocamentos visuais.
+
 ### Added - Fase 11 Conectar Next ao WordPress e criar rotas base
 
 - Criada a camada de consumo segura da REST API WordPress em `src/lib/wordpress.ts`.
