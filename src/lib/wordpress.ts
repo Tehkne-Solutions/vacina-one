@@ -137,6 +137,8 @@ async function fetchFromWordPress<T>(
 }
 
 // POSTS (Blog)
+export { getFeaturedImage, getAuthorName } from './wp-helpers';
+
 export async function getPosts(): Promise<WordPressPost[]> {
   const data = await fetchFromWordPress<WordPressPost[]>('/posts?_embed=1');
   return data || [];

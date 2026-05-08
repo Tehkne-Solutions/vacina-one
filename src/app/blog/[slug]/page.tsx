@@ -1,19 +1,66 @@
 import { getPostBySlug, getPosts } from '@/lib/wordpress';
+import { getFeaturedImage, getAuthorName } from '@/lib/wp-helpers';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import BlogRelatedPosts from '@/components/BlogRelatedPosts';
 import BlogPostHero from './BlogPostHero';
+import BlogPostFaq, { FaqItem } from '@/components/blog/BlogPostFaq';
+import BlogPostCta from '@/components/blog/BlogPostCta';
+import RelatedPostsCarousel from '@/components/blog/RelatedPostsCarousel';
 
-interface Params {
-  slug: string;
+interface Params { slug: string }
+
+// ── Extrai seções do HTML gerado pelo script de importação ─────────────
+interface PostSections {
+  contentHtml: string;
+  faqItems: FaqItem[];
+  ctaTitle: string;
+  ctaText: string;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+function extractPostSections(html: string): PostSections {
+  // Separa no primeiro <h2> que contenha "Dúvidas frequentes"
+  const faqSplit = html.split(/<h2[^>]*>[^<]*[Dd]úvidas frequentes[^<]*<\/h2>/i);
+  const beforeFaq = faqSplit[0];
+  const afterFaq = faqSplit[1] ?? '';
+
+  // Remove o bloco de CTA final do conteúdo principal
+  // Padrão: <h2>Como manter esse cuidado organizado</h2> ou <h2>Quer ...
+  const ctaPattern = /<h2[^>]*>(?:Como manter esse cuidado organizado|Quer [^<]+|Vai viajar[^<]+|Precisa [^<]+|Ainda tem [^<]+)[^<]*<\/h2>/i;
+  const contentHtml = beforeFaq.replace(ctaPattern, '').trim();
+
+  // Extrai pares pergunta/resposta da seção FAQ
+  const faqItems: FaqItem[] = [];
+  if (afterFaq) {
+    // Pega apenas até o próximo h2 que seja CTA
+    const faqBody = afterFaq.split(ctaPattern)[0];
+    const questionRe = /<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|<h2|$)/gi;
+    let m: RegExpExecArray | null;
+    while ((m = questionRe.exec(faqBody)) !== null) {
+      const question = m[1].replace(/<[^>]*>/g, '').trim();
+      const answerHtml = m[2];
+      const answer = answerHtml.replace(/<[^>]*>/g, '').trim();
+      if (question && answer) faqItems.push({ question, answer });
+    }
+  }
+
+  // Extrai título e texto do CTA (do bloco após FAQ ou do conteúdo)
+  const ctaSource = afterFaq || html;
+  const ctaTitleMatch = ctaSource.match(/<h2[^>]*>(Quer [^<]+|Vai viajar[^<]+|Precisa [^<]+|Ainda tem [^<]+)<\/h2>/i);
+  const ctaTitle = ctaTitleMatch ? ctaTitleMatch[1].replace(/<[^>]*>/g, '').trim() : '';
+  const ctaTextMatch = ctaSource.match(/<h2[^>]*>(?:Quer|Vai|Precisa|Ainda)[^<]*<\/h2>\s*<p[^>]*>([\s\S]*?)<\/p>/i);
+  const ctaText = ctaTextMatch ? ctaTextMatch[1].replace(/<[^>]*>/g, '').trim() : '';
+
+  return { contentHtml, faqItems, ctaTitle, ctaText };
+}
+
+function estimateReadTime(content: string): number {
+  const words = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+// ── Metadata ───────────────────────────────────────────────────────────
+export async function generateMetadata({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Artigo não encontrado' };
@@ -23,90 +70,60 @@ export async function generateMetadata({
   };
 }
 
-function getFeaturedImageUrl(post: Awaited<ReturnType<typeof getPostBySlug>>): string | null {
-  if (!post) return null;
-  const embedded = (post as unknown as Record<string, unknown>)['_embedded'] as
-    | Record<string, unknown>
-    | undefined;
-  if (!embedded) return null;
-  const media = embedded['wp:featuredmedia'] as
-    | Array<{ source_url?: string; alt_text?: string }>
-    | undefined;
-  return media?.[0]?.source_url ?? null;
-}
-
-function getAuthorName(post: Awaited<ReturnType<typeof getPostBySlug>>): string {
-  if (!post) return 'VacinaOne';
-  const embedded = (post as unknown as Record<string, unknown>)['_embedded'] as
-    | Record<string, unknown>
-    | undefined;
-  if (!embedded) return 'VacinaOne';
-  const authors = embedded['author'] as Array<{ name?: string }> | undefined;
-  return authors?.[0]?.name ?? 'VacinaOne';
-}
-
-function estimateReadTime(content: string): number {
-  const words = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
-  return Math.max(1, Math.round(words / 200));
-}
-
-export default async function BlogPostPage({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+// ── Página ─────────────────────────────────────────────────────────────
+export default async function BlogPostPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const [post, allPosts] = await Promise.all([getPostBySlug(slug), getPosts()]);
 
   if (!post) notFound();
 
-  const imageUrl = getFeaturedImageUrl(post);
+  const img = getFeaturedImage(post);
   const author = getAuthorName(post);
-  const readTime = estimateReadTime(post.content.rendered);
   const title = post.title.rendered.replace(/<[^>]*>/g, '');
   const date = new Date(post.date).toLocaleDateString('pt-BR', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
+    day: '2-digit', month: 'long', year: 'numeric',
   });
+  const readTime = estimateReadTime(post.content.rendered);
+  const { contentHtml, faqItems, ctaTitle, ctaText } = extractPostSections(
+    post.content.rendered
+  );
 
   return (
     <main>
-      {/* Hero do post */}
+      {/* Hero */}
       <BlogPostHero title={title} author={author} date={date} readTime={readTime} />
 
-      {/* Conteúdo central */}
-      <div className="w-[85%] mx-auto max-w-[860px] py-12">
+      {/* Container central */}
+      <div className="w-[85%] mx-auto max-w-[900px] py-12">
+
         {/* Imagem de capa 16:9 */}
-        {imageUrl && (
+        {img && (
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 shadow-sm">
             <Image
-              src={imageUrl}
-              alt={title}
+              src={img.url}
+              alt={img.alt}
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 860px"
+              sizes="(max-width: 768px) 100vw, 900px"
               className="object-cover"
             />
           </div>
         )}
 
-        {/* Conteúdo WordPress */}
+        {/* Conteúdo principal (sem FAQ e sem CTA duplicado) */}
         <article
           className="prose-vacinaone"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
-        {/* CTA */}
-        <div className="mt-14 flex justify-center">
-          <Link
-            href="/contato"
-            aria-label="Agendar vacinação na VacinaOne"
-            className="inline-flex items-center gap-2 bg-[#56B0BB] text-[#1A3858] font-black text-[17px] px-10 py-4 rounded-[50px] hover:scale-105 transition-transform duration-200 shadow-md"
-          >
-            Agendar Vacinação
-          </Link>
-        </div>
+        {/* FAQ separada */}
+        <BlogPostFaq items={faqItems} />
+
+        {/* CTA separado */}
+        <BlogPostCta
+          title={ctaTitle || undefined}
+          text={ctaText || undefined}
+        />
 
         {/* Voltar ao blog */}
         <div className="mt-8 flex justify-center">
@@ -118,8 +135,8 @@ export default async function BlogPostPage({
           </Link>
         </div>
 
-        {/* Outros posts */}
-        <BlogRelatedPosts posts={allPosts} currentSlug={slug} />
+        {/* Carrossel de relacionados */}
+        <RelatedPostsCarousel posts={allPosts} currentSlug={slug} />
       </div>
     </main>
   );
