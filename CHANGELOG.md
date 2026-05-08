@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Added - Fase 15: Página Interna de Contato
+
+- Criação da página /contato com design premium e responsivo.
+- Hero interno alinhado à identidade visual da Home.
+- Seção de canais de atendimento (WhatsApp, Agendamento, Empresas, Unidades).
+- Formulário de contato com validação client-side e sem endpoint fake.
+- Reaproveitamento defensivo de dados de unidades e FAQs do WordPress.
+- Fallback visual CSS para imagem local ausente.
+- CTA final de contato.
+- Preservação de Home, Header, Footer, Blog, Unidades, Vacinas, Calendário e Empresas.
+- SEO com generateMetadata.
+- Componentes modulares: ContactForm, ContactFaq.
+- Build validado sem erros.
+
 ### Added - Fase 14: Páginas Internas de Empresas
 
 - Criação das páginas /empresas e /empresas/[slug].
