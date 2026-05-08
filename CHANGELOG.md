@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Fixed - Hotfix fetch WordPress contra challenge HTML do InfinityFree
+
+- Reescrito `src/lib/wordpress.ts` para tratar resposta HTML/challenge do InfinityFree.
+- Adicionada função `fetchWordPressResponse` que valida `content-type` antes de parsear JSON.
+- Adicionadas funções `isAesChallenge` e `solveAesChallengeCookie` adaptadas do script de importação.
+- Fetch agora resolve cookie `__test` via AES-128-CBC e repete a requisição automaticamente.
+- Se ainda vier HTML após retry, retorna `null` sem quebrar o build.
+- Logs de erro restritos a `NODE_ENV === development` — sem expor credenciais ou body em produção.
+- Mantido fallback `[]` para listas e `null` para item único.
+- Build validado com sucesso (exit 0).
+
 ### Added - Fase 13 Blog Content Seed Concluída
 
 - Executado download de 10 imagens do Pexels para posts do blog.

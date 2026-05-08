@@ -50,6 +50,21 @@ export interface WordPressPost {
   meta: Record<string, unknown>;
   categories?: number[];
   tags?: number[];
+  _embedded?: {
+    'wp:featuredmedia'?: Array<{
+      id?: number;
+      source_url?: string;
+      alt_text?: string;
+      title?: { rendered?: string };
+      media_details?: {
+        width?: number;
+        height?: number;
+        sizes?: Record<string, { source_url?: string; width?: number; height?: number }>;
+      };
+    }>;
+    author?: Array<{ id?: number; name?: string }>;
+    'wp:term'?: Array<Array<{ id?: number; name?: string; slug?: string; taxonomy?: string }>>;
+  };
   _links?: {
     self?: Array<{ href: string }>;
     collection?: Array<{ href: string }>;

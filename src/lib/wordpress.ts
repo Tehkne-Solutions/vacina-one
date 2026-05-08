@@ -1,46 +1,144 @@
+import crypto from 'node:crypto';
 import {
   WordPressPost,
   WordPressCategory,
   WordPressCustomPost,
 } from '@/types/wordpress';
 
-const API_URL = process.env.WORDPRESS_API_URL;
+const _WP_API = process.env.WORDPRESS_API_URL;
+const _WP_BASE = process.env.WP_BASE_URL;
 
-if (!API_URL) {
-  console.warn(
-    'WORDPRESS_API_URL não está configurada. O WordPress não estará disponível.'
+const API_URL =
+  _WP_API ||
+  (_WP_BASE ? `${_WP_BASE.replace(/\/$/, '')}/wp-json/wp/v2` : undefined);
+
+if (process.env.NODE_ENV === 'development') {
+  console.log(
+    API_URL ? 'WordPress API URL configurada' : 'WordPress API URL ausente'
   );
 }
 
-// Função genérica de fetch com error handling
+// Cookie resolvido do challenge InfinityFree — persiste durante o processo
+let wpCookieHeader = '';
+
+function isAesChallenge(text: string): boolean {
+  return (
+    text.includes('/aes.js') &&
+    text.includes('slowAES.decrypt') &&
+    text.includes('document.cookie')
+  );
+}
+
+function solveAesChallengeCookie(text: string): string {
+  const re = /toNumbers\("([a-f0-9]+)"\)/g;
+  const values: string[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) values.push(m[1]);
+  const [keyHex, ivHex, cipherHex] = values;
+
+  if (!keyHex || !ivHex || !cipherHex) return '';
+
+  try {
+    const decipher = crypto.createDecipheriv(
+      'aes-128-cbc',
+      Buffer.from(keyHex, 'hex'),
+      Buffer.from(ivHex, 'hex')
+    );
+    decipher.setAutoPadding(false);
+    const cookieValue = Buffer.concat([
+      decipher.update(Buffer.from(cipherHex, 'hex')),
+      decipher.final(),
+    ]).toString('hex');
+    return `__test=${cookieValue}`;
+  } catch {
+    return '';
+  }
+}
+
+function parseJsonSafely<T>(text: string): T | null {
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchWordPressResponse(
+  url: string,
+  options: RequestInit,
+  allowChallengeRetry = true
+): Promise<Response> {
+  const headers: Record<string, string> = {
+    Accept: 'application/json',
+    ...(options.headers as Record<string, string>),
+    ...(wpCookieHeader ? { Cookie: wpCookieHeader } : {}),
+  };
+
+  const response = await fetch(url, { ...options, headers });
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (!contentType.includes('text/html')) {
+    return response;
+  }
+
+  const text = await response.text();
+
+  if (allowChallengeRetry && isAesChallenge(text)) {
+    const cookie = solveAesChallengeCookie(text);
+    if (cookie) {
+      wpCookieHeader = cookie;
+      return fetchWordPressResponse(url, options, false);
+    }
+  }
+
+  // Devolve a resposta HTML encapsulada para o caller tratar com parseJsonSafely
+  return new Response(text, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: response.headers,
+  });
+}
+
 async function fetchFromWordPress<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T | null> {
-  if (!API_URL) {
-    return null;
-  }
+  if (!API_URL) return null;
+
+  const url = `${API_URL}${endpoint}`;
 
   try {
-    const url = `${API_URL}${endpoint}`;
-    const response = await fetch(url, {
+    const response = await fetchWordPressResponse(url, {
       ...options,
       next: { revalidate: 300 },
-    });
+    } as RequestInit);
 
     if (!response.ok) {
-      console.error(`Erro ao buscar ${url}: ${response.status}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`WordPress ${endpoint}: HTTP ${response.status}`);
+      }
       return null;
     }
 
-    return await response.json();
+    const text = await response.text();
+    const data = parseJsonSafely<T>(text);
+
+    if (data === null && process.env.NODE_ENV === 'development') {
+      console.error(`WordPress ${endpoint}: resposta não veio como JSON`);
+    }
+
+    return data;
   } catch (error) {
-    console.error(`Erro ao conectar ao WordPress em ${endpoint}:`, error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error(`WordPress ${endpoint}: erro de conexão`, error);
+    }
     return null;
   }
 }
 
 // POSTS (Blog)
+export { getFeaturedImage, getAuthorName } from './wp-helpers';
+
 export async function getPosts(): Promise<WordPressPost[]> {
   const data = await fetchFromWordPress<WordPressPost[]>('/posts?_embed=1');
   return data || [];
