@@ -4,11 +4,16 @@ import {
   WordPressCustomPost,
 } from '@/types/wordpress';
 
-const API_URL = process.env.WORDPRESS_API_URL;
+const _WP_API = process.env.WORDPRESS_API_URL;
+const _WP_BASE = process.env.WP_BASE_URL;
 
-if (!API_URL) {
-  console.warn(
-    'WORDPRESS_API_URL não está configurada. O WordPress não estará disponível.'
+const API_URL =
+  _WP_API ||
+  (_WP_BASE ? `${_WP_BASE.replace(/\/$/, '')}/wp-json/wp/v2` : undefined);
+
+if (process.env.NODE_ENV === 'development') {
+  console.log(
+    API_URL ? 'WordPress API URL configurada' : 'WordPress API URL ausente'
   );
 }
 
