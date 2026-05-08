@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+### Added - Fase 11 Conectar Next ao WordPress e criar rotas base
+
+- Criada a camada de consumo segura da REST API WordPress em `src/lib/wordpress.ts`.
+- Adicionados tipos TypeScript para WordPress em `src/types/wordpress.ts`.
+- Criadas as páginas internas base: `/blog`, `/blog/[slug]`, `/vacinas`, `/unidades`, `/calendario`, `/empresas` e `/contato`.
+- Implementados estados vazios seguros quando o CMS não retorna conteúdo.
+- Atualizado arquivo `.env.example` com variáveis de ambiente do WordPress.
+- Atualizados os hrefs reais na `Header` para todas as páginas internas.
+- Adicionado `id="sobre"` no componente `AboutVacinaOne` sem alterar visual.
+- Preservada a Home e todas as seções já validadas sem alteração visual.
+- Build validado localmente com sucesso.
+
 ### Fixed - Hotfix Home/Footer
 
 - Removida a seção `Services` / `Nossos Serviços` da renderização da Home por não pertencer ao Figma atual.
@@ -198,6 +210,7 @@
   - `pt-[90px]` removido do `main` (sticky ocupa fluxo normal)
 
 ---
+
 ### Added
 
 - **Setup Inicial do Projeto** (2026-05-06)
