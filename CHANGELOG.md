@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Fixed - Hotfix Home/Footer
+
+- Removida a seção `Services` / `Nossos Serviços` da renderização da Home por não pertencer ao Figma atual.
+- Ajustado o `Footer` global para dimensões, escala e hierarquia visual mais fiéis ao Figma.
+- Mantido o `Footer` global em `src/app/layout.tsx`.
+- Preservadas as seções validadas sem alteração.
+
 ### Added - Fase 10 Footer Global
 
 - Criado o componente `Footer` conforme referência do Figma.
