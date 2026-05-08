@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { WordPressPost } from '@/types/wordpress';
 
@@ -62,14 +61,15 @@ export default function BlogPostCard({ post, index = 0 }: BlogPostCardProps) {
         className="flex flex-col flex-1"
       >
         {/* Imagem quadrada */}
-        <div className="relative w-full aspect-square overflow-hidden bg-[#EAF4EB]">
+        <div className="w-full aspect-square overflow-hidden bg-[#EAF4EB]">
           {imageUrl ? (
-            <Image
-              src={imageUrl}
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageUrl.replace(/^http:\/\//, 'https://')}
               alt={title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">

@@ -1,7 +1,6 @@
 import { getPostBySlug, getPosts } from '@/lib/wordpress';
 import { getFeaturedImage, getAuthorName } from '@/lib/wp-helpers';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import BlogPostHero from './BlogPostHero';
 import BlogPostFaq, { FaqItem } from '@/components/blog/BlogPostFaq';
@@ -97,23 +96,25 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
       <div className="w-[85%] mx-auto max-w-[900px] py-12">
 
         {/* Imagem de capa 16:9 */}
-        {img && (
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 shadow-sm">
-            <Image
-              src={img.url}
+        {img?.url && (
+          <figure className="mb-10 overflow-hidden rounded-[24px] shadow-sm bg-[#EAF4EB]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img.url.replace(/^http:\/\//, 'https://')}
               alt={img.alt}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 900px"
-              className="object-cover"
+              className="block w-full h-auto object-cover"
+              loading="eager"
+              decoding="async"
             />
-          </div>
+          </figure>
         )}
 
         {/* Conteúdo principal (sem FAQ e sem CTA duplicado) */}
         <article
           className="prose-vacinaone"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
+          dangerouslySetInnerHTML={{
+            __html: contentHtml.replace(/http:\/\//g, 'https://'),
+          }}
         />
 
         {/* FAQ separada */}

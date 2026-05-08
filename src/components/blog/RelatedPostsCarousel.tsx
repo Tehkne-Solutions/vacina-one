@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { WordPressPost } from '@/types/wordpress';
 import { getFeaturedImage } from '@/lib/wp-helpers';
@@ -49,14 +48,15 @@ export default function RelatedPostsCarousel({
                 className="flex flex-col flex-1"
               >
                 {/* Imagem */}
-                <div className="relative w-full aspect-video bg-[#EAF4EB]">
+                <div className="w-full aspect-video bg-[#EAF4EB] overflow-hidden">
                   {img ? (
-                    <Image
-                      src={img.url}
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={img.url.replace(/^http:\/\//, 'https://')}
                       alt={img.alt}
-                      fill
-                      sizes="(max-width: 768px) 80vw, 33vw"
-                      className="object-cover"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-[#56B0BB] text-3xl">
