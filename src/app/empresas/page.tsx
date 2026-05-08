@@ -127,7 +127,13 @@ export default async function CorporatePage() {
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div
+              className={
+                campaigns.length === 1
+                  ? "flex justify-center"
+                  : "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
+              }
+            >
               {campaigns.map((campaign, index) => (
                 <CampaignCard key={campaign.id} campaign={campaign} index={index} />
               ))}
@@ -137,12 +143,12 @@ export default async function CorporatePage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 md:py-24 bg-[#1A3858]">
-        <div className="w-[85%] max-w-[1570px] mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
+      <section className="bg-white py-16 md:py-20">
+        <div className="w-[85%] max-w-[1280px] mx-auto rounded-[32px] border border-[#DDEFEA] bg-[#EAF4EB] px-6 py-12 text-center shadow-sm md:px-12 md:py-16">
+          <h2 className="text-3xl md:text-4xl font-black text-[#1A3858] mb-4">
             Quer organizar uma campanha de vacinação?
           </h2>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-[#5A5A5A] mb-8 max-w-2xl mx-auto">
             Nossa equipe pode ajudar sua empresa a planejar uma ação segura, clara e bem organizada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -154,7 +160,7 @@ export default async function CorporatePage() {
             </Link>
             <Link
               href="/vacinas"
-              className="inline-flex items-center justify-center border-2 border-white text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-white hover:text-[#1A3858] transition-colors duration-200"
+              className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
             >
               Ver vacinas
             </Link>

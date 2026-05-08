@@ -30,6 +30,12 @@
 - Responsividade testada em desktop, tablet e mobile.
 - Build validado sem erros.
 
+### Fixed - Hotfix Empresas: Card único e CTA visual
+
+- Centralização do card único na seção Campanhas para empresas.
+- Ajuste visual do CTA final da página Empresas para diferenciar do Footer.
+- Preservação de Home, Header, Footer e demais páginas internas.
+
 ### Fixed - Hotfix fetch WordPress contra challenge HTML do InfinityFree
 
 - Reescrito `src/lib/wordpress.ts` para tratar resposta HTML/challenge do InfinityFree.
