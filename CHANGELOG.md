@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added - Fase 8 Blog da Home
+
+- Criada a seção `BlogSection` conforme referência do Figma.
+- Incluídos os 3 posts oficiais sobre vacina da gripe.
+- Adicionados os assets oficiais do Blog exportados do Figma.
+- Aplicadas tipografia, cores, espaçamentos e responsividade desktop/notebook/mobile.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da fase.
+
 ### Added - Fase 7 Histórias de quem já confia na VacinaOne
 
 - Criada a seção `TestimonialsSection` conforme referência do Figma.

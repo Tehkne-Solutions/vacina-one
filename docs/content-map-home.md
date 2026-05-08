@@ -119,3 +119,28 @@
    Nome: "Camila Rodrigues"
    Cargo: "Nurse"
    Imagem: "/images/vacina-one-homepage-historias-depoimento-camila-rodrigues.png"
+
+## BLOG HOME
+
+- Título superior: "Blog VacinaOne"
+- Título principal: "conteúdo e educação em saúde"
+
+### Posts
+
+1. Autor: "Robert Lee"
+   Data: "August 25, 2024"
+   Título: "Vacina da gripe: o que muda todo ano e como se proteger"
+   Texto: "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente."
+   Imagem: "/images/vacina-one-homepage-blog-post-vacina-da-gripe.png"
+
+2. Autor: "Jane Adams"
+   Data: "September 18, 2024"
+   Título: "Vacina da gripe: o que muda todo ano e como se proteger"
+   Texto: "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente."
+   Imagem: "/images/vacina-one-homepage-blog-post-vacina-da-gripe-2.png"
+
+3. Autor: "Tom Harris"
+   Data: "October 1, 2024"
+   Título: "Vacina da gripe: o que muda todo ano e como se proteger"
+   Texto: "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente."
+   Imagem: "/images/vacina-one-homepage-blog-post-vacina-da-gripe-3.png"

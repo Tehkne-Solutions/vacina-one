@@ -5,6 +5,7 @@ import AboutVacinaOne from '@/components/AboutVacinaOne';
 import PopularVaccines from '@/components/PopularVaccines';
 import FamilyCareAndCorporate from '@/components/FamilyCareAndCorporate';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import BlogSection from '@/components/BlogSection';
 import Services from '@/components/Services';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <PopularVaccines />
       <FamilyCareAndCorporate />
       <TestimonialsSection />
+      <BlogSection />
       <Services />
     </main>
   );
