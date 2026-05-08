@@ -153,6 +153,32 @@ export interface WordPressVaccine {
   };
 }
 
+export interface CalendarAcf {
+  titulo_publico?: string;
+  descricao_curta?: string;
+  faixa_etaria?: string;
+  publico_alvo?: string;
+  vacinas_relacionadas?: unknown;
+  ordem_de_exibicao?: number | string;
+  icone?: string;
+  cta_texto?: string;
+  cta_url?: string;
+  ativo_no_site?: boolean;
+  observacoes_importantes?: string;
+}
+
+export interface WordPressCalendar {
+  id: number;
+  date: string;
+  slug: string;
+  status: string;
+  title: WordPressRendered;
+  content: WordPressRendered;
+  excerpt: WordPressRendered;
+  featured_media: number;
+  acf?: CalendarAcf;
+}
+
 export interface UnitAcf {
   nome_da_unidade?: string;
   endereco_completo?: string;

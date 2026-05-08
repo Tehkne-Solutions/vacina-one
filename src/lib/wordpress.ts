@@ -5,6 +5,7 @@ import {
   WordPressCustomPost,
   WordPressUnit,
   WordPressVaccine,
+  WordPressCalendar,
 } from '@/types/wordpress';
 
 const _WP_API = process.env.WORDPRESS_API_URL;
@@ -203,9 +204,18 @@ export async function getCorporateCampaigns(): Promise<WordPressCustomPost[]> {
 }
 
 // CALENDÁRIO VACINAL (Custom Post Type)
-export async function getVaccineCalendar(): Promise<WordPressCustomPost[]> {
-  const data = await fetchFromWordPress<WordPressCustomPost[]>(
-    '/calendario_vacinal?_embed=1'
+export async function getVaccineCalendar(): Promise<WordPressCalendar[]> {
+  const data = await fetchFromWordPress<WordPressCalendar[]>(
+    '/calendario_vacinal?_embed=1&per_page=100'
   );
   return data || [];
+}
+
+export async function getVaccineCalendarBySlug(
+  slug: string
+): Promise<WordPressCalendar | null> {
+  const items = await fetchFromWordPress<WordPressCalendar[]>(
+    `/calendario_vacinal?slug=${slug}&_embed=1`
+  );
+  return items && items.length > 0 ? items[0] : null;
 }
