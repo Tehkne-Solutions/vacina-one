@@ -2,6 +2,74 @@
 
 ## [Unreleased]
 
+### Added - Fase 13 Blog Content Seed Concluída
+
+- Executado download de 10 imagens do Pexels para posts do blog.
+- Imagens salvas em `public/images/blog/` com nomes padronizados.
+- Criado manifest `blog-images-manifest.json` com metadados das imagens.
+- Importados 10 posts como rascunhos no WordPress Headless CMS.
+- Posts criados com status "draft" conforme regras de segurança.
+- Todas as imagens e posts validados e funcionando corretamente.
+- Branch `feature/blog-content-seed` pronta para merge ou deploy.
+
+### Fixed - Fase 13 Merge Correções Layout Global
+
+- Aplicado merge da branch `feature/fase-12-validacao-wp-conteudo-real` na `feature/blog-content-seed`.
+- Resolvidos conflitos em `.env.example` e `CHANGELOG.md` preservando todas as variáveis e entradas.
+- Header global e Footer responsivo agora aplicados no branch de seed de conteúdo do blog.
+- Build validado com sucesso após merge.
+- Branch pronta para deploy na Vercel com layout corrigido e scripts de seed intactos.
+
+### Added - Fase 13 Blog Content Seed
+
+- Criado `content/blog-posts.vacina-one.json` com 10 posts educativos para importacao como rascunho no WordPress.
+- Criado `scripts/download-blog-images.mjs` para baixar imagens do Pexels e gerar manifest em `public/images/blog`.
+- Criado `scripts/import-blog-posts-to-wp.mjs` para importar posts no WordPress com status `draft`.
+- Adicionado `.env.example` sem credenciais reais para variaveis Pexels e WordPress.
+- Sem alteracao visual na Home, Header, Hero, Footer ou secoes validadas.
+
+### Fixed - Fase 12 Merge Hotfix Layout Global
+
+- Aplicado merge da branch `fix/fase-12-layout-global-footer-1360` na `feature/fase-12-validacao-wp-conteudo-real`.
+- Resolvido conflito no CHANGELOG.md preservando ambas as entradas.
+- Header global e Footer responsivo agora aplicados na branch de validação WP.
+- Build validado com sucesso após merge.
+- Branch pronta para deploy na Vercel com layout corrigido.
+
+### Added - Fase 12 Validação Conteúdo Real WordPress
+
+- Adicionado parâmetro `_embed=1` em todos os endpoints para melhor renderização de dados aninhados.
+- Validados endpoints reais do CMS staging: `/posts`, `/vacinas`, `/unidades`, `/calendario_vacinal`, `/faq`, `/campanhas_empresas`.
+- Confirmados estados vazios seguros quando endpoints retornam `[]`.
+- Validadas todas as rotas internas: `/blog`, `/blog/[slug]`, `/vacinas`, `/unidades`, `/calendario`, `/empresas`, `/contato`.
+- Build compilado com sucesso em validação completa.
+- Nenhuma alteração visual na Home ou seções validadas.
+
+### Fixed - Fase 12 Hotfix Layout Global
+
+- Corrigido overflow horizontal do Footer em notebook 1360px através de ajustes de responsividade.
+- Larguras fixas do Footer movidas de `xl` para `2xl`, permitindo layout fluido em telas menores.
+- Header movida para `layout.tsx` (layout global) — agora aparece em todas as páginas internas.
+- Footer mantido como global em `layout.tsx`.
+- Removida Header local de `src/app/page.tsx` para evitar duplicação.
+- Ajustado padding global (`pt-[80px] md:pt-[110px]`) no wrapper de `layout.tsx` para compensar Header fixed.
+- Removido padding redundante do `main` da Home.
+- Adicionado `overflow-x-clip` no body e wrapper para prevenir barra horizontal residual.
+- Build validado localmente — sem erros.
+- Preservada a Home pixel-perfect sem deslocamentos visuais.
+
+### Added - Fase 11 Conectar Next ao WordPress e criar rotas base
+
+- Criada a camada de consumo segura da REST API WordPress em `src/lib/wordpress.ts`.
+- Adicionados tipos TypeScript para WordPress em `src/types/wordpress.ts`.
+- Criadas as páginas internas base: `/blog`, `/blog/[slug]`, `/vacinas`, `/unidades`, `/calendario`, `/empresas` e `/contato`.
+- Implementados estados vazios seguros quando o CMS não retorna conteúdo.
+- Atualizado arquivo `.env.example` com variáveis de ambiente do WordPress.
+- Atualizados os hrefs reais na `Header` para todas as páginas internas.
+- Adicionado `id="sobre"` no componente `AboutVacinaOne` sem alterar visual.
+- Preservada a Home e todas as seções já validadas sem alteração visual.
+- Build validado localmente com sucesso.
+
 ### Fixed - Hotfix Home/Footer
 
 - Removida a seção `Services` / `Nossos Serviços` da renderização da Home por não pertencer ao Figma atual.
@@ -198,6 +266,7 @@
   - `pt-[90px]` removido do `main` (sticky ocupa fluxo normal)
 
 ---
+
 ### Added
 
 - **Setup Inicial do Projeto** (2026-05-06)
