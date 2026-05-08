@@ -178,3 +178,30 @@
 7. Pergunta: "Vocês emitem carteirinha ou comprovante de vacinação?"
    Resposta: "Sim. Após a aplicação, emitimos o comprovante de vacinação com as informações necessárias sobre a dose aplicada. Também orientamos sobre o registro no calendário vacinal e próximos reforços, quando houver necessidade."
    Link: "Learn more"
+
+## FOOTER GLOBAL
+
+- Logo: "VacinaOne - Proteção em primeiro lugar"
+- Título: "Ficou com alguma dúvida? Fale com a gente."
+- Texto: "Quer agendar, tirar uma dúvida ou entender como a VacinaOne pode ajudar sua família, equipe ou instituição? Envie uma mensagem e retornamos em breve."
+- CTA: "Entrar em contato"
+
+### Our address
+
+- "piodoc@example.com"
+- "+01-234-56789"
+- "Mennica Legacy Tower, Prosta Str. 20"
+
+### Uselink
+
+- "Home"
+- "How it works"
+- "Specialist"
+- "Services"
+
+### Company
+
+- "Solution"
+- "Legal"
+- "Career"
+- "FAQ"

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added - Fase 10 Footer Global
+
+- Criado o componente `Footer` conforme referência do Figma.
+- Adicionado CTA final de contato com botão teal.
+- Implementadas colunas de endereço e links institucionais.
+- Inserido footer globalmente em `src/app/layout.tsx`.
+- Ajustada responsividade desktop/notebook/mobile.
+- Atualizado `docs/content-map-home.md` com o conteúdo oficial da fase.
+
 ### Added - Fase 9 FAQ / Dúvidas Frequentes
 
 - Criada a seção `FaqSection` conforme referência do Figma.
