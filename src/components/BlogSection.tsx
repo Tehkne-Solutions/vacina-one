@@ -1,37 +1,12 @@
-"use client";
-
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import { getLatestPosts, getFeaturedImage, getAuthorName } from "@/lib/wordpress";
 
-const posts = [
-  {
-    author: "Robert Lee",
-    date: "August 25, 2024",
-    title: "Vacina da gripe: o que muda todo ano e como se proteger",
-    description:
-      "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente.",
-    image: "/images/vacina-one-homepage-blog-post-vacina-da-gripe.png",
-  },
-  {
-    author: "Jane Adams",
-    date: "September 18, 2024",
-    title: "Vacina da gripe: o que muda todo ano e como se proteger",
-    description:
-      "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente.",
-    image: "/images/vacina-one-homepage-blog-post-vacina-da-gripe-2.png",
-  },
-  {
-    author: "Tom Harris",
-    date: "October 1, 2024",
-    title: "Vacina da gripe: o que muda todo ano e como se proteger",
-    description:
-      "A gripe não é sempre igual. Todo ano, o vírus Influenza sofre mutações genéticas e é por isso que a vacina também precisa ser atualizada anualmente.",
-    image: "/images/vacina-one-homepage-blog-post-vacina-da-gripe-3.png",
-  },
-];
+export default async function BlogSection() {
+  const posts = await getLatestPosts(3);
 
-export default function BlogSection() {
   return (
     <motion.section
       id="blog"
@@ -52,44 +27,81 @@ export default function BlogSection() {
           </h2>
         </motion.div>
 
-        <motion.div
-          className="mt-[clamp(64px,6vw,115px)] grid grid-cols-1 gap-[clamp(42px,4vw,72px)] md:grid-cols-2 xl:grid-cols-3"
-          variants={staggerContainer}
-        >
-          {posts.map((post) => (
-            <motion.article
-              key={`${post.author}-${post.date}`}
-              variants={fadeUp}
-              whileHover={{ y: -3 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="group"
+        {posts.length === 0 ? (
+          <motion.div className="mt-[clamp(64px,6vw,115px)] text-center" variants={fadeUp}>
+            <h3 className="text-[24px] font-bold text-[#1A3858] mb-4">
+              Nenhum artigo publicado ainda.
+            </h3>
+            <p className="text-[16px] text-[#5A5A5A]">
+              Em breve, você encontrará aqui conteúdos sobre vacinação, prevenção e cuidado em saúde.
+            </p>
+          </motion.div>
+        ) : (
+          <>
+            <motion.div
+              className="mt-[clamp(64px,6vw,115px)] grid grid-cols-1 gap-[clamp(42px,4vw,72px)] md:grid-cols-2 xl:grid-cols-3"
+              variants={staggerContainer}
             >
-              <div className="relative aspect-square w-full max-w-[452px] overflow-hidden bg-[#EAF4EB] md:max-w-none">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  sizes="(max-width: 768px) 85vw, (max-width: 1360px) 28vw, 452px"
-                  className="object-cover transition duration-500 group-hover:scale-[1.01]"
-                />
-              </div>
+              {posts.map((post) => {
+                const featuredImage = getFeaturedImage(post);
+                const authorName = getAuthorName(post);
+                const date = new Date(post.date).toLocaleDateString('pt-BR');
+                const excerpt = post.excerpt?.rendered?.replace(/<[^>]*>/g, '').slice(0, 150) + '...';
 
-              <div className="mt-8">
-                <div className="flex flex-wrap items-center gap-4 font-sans text-[14px] leading-[20px]">
-                  <span className="font-medium text-[#243752]">{post.author}</span>
-                  <span className="h-5 w-px bg-[#CDD2D8]" aria-hidden="true" />
-                  <span className="font-normal text-[#6A778B]">{post.date}</span>
-                </div>
+                return (
+                  <motion.article
+                    key={post.id}
+                    variants={fadeUp}
+                    whileHover={{ y: -3 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="group"
+                  >
+                    <Link href={`/blog/${post.slug}`}>
+                      <div className="relative aspect-square w-full max-w-[452px] overflow-hidden bg-[#EAF4EB] md:max-w-none">
+                        {featuredImage ? (
+                          <Image
+                            src={featuredImage.url}
+                            alt={featuredImage.alt}
+                            fill
+                            sizes="(max-width: 768px) 85vw, (max-width: 1360px) 28vw, 452px"
+                            className="object-cover transition duration-500 group-hover:scale-[1.01]"
+                          />
+                        ) : (
+                          <div className="flex items-center justify-center h-full text-[#56B0BB] text-4xl">
+                            📝
+                          </div>
+                        )}
+                      </div>
 
-                <h3 className="mt-4 text-[20px] font-semibold leading-[28px] tracking-[-0.012em] text-[#1A3858] underline underline-offset-[3px]">
-                  {post.title}
-                </h3>
+                      <div className="mt-8">
+                        <div className="flex flex-wrap items-center gap-4 font-sans text-[14px] leading-[20px]">
+                          <span className="font-medium text-[#243752]">{authorName}</span>
+                          <span className="h-5 w-px bg-[#CDD2D8]" aria-hidden="true" />
+                          <span className="font-normal text-[#6A778B]">{date}</span>
+                        </div>
 
-                <p className="mt-4 text-[14px] font-medium leading-[20px] text-[#6A778B]">{post.description}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+                        <h3 className="mt-4 text-[20px] font-semibold leading-[28px] tracking-[-0.012em] text-[#1A3858] underline underline-offset-[3px]">
+                          {post.title.rendered.replace(/<[^>]*>/g, '')}
+                        </h3>
+
+                        <p className="mt-4 text-[14px] font-medium leading-[20px] text-[#6A778B]">{excerpt}</p>
+                      </div>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+
+            <motion.div className="mt-12 text-center" variants={fadeUp}>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
+              >
+                Ver todos →
+              </Link>
+            </motion.div>
+          </>
+        )}
       </div>
     </motion.section>
   );

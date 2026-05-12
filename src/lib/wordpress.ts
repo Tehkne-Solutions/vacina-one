@@ -148,6 +148,13 @@ export async function getPosts(): Promise<WordPressPost[]> {
   return data || [];
 }
 
+export async function getLatestPosts(limit = 3): Promise<WordPressPost[]> {
+  const data = await fetchFromWordPress<WordPressPost[]>(
+    `/posts?_embed=1&per_page=${limit}&orderby=date&order=desc`
+  );
+  return data || [];
+}
+
 export async function getPostBySlug(slug: string): Promise<WordPressPost | null> {
   const posts = await fetchFromWordPress<WordPressPost[]>(
     `/posts?slug=${slug}&_embed=1`

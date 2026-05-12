@@ -30,7 +30,7 @@ const features = [
 export default function WhyChoose() {
   return (
     <motion.section
-      className="bg-vacina-dark py-[70px] font-franie text-white md:py-[86px] xl:py-[96px] 2xl:py-[108px]"
+      className="bg-vacina-dark py-[56px] font-franie text-white md:py-[72px] xl:py-[80px] 2xl:py-[88px]"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -38,11 +38,11 @@ export default function WhyChoose() {
     >
       <div className="mx-auto w-[85%] max-w-[1640px]">
         <motion.div className="mx-auto text-center" variants={fadeUp}>
-          <h2 className="text-[clamp(34px,3.35vw,64px)] font-black leading-[1.02] text-white md:whitespace-nowrap">
+          <h2 className="text-[clamp(34px,3vw,52px)] font-black leading-[1.02] text-white md:whitespace-nowrap">
             <span className="text-vacina-teal">Por que escolher a</span>{" "}
             <span>VacinaOne?</span>
           </h2>
-          <p className="mx-auto mt-[22px] max-w-[760px] text-[clamp(17px,1.35vw,25px)] font-medium leading-[1.18] text-white">
+          <p className="mx-auto mt-[22px] max-w-[760px] text-[clamp(17px,1.2vw,20px)] font-medium leading-[1.18] text-white">
             A VacinaOne nasceu para que cuidar da saúde da sua familia seja uma
             <br className="hidden md:block" />
             experiência que você queira repetir.
@@ -50,7 +50,7 @@ export default function WhyChoose() {
         </motion.div>
 
         <motion.div
-          className="mt-[62px] grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:mt-[74px] xl:gap-12 2xl:gap-16"
+          className="mt-[48px] grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:mt-[56px] xl:gap-8 2xl:gap-10"
           variants={staggerContainer}
         >
           {features.map((feature) => (
@@ -65,9 +65,9 @@ export default function WhyChoose() {
                 <Image
                   src={feature.icon}
                   alt=""
-                  width={112}
-                  height={112}
-                  className="h-[clamp(76px,5.84vw,112px)] w-[clamp(76px,5.84vw,112px)]"
+                  width={88}
+                  height={88}
+                  className="h-[clamp(64px,4.5vw,88px)] w-[clamp(64px,4.5vw,88px)]"
                 />
               </motion.div>
               <h3 className="mt-[28px] text-[clamp(24px,1.82vw,35px)] font-bold leading-[1.08] text-vacina-teal">

@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Fixed - Hotfix Home: Compactação de Diferenciais e Posts Reais no Blog
+
+- Compactação visual da seção "Por que escolher a VacinaOne?" para caber melhor em uma viewport de notebook.
+- Blog da Home agora consome os últimos posts reais do WordPress via nova função getLatestPosts.
+- Inclusão de botão "Ver todos" linkando para /blog.
+- Estado vazio elegante para ausência de posts.
+- Preservação de fallbacks seguros para imagens locais do blog.
+- Build validado sem erros.
+
 ### Added - Fase 15: Página Interna de Contato
 
 - Criação da página /contato com design premium e responsivo.
