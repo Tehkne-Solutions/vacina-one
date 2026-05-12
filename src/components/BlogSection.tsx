@@ -1,23 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { fadeUp, staggerContainer } from "@/lib/animations";
 import { getLatestPosts, getFeaturedImage, getAuthorName } from "@/lib/wordpress";
 
 export default async function BlogSection() {
   const posts = await getLatestPosts(3);
 
   return (
-    <motion.section
+    <section
       id="blog"
       className="w-full bg-[#F2FBFA] py-[clamp(72px,7vw,130px)] font-franie"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={staggerContainer}
     >
       <div className="mx-auto w-[85%] max-w-[1570px]">
-        <motion.div className="text-center" variants={fadeUp}>
+        <div className="text-center">
           <p className="text-[clamp(22px,1.8vw,32px)] font-bold leading-[118%] tracking-[-0.02em] text-[#56B0BB]">
             Blog VacinaOne
           </p>
@@ -25,22 +19,21 @@ export default async function BlogSection() {
           <h2 className="mt-1 text-[clamp(34px,3.2vw,56px)] font-bold leading-[108%] tracking-[-0.03em] text-[#1A3858]">
             conteúdo e educação em saúde
           </h2>
-        </motion.div>
+        </div>
 
         {posts.length === 0 ? (
-          <motion.div className="mt-[clamp(64px,6vw,115px)] text-center" variants={fadeUp}>
+          <div className="mt-[clamp(64px,6vw,115px)] text-center">
             <h3 className="text-[24px] font-bold text-[#1A3858] mb-4">
               Nenhum artigo publicado ainda.
             </h3>
             <p className="text-[16px] text-[#5A5A5A]">
               Em breve, você encontrará aqui conteúdos sobre vacinação, prevenção e cuidado em saúde.
             </p>
-          </motion.div>
+          </div>
         ) : (
           <>
-            <motion.div
+            <div
               className="mt-[clamp(64px,6vw,115px)] grid grid-cols-1 gap-[clamp(42px,4vw,72px)] md:grid-cols-2 xl:grid-cols-3"
-              variants={staggerContainer}
             >
               {posts.map((post) => {
                 const featuredImage = getFeaturedImage(post);
@@ -49,11 +42,8 @@ export default async function BlogSection() {
                 const excerpt = post.excerpt?.rendered?.replace(/<[^>]*>/g, '').slice(0, 150) + '...';
 
                 return (
-                  <motion.article
+                  <article
                     key={post.id}
-                    variants={fadeUp}
-                    whileHover={{ y: -3 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
                     className="group"
                   >
                     <Link href={`/blog/${post.slug}`}>
@@ -87,22 +77,22 @@ export default async function BlogSection() {
                         <p className="mt-4 text-[14px] font-medium leading-[20px] text-[#6A778B]">{excerpt}</p>
                       </div>
                     </Link>
-                  </motion.article>
+                  </article>
                 );
               })}
-            </motion.div>
+            </div>
 
-            <motion.div className="mt-12 text-center" variants={fadeUp}>
+            <div className="mt-12 text-center">
               <Link
                 href="/blog"
                 className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
               >
                 Ver todos →
               </Link>
-            </motion.div>
+            </div>
           </>
         )}
       </div>
-    </motion.section>
+    </section>
   );
 }
