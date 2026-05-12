@@ -1,5 +1,6 @@
 import { WordPressPost } from '@/types/wordpress';
 import { getLocalBlogImageUrl } from '@/lib/blog-images';
+import { getDisplayAuthorName } from '@/lib/blog-author';
 
 const WP_HOST = 'vacina-one-bkend.page.gd';
 
@@ -46,5 +47,6 @@ export function getFeaturedImage(post: WordPressPost) {
 }
 
 export function getAuthorName(post: WordPressPost): string {
-  return post._embedded?.author?.[0]?.name ?? 'VacinaOne';
+  const authorName = post._embedded?.author?.[0]?.name;
+  return getDisplayAuthorName(authorName);
 }
