@@ -11,7 +11,15 @@
 - Aplicação em Blog da Home, /blog e /blog/[slug].
 - Preservação de dados reais no WordPress.
 
-### Fixed - Hotfix Home: Compactação de Diferenciais e Posts Reais no Blog
+### Fixed - Hotfix Contato: Remoção de Emojis e Ícones Lineares
+
+- Remoção completa de emojis da página Contato (💬, 📝, 🏢, 🏥, 👥, 📞, 🕒, ⚡).
+- Substituição por ícones lineares modernos do Lucide React.
+- Padronização visual dos ícones nos cards, formulário e informações de atendimento.
+- Aplicação em Hero, seções de canais, formulário e informações.
+- Build validado sem erros.
+
+### Fixed - Hotfix Blog: Normalização da Exibição Pública do Autor
 
 - Compactação visual da seção "Por que escolher a VacinaOne?" para caber melhor em uma viewport de notebook.
 - Blog da Home agora consome os últimos posts reais do WordPress via nova função getLatestPosts.
