@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Fixed - Hotfix Blog: Normalização da Exibição Pública do Autor
+
+- Normalização da exibição pública do autor dos posts.
+- Autor técnico "dev-unti" passa a aparecer como "VacinaOne" no frontend.
+- Remoção de link público para autor nos componentes do Blog.
+- Criação de helper centralizado getDisplayAuthorName para padronização.
+- Aplicação em Blog da Home, /blog e /blog/[slug].
+- Preservação de dados reais no WordPress.
+
 ### Fixed - Hotfix Home: Compactação de Diferenciais e Posts Reais no Blog
 
 - Compactação visual da seção "Por que escolher a VacinaOne?" para caber melhor em uma viewport de notebook.
