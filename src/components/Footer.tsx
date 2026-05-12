@@ -47,12 +47,10 @@ export default function Footer() {
     >
       <div className="mx-auto w-[85%] max-w-[1595px] overflow-x-clip py-16 md:py-20 lg:min-h-[600px] xl:min-h-[750px] 2xl:min-h-[882px] lg:pb-16 lg:pt-20 xl:pb-20 xl:pt-28 2xl:pb-[90px] 2xl:pt-[113px]">
         <div className="relative h-[54px] w-[240px] md:h-[62px] md:w-[280px] lg:h-[65px] lg:w-[300px] xl:h-[70px] xl:w-[315px] 2xl:h-[73px] 2xl:w-[329px]">
-          <Image
-            src="/images/vacina-one-logo.png"
+          <img
+            src="/images/vacina-one-logo-footer.svg"
             alt="VacinaOne"
-            fill
-            sizes="329px"
-            className="object-contain brightness-0 invert"
+            className="h-full w-full object-contain brightness-0 invert"
           />
         </div>
 

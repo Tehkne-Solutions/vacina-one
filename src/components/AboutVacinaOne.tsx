@@ -56,7 +56,7 @@ export default function AboutVacinaOne() {
             </p>
           </motion.div>
 
-          <motion.div className="mt-10" variants={staggerContainer}>
+          <motion.div className="mt-6" variants={staggerContainer}>
             {aboutItems.map((item, index) => (
               <motion.div
                 key={item.title}

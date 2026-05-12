@@ -25,7 +25,7 @@ export default function Header() {
 
         {/* Logo */}
         <div className="relative w-[150px] h-[36px] md:w-[221px] md:h-[53px] shrink-0">
-          <Image src="/images/vacina-one-logo.png" alt="Vacina One" fill className="object-contain" priority />
+          <img src="/images/vacina-one-logo.svg" alt="Vacina One" className="h-full w-full object-contain" />
         </div>
 
         {/* Nav desktop — gap menor em xl, maior em 2xl */}

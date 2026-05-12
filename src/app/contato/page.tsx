@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfoCards from '@/components/contact/ContactInfoCards';
 import ContactFaq from '@/components/contact/ContactFaq';
+import { MessageCircle, ClipboardList, Building2, Hospital, UsersRound, Phone, Clock3 } from 'lucide-react';
 
 export const metadata = {
   title: 'Contato | VacinaOne',
@@ -120,35 +121,37 @@ export default async function ContactPage() {
                 text: 'Fale com a equipe para tirar dúvidas ou iniciar um agendamento.',
                 cta: 'Falar no WhatsApp',
                 href: '#formulario-contato',
-                icon: '💬',
+                Icon: MessageCircle,
               },
               {
                 title: 'Agendamento',
                 text: 'Envie seus dados e retornaremos com as próximas orientações.',
                 cta: 'Preencher formulário',
                 href: '#formulario-contato',
-                icon: '📝',
+                Icon: ClipboardList,
               },
               {
                 title: 'Empresas',
                 text: 'Solicite informações para campanhas de vacinação corporativa.',
                 cta: 'Solicitar campanha',
                 href: '/empresas',
-                icon: '🏢',
+                Icon: Building2,
               },
               {
                 title: 'Unidades',
                 text: 'Consulte atendimento, endereço e horário das unidades disponíveis.',
                 cta: 'Ver unidades',
                 href: '/unidades',
-                icon: '🏥',
+                Icon: Hospital,
               },
             ].map((card, index) => (
               <div
                 key={index}
                 className="bg-white border border-[#EAF4EB] rounded-[28px] p-8 text-center hover:shadow-xl hover:-translate-y-2 hover:border-[#56B0BB] transition-all duration-300"
               >
-                <div className="text-5xl mb-6">{card.icon}</div>
+                <div className="w-16 h-16 bg-[#EAF4EB] border border-[rgba(86,176,187,0.25)] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <card.Icon size={32} stroke="#1A3858" strokeWidth={1.75} />
+                </div>
                 <h3 className="text-xl font-bold text-[#1A3858] mb-4">{card.title}</h3>
                 <p className="text-[#5A5A5A] mb-6 leading-relaxed">{card.text}</p>
                 <Link
@@ -183,17 +186,17 @@ export default async function ContactPage() {
                   {
                     title: 'Retorno com orientação clara',
                     text: 'Nossa equipe analisa sua solicitação e responde com cuidado.',
-                    icon: '💬',
+                    Icon: MessageCircle,
                   },
                   {
                     title: 'Atendimento para famílias e empresas',
                     text: 'Tire dúvidas sobre vacinas, campanhas e agendamentos.',
-                    icon: '👥',
+                    Icon: UsersRound,
                   },
                   {
                     title: 'Canal direto com a equipe',
                     text: 'Use o formulário ou fale pelo WhatsApp.',
-                    icon: '📞',
+                    Icon: Phone,
                   },
                 ].map((item, index) => (
                   <div
@@ -201,7 +204,9 @@ export default async function ContactPage() {
                     className="bg-white border border-[#DDEFEA] rounded-[20px] p-6 shadow-sm"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="text-2xl">{item.icon}</div>
+                      <div className="w-12 h-12 bg-white border border-[rgba(86,176,187,0.25)] rounded-[16px] flex items-center justify-center flex-shrink-0">
+                        <item.Icon size={24} stroke="#1A3858" strokeWidth={1.75} />
+                      </div>
                       <div>
                         <h3 className="font-bold text-[#1A3858] mb-1">{item.title}</h3>
                         <p className="text-sm text-[#5A5A5A]">{item.text}</p>
@@ -233,26 +238,28 @@ export default async function ContactPage() {
                 title: 'Unidade',
                 subtitle: 'Vacina One Campinas',
                 text: 'Endereço a definir · Campinas - SP',
-                icon: '🏥',
+                Icon: Hospital,
               },
               {
                 title: 'Horário',
                 subtitle: 'Atendimento sob agendamento',
                 text: 'Confirme disponibilidade antes de se deslocar.',
-                icon: '🕒',
+                Icon: Clock3,
               },
               {
                 title: 'Canais',
                 subtitle: 'WhatsApp e formulário',
                 text: 'Escolha o canal mais confortável para falar com a equipe.',
-                icon: '💬',
+                Icon: MessageCircle,
               },
             ].map((info, index) => (
               <div
                 key={index}
                 className="bg-white border border-[#EAF4EB] rounded-[24px] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="text-4xl mb-4">{info.icon}</div>
+                <div className="w-14 h-14 bg-[#EAF4EB] border border-[rgba(86,176,187,0.25)] rounded-[16px] flex items-center justify-center mb-4">
+                  <info.Icon size={28} stroke="#1A3858" strokeWidth={1.75} />
+                </div>
                 <h3 className="text-xl font-bold text-[#1A3858] mb-2">{info.title}</h3>
                 <h4 className="text-lg font-semibold text-[#56B0BB] mb-3">{info.subtitle}</h4>
                 <p className="text-[#5A5A5A] leading-relaxed">{info.text}</p>

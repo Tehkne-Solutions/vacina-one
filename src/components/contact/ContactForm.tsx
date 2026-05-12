@@ -8,6 +8,7 @@ export default function ContactForm() {
     email: '',
     whatsapp: '',
     tipo: '',
+    selectedVaccines: [] as string[],
     mensagem: '',
   });
 
@@ -22,6 +23,15 @@ export default function ContactForm() {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
+  };
+
+  const handleVaccineChange = (vaccine: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      selectedVaccines: checked
+        ? [...prev.selectedVaccines, vaccine]
+        : prev.selectedVaccines.filter(v => v !== vaccine)
+    }));
   };
 
   const validateForm = () => {
@@ -70,6 +80,7 @@ export default function ContactForm() {
         email: '',
         whatsapp: '',
         tipo: '',
+        selectedVaccines: [],
         mensagem: '',
       });
     }, 3000);
@@ -167,6 +178,42 @@ export default function ContactForm() {
           <option value="outros">Outros</option>
         </select>
         {errors.tipo && <p className="text-red-500 text-sm mt-1">{errors.tipo}</p>}
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold text-[#1A3858] mb-3">
+          Vacinas de interesse
+        </label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {[
+            'Gripe (Influenza)',
+            'Febre Amarela',
+            'Meningocócica B',
+            'Hexavalente',
+            'Pneumocócica 13',
+            'HPV',
+            'Tríplice Viral',
+            'Varicela',
+            'Hepatite B',
+            'Dengue'
+          ].map((vaccine) => (
+            <label key={vaccine} className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.selectedVaccines.includes(vaccine)}
+                onChange={(e) => handleVaccineChange(vaccine, e.target.checked)}
+                className="w-4 h-4 text-[#56B0BB] bg-[#F9FCFB] border-[#DDEFEA] rounded focus:ring-[#56B0BB] focus:ring-2"
+              />
+              <span className={`px-3 py-2 rounded-full border text-sm transition-colors ${
+                formData.selectedVaccines.includes(vaccine)
+                  ? 'bg-[#56B0BB] text-white border-[#56B0BB]'
+                  : 'bg-white text-[#1A3858] border-[#DDEFEA] hover:border-[#56B0BB]'
+              }`}>
+                {vaccine}
+              </span>
+            </label>
+          ))}
+        </div>
       </div>
 
       <div>

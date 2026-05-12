@@ -18,11 +18,11 @@ export default function Hero() {
             da vida
           </h1>
 
-          <p className="text-vacina-gray text-lg md:text-[22px] font-medium leading-relaxed max-w-[550px] mx-auto xl:mx-0">
+          <p className="text-[#5A5A5A] text-[16px] md:text-[18px] lg:text-[20px] font-normal leading-relaxed max-w-[550px] mx-auto xl:mx-0">
             Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas.
           </p>
 
-          <button className="w-full md:w-[339px] h-[65px] bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300">
+          <button className="w-full md:w-[280px] h-[56px] bg-[#F0B954] text-white text-[18px] md:text-[20px] font-bold rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300 px-8">
             Agendar Vacina&#231;&#227;o
           </button>
         </div>

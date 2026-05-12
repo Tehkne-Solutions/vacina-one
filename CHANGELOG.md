@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Fixed - Hotfix UI: Padronização de Ícones, Logos e CTA da Hero
+
+- Substituição de logos PNG por SVG no Header e Footer para eliminar pixelização.
+- Padronização dos ícones da página Contato para ícones lineares modernos usando lucide-react.
+- Inclusão de campo de vacinas de interesse com múltipla escolha no formulário de contato.
+- Ajuste visual do subtítulo e CTA da Hero para reduzir tamanho e peso.
+- Remoção de espaçamento/elemento vazio na seção Sobre.
+- Build validado sem erros.
+
 ### Added - Fase 15: Página Interna de Contato
 
 - Criação da página /contato com design premium e responsivo.
