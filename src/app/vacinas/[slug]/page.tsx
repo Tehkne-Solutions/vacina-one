@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import VaccineSummaryCard from '@/components/vacinas/VaccineSummaryCard';
 import { VaccineAcf } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface Params { slug: string }
 
@@ -44,6 +45,9 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
   const desc = acf.descricao_curta || vaccine.excerpt.rendered.replace(/<[^>]*>/g, '');
   const available = acf.disponivel_para_agendamento !== false;
   const ctaText = acf.cta_texto || 'Agendar Vacinação';
+  const appointmentHref = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero agendar a vacina ${name}.`
+  );
   const hasContent = vaccine.content.rendered.replace(/<[^>]*>/g, '').trim().length > 0;
 
   const infoBlocks: { title: string; field: keyof VaccineAcf }[] = [
@@ -77,13 +81,15 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
                 </p>
               )}
               {available ? (
-                <Link
-                  href="/contato"
+                <a
+                  href={appointmentHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Agendar vacinação: ${name}`}
                   className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-9 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
                 >
                   {ctaText}
-                </Link>
+                </a>
               ) : (
                 <p className="text-[14px] text-[#5A5A5A] italic">
                   Consulte nossa equipe para verificar disponibilidade.
@@ -138,13 +144,15 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
           <p className="text-[16px] text-[#5A5A5A] mb-7 max-w-[480px] mx-auto leading-relaxed">
             Nossa equipe pode ajudar você a entender indicações, cuidados e próximos passos com segurança.
           </p>
-          <Link
-            href="/contato"
+          <a
+            href={appointmentHref}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Agendar vacinação na VacinaOne"
             className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
           >
             Agendar Vacinação
-          </Link>
+          </a>
         </div>
 
         {/* Voltar */}
