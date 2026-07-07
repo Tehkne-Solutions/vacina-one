@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { WordPressCorporateCampaign } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface CampaignCardProps {
   campaign: WordPressCorporateCampaign;
@@ -24,7 +25,9 @@ export default function CampaignCard({ campaign, index = 0 }: CampaignCardProps)
   const whatsappUrl =
     acf.whatsapp_cta && acf.whatsapp_cta.startsWith('http')
       ? acf.whatsapp_cta
-      : null;
+      : getWhatsAppHref(
+          `Olá! Vim pelo site da VacinaOne e quero falar sobre campanha para empresas: ${name}.`
+        );
 
   return (
     <motion.div
@@ -77,17 +80,15 @@ export default function CampaignCard({ campaign, index = 0 }: CampaignCardProps)
           {ctaText}
         </Link>
 
-        {whatsappUrl && (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Falar no WhatsApp sobre: ${name}`}
-            className="flex-1 inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-[14px] px-5 py-3 rounded-full hover:scale-105 transition-transform duration-200"
-          >
-            WhatsApp
-          </a>
-        )}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Falar no WhatsApp sobre: ${name}`}
+          className="flex-1 inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-[14px] px-5 py-3 rounded-full hover:scale-105 transition-transform duration-200"
+        >
+          WhatsApp
+        </a>
       </div>
     </motion.div>
   );

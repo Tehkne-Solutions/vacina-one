@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import { getWhatsAppHref } from "@/lib/whatsapp";
 
 const vaccines = [
   "Gripe (Influenza)",
@@ -50,13 +51,15 @@ export default function PopularVaccines() {
                 </h3>
               </div>
 
-              <button
-                type="button"
+              <a
+                href={getWhatsAppHref(`Olá! Vim pelo site da VacinaOne e quero agendar a vacina ${vaccine}.`)}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={`Agendar vacinação para ${vaccine}`}
                 className="flex w-[44%] min-w-[190px] items-center justify-center rounded-[20px] bg-[#1A3858] px-4 text-[clamp(16px,1.4vw,25px)] font-medium leading-[120%] tracking-[-0.02em] text-white transition duration-300 hover:scale-[1.02] hover:brightness-110 active:scale-[0.99] max-sm:h-[68px] max-sm:w-full max-sm:min-w-0 max-sm:rounded-t-none"
               >
                 Agendar Vacinação
-              </button>
+              </a>
             </motion.article>
           ))}
         </motion.div>

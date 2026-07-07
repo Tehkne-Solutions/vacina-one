@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import LaboratoryCarousel from './LaboratoryCarousel';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 export default function Hero() {
+  const appointmentHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero agendar uma vacinação.'
+  );
+
   return (
     <section className="relative w-full pt-[5vh] pb-[5vh] bg-white overflow-hidden font-franie min-h-[calc(100vh-110px)] flex flex-col justify-between">
       <div className="w-[85%] max-w-[1220px] 2xl:max-w-[1560px] mx-auto grid grid-cols-1 xl:grid-cols-[minmax(0,520px)_minmax(0,560px)] 2xl:grid-cols-[minmax(0,650px)_minmax(0,750px)] items-center justify-between gap-6 xl:gap-16 2xl:gap-20 flex-1">
@@ -22,9 +27,14 @@ export default function Hero() {
             Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas.
           </p>
 
-          <button className="w-full md:w-[339px] h-[65px] bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300">
+          <a
+            href={appointmentHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full md:w-[339px] h-[65px] items-center justify-center bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300"
+          >
             Agendar Vacina&#231;&#227;o
-          </button>
+          </a>
         </div>
 
         {/* COLUNA IMAGENS — order-2 mobile, aspect-ratio para manter coesao */}

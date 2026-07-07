@@ -1,10 +1,15 @@
 import Link from 'next/link';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface CalendarSidebarProps {
   calendarName: string;
 }
 
 export default function CalendarSidebar({ calendarName }: CalendarSidebarProps) {
+  const appointmentHref = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero orientação sobre o calendário ${calendarName}.`
+  );
+
   return (
     <div className="flex flex-col gap-5 lg:sticky lg:top-[120px]">
       {/* CTA principal */}
@@ -16,13 +21,15 @@ export default function CalendarSidebar({ calendarName }: CalendarSidebarProps) 
           Nossa equipe pode ajudar você a entender o calendário vacinal mais
           adequado para cada fase da vida.
         </p>
-        <Link
-          href="/contato"
+        <a
+          href={appointmentHref}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Agendar vacinação — ${calendarName}`}
           className="inline-flex items-center justify-center bg-[#F0B954] text-white font-black text-[14px] px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
         >
           Agendar Vacinação
-        </Link>
+        </a>
       </div>
 
       {/* Links secundários */}

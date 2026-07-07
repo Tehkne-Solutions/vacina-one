@@ -1,15 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import VaccineCard from '@/components/vacinas/VaccineCard';
 import { WordPressVaccine } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface VaccinesListClientProps {
   vaccines: WordPressVaccine[];
 }
 
 export default function VaccinesListClient({ vaccines }: VaccinesListClientProps) {
+  const appointmentHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero agendar uma vacinação.'
+  );
+  const teamHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero falar com a equipe sobre vacinas.'
+  );
+
   return (
     <main>
       {/* Hero */}
@@ -91,12 +98,14 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
               <p className="text-[16px] text-[#5A5A5A] mb-7">
                 Em breve, você poderá consultar aqui as vacinas disponíveis na VacinaOne.
               </p>
-              <Link
-                href="/contato"
+              <a
+                href={teamHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
               >
                 Falar com a equipe
-              </Link>
+              </a>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -119,13 +128,15 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
               <p className="text-[17px] text-white/80 mb-8 max-w-[520px] mx-auto leading-relaxed">
                 A equipe da VacinaOne pode orientar você com cuidado, clareza e segurança.
               </p>
-              <Link
-                href="/contato"
+              <a
+                href={appointmentHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Agendar vacinação na VacinaOne"
                 className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
               >
                 Agendar Vacinação
-              </Link>
+              </a>
             </div>
           </div>
         </section>

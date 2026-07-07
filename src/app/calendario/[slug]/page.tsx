@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CalendarSidebar from '@/components/calendario/CalendarSidebar';
 import { CalendarAcf } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface Params { slug: string }
 
@@ -42,7 +43,11 @@ export default async function CalendarItemPage({ params }: { params: Promise<Par
   const name = acf.titulo_publico || item.title.rendered.replace(/<[^>]*>/g, '');
   const desc = acf.descricao_curta || item.excerpt.rendered.replace(/<[^>]*>/g, '');
   const ctaText = acf.cta_texto || 'Agendar Vacinação';
-  const ctaUrl = acf.cta_url || '/contato';
+  const ctaUrl = acf.cta_url || getWhatsAppHref(`Olá! Vim pelo site da VacinaOne e quero revisar o calendário vacinal ${name}.`);
+  const ctaIsExternal = ctaUrl.startsWith('http');
+  const finalCtaHref = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero revisar o calendário vacinal ${name}.`
+  );
   const hasContent = item.content.rendered.replace(/<[^>]*>/g, '').trim().length > 0;
 
   const summaryRows = [
@@ -78,13 +83,25 @@ export default async function CalendarItemPage({ params }: { params: Promise<Par
                 </p>
               )}
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href={ctaUrl}
-                  aria-label={`Agendar vacinação — ${name}`}
-                  className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
-                >
-                  {ctaText}
-                </Link>
+                {ctaIsExternal ? (
+                  <a
+                    href={ctaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Agendar vacinação — ${name}`}
+                    className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
+                  >
+                    {ctaText}
+                  </a>
+                ) : (
+                  <Link
+                    href={ctaUrl}
+                    aria-label={`Agendar vacinação — ${name}`}
+                    className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
+                  >
+                    {ctaText}
+                  </Link>
+                )}
                 <Link
                   href="/calendario"
                   className="inline-flex items-center border-2 border-[#1A3858] text-[#1A3858] font-bold text-[14px] px-6 py-4 rounded-full hover:bg-[#1A3858] hover:text-white transition-colors duration-200"
@@ -158,13 +175,15 @@ export default async function CalendarItemPage({ params }: { params: Promise<Par
           <p className="text-[15px] text-[#5A5A5A] mb-7 max-w-[460px] mx-auto leading-relaxed">
             Fale com a equipe VacinaOne e receba orientação com cuidado e clareza.
           </p>
-          <Link
-            href="/contato"
+          <a
+            href={finalCtaHref}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Agendar vacinação na VacinaOne"
             className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
           >
             Agendar Vacinação
-          </Link>
+          </a>
         </div>
 
         {/* Voltar */}

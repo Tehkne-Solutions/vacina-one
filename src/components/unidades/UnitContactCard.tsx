@@ -1,15 +1,27 @@
-import Link from 'next/link';
 import { UnitAcf } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface UnitContactCardProps {
   acf: UnitAcf;
   unitName: string;
 }
 
+function getUnitWhatsAppHref(whatsapp: string | undefined, unitName: string) {
+  if (whatsapp) {
+    const number = whatsapp.replace(/\D/g, '');
+    const message = encodeURIComponent(
+      `Olá! Vim pelo site da VacinaOne e quero agendar vacinação na unidade ${unitName}.`
+    );
+    return `https://wa.me/${number}?text=${message}`;
+  }
+
+  return getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero agendar vacinação na unidade ${unitName}.`
+  );
+}
+
 export default function UnitContactCard({ acf, unitName }: UnitContactCardProps) {
-  const whatsappUrl = acf.whatsapp
-    ? `https://wa.me/${acf.whatsapp.replace(/\D/g, '')}`
-    : null;
+  const whatsappUrl = getUnitWhatsAppHref(acf.whatsapp, unitName);
 
   return (
     <aside className="bg-[#F2FBFA] rounded-[24px] p-8 flex flex-col gap-5 h-fit">
@@ -45,25 +57,25 @@ export default function UnitContactCard({ acf, unitName }: UnitContactCardProps)
 
       {/* CTAs */}
       <div className="flex flex-col gap-3 mt-2">
-        <Link
-          href="/contato"
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Agendar vacinação na unidade ${unitName}`}
           className="inline-flex items-center justify-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-[50px] hover:scale-105 transition-transform duration-200 text-center"
         >
           Agendar Vacinação
-        </Link>
+        </a>
 
-        {whatsappUrl && (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Falar no WhatsApp com a unidade ${unitName}`}
-            className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-black text-[15px] px-8 py-4 rounded-[50px] hover:scale-105 transition-transform duration-200 text-center"
-          >
-            Falar no WhatsApp
-          </a>
-        )}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Falar no WhatsApp com a unidade ${unitName}`}
+          className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-black text-[15px] px-8 py-4 rounded-[50px] hover:scale-105 transition-transform duration-200 text-center"
+        >
+          Falar no WhatsApp
+        </a>
       </div>
     </aside>
   );
