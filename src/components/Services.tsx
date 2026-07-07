@@ -7,18 +7,18 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 const services = [
   {
     image: "/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png",
-    title: "Vacinacao Infantil",
-    description: "Calendario completo de vacinas para criancas de 0 a 12 anos, com acompanhamento especializado.",
+    title: "Vacinação Infantil",
+    description: "Calendário completo de vacinas para crianças de 0 a 12 anos, com acompanhamento especializado.",
   },
   {
     image: "/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png",
-    title: "Vacinacao para Adultos",
-    description: "Mantenha sua imunizacao em dia com as vacinas recomendadas para adultos e idosos.",
+    title: "Vacinação para Adultos",
+    description: "Mantenha sua imunização em dia com as vacinas recomendadas para adultos e idosos.",
   },
   {
     image: "/images/vacina-one-homepage-hero-mosaico-imagem-menino.png",
-    title: "Vacinacao Empresarial",
-    description: "Programas de vacinacao corporativa para proteger sua equipe e aumentar a produtividade.",
+    title: "Vacinação Empresarial",
+    description: "Programas de vacinação corporativa para proteger sua equipe e aumentar a produtividade.",
   },
 ];
 
@@ -33,10 +33,10 @@ const Services = () => {
     >
       <div className="w-[85%] max-w-[1280px] mx-auto">
         <motion.h2 className="text-[40px] font-bold text-[#56B0BB] leading-[120%] tracking-[-0.02em] text-center mb-4" variants={fadeUp}>
-          Nossos Servicos
+          Nossos Serviços
         </motion.h2>
         <motion.p className="text-[18px] text-[#5A5A5A] text-center mb-16 max-w-[600px] mx-auto" variants={fadeUp}>
-          Solucoes completas de vacinacao para cada necessidade.
+          Soluções completas de vacinação para cada necessidade.
         </motion.p>
 
         <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8" variants={staggerContainer}>
