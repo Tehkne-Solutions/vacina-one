@@ -230,14 +230,16 @@
       gap: clamp(20px, 2.5vw, 36px) !important;
     }
 
-    main [class*="mb-16"],
-    main [class*="mb-12"],
-    main [class*="mb-10"],
     main [class*="mt-16"],
     main [class*="mt-14"],
     main [class*="mt-12"],
     main [class*="mt-10"] {
       margin-top: clamp(24px, 3vw, 44px) !important;
+    }
+
+    main [class*="mb-16"],
+    main [class*="mb-12"],
+    main [class*="mb-10"] {
       margin-bottom: clamp(20px, 2.5vw, 36px) !important;
     }
 
