@@ -46,7 +46,7 @@ export default function Hero() {
             <div className="absolute top-[8.5%] right-0 w-[48%] aspect-[355/441] z-20">
               <Image
                 src="/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png"
-                alt="Vacinacao"
+                alt="Vacinação"
                 fill
                 className="object-cover rounded-none"
               />
@@ -56,7 +56,7 @@ export default function Hero() {
             <div className="absolute bottom-0 left-[11%] w-[37%] aspect-square z-30 shadow-2xl">
               <Image
                 src="/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png"
-                alt="Bebe"
+                alt="Bebê"
                 fill
                 className="object-cover rounded-none"
               />
@@ -66,7 +66,7 @@ export default function Hero() {
             <div className="absolute left-[56%] top-[70%] z-40 hidden h-[30%] w-[40%] flex-col bg-[#56B0BB] p-3 text-white shadow-2xl sm:flex 2xl:p-5">
               <h3 className="text-[34px] font-black italic leading-none 2xl:text-[52px]">75%</h3>
               <p className="mt-2 text-[10px] font-medium leading-tight 2xl:text-[16px] 2xl:leading-[144%]">
-                of doctors surveyed said their inclusiveness had increased with 41% saying it had increases significantly
+                dos pacientes relatam mais confiança quando recebem orientação clara antes da vacinação.
               </p>
             </div>
           </div>
