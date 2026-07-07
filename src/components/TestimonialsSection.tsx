@@ -10,21 +10,21 @@ const testimonials = [
     quote:
       "“Fui extremamente bem atendida na VacinaOne! Desde a recepção até a aplicação, tudo foi feito com muito cuidado e carinho. Me senti segura o tempo todo. Atendimento humanizado de verdade!”",
     name: "Mariana Souza",
-    role: "Doctor",
+    role: "Paciente",
     image: "/images/vacina-one-homepage-historias-depoimento-mariana-souza.png",
   },
   {
     quote:
       "“Levei minha filha para vacinar na VacinaOne e fiquei impressionado com a atenção da equipe. Explicaram cada etapa, foram pacientes e muito profissionais. Atendimento impecável!”",
     name: "Yussef Monasab",
-    role: "Muslim Patient",
+    role: "Paciente",
     image: "/images/vacina-one-homepage-historias-depoimento-paciente-yussef-monasab.png",
   },
   {
     quote:
       "“A VacinaOne superou minhas expectativas! Ambiente organizado, equipe atenciosa e aplicação tranquila. Dá pra perceber o cuidado com cada paciente. Recomendo de olhos fechados!”",
     name: "Camila Rodrigues",
-    role: "Nurse",
+    role: "Paciente",
     image: "/images/vacina-one-homepage-historias-depoimento-camila-rodrigues.png",
   },
 ];
