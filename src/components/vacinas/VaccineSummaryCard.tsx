@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { VaccineAcf } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface VaccineSummaryCardProps {
   acf: VaccineAcf;
@@ -9,6 +10,9 @@ interface VaccineSummaryCardProps {
 export default function VaccineSummaryCard({ acf, vaccineName }: VaccineSummaryCardProps) {
   const available = acf.disponivel_para_agendamento !== false;
   const ctaText = acf.cta_texto || 'Agendar Vacinação';
+  const appointmentHref = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero agendar a vacina ${vaccineName}.`
+  );
 
   const rows = [
     acf.faixa_etaria && { label: 'Faixa etária', value: acf.faixa_etaria },
@@ -50,13 +54,15 @@ export default function VaccineSummaryCard({ acf, vaccineName }: VaccineSummaryC
           Nossa equipe pode ajudar você a entender indicações, cuidados e próximos passos.
         </p>
         {available ? (
-          <Link
-            href="/contato"
+          <a
+            href={appointmentHref}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Agendar vacinação: ${vaccineName}`}
             className="inline-flex items-center justify-center bg-[#F0B954] text-white font-black text-[14px] px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
           >
             {ctaText}
-          </Link>
+          </a>
         ) : (
           <p className="text-[13px] text-white/60 italic">
             Consulte nossa equipe para verificar disponibilidade.
@@ -67,19 +73,20 @@ export default function VaccineSummaryCard({ acf, vaccineName }: VaccineSummaryC
       {/* Links secundários */}
       <div className="bg-white border border-[#EAF4EB] rounded-[28px] p-6 flex flex-col gap-3">
         <h3 className="text-[14px] font-black text-[#1A3858]">Outras informações</h3>
-        {[
-          { href: '/vacinas', label: '← Voltar para Vacinas' },
-          { href: '/contato', label: 'Falar com a equipe' },
-          { href: '/calendario', label: 'Ver calendário vacinal' },
-        ].map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="text-[13px] text-[#56B0BB] font-semibold hover:underline"
-          >
-            {link.label}
-          </Link>
-        ))}
+        <Link href="/vacinas" className="text-[13px] text-[#56B0BB] font-semibold hover:underline">
+          ← Voltar para Vacinas
+        </Link>
+        <a
+          href={getWhatsAppHref(`Olá! Vim pelo site da VacinaOne e quero falar com a equipe sobre ${vaccineName}.`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[13px] text-[#56B0BB] font-semibold hover:underline"
+        >
+          Falar com a equipe
+        </a>
+        <Link href="/calendario" className="text-[13px] text-[#56B0BB] font-semibold hover:underline">
+          Ver calendário vacinal
+        </Link>
       </div>
     </div>
   );
