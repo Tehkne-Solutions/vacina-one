@@ -3,34 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { getWhatsAppHref } from "@/lib/whatsapp";
+import { mainNavLinks, siteContact, siteSocialLinks } from "@/lib/site-config";
 
 const footerColumns = [
   {
-    title: "Nosso endereço",
+    title: "Contato",
     items: [
-      { label: "piodoc@example.com", href: "mailto:piodoc@example.com" },
-      { label: "+01-234-56789", href: "tel:+0123456789" },
-      {
-        label: "Mennica Legacy Tower,\nProsta Str. 20",
-        href: "#",
-      },
+      { label: siteContact.email, href: `mailto:${siteContact.email}` },
+      { label: siteContact.phone, href: siteContact.phoneHref },
+      { label: siteContact.address, href: siteContact.mapsHref },
+      { label: siteContact.hours, href: "/contato#formulario-contato" },
     ],
   },
+  { title: "Menu", items: mainNavLinks },
   {
-    title: "Links úteis",
+    title: "Atendimento",
     items: [
-      { label: "Início", href: "/" },
-      { label: "Como funciona", href: "#" },
-      { label: "Especialistas", href: "#" },
-      { label: "Serviços", href: "#" },
-    ],
-  },
-  {
-    title: "Institucional",
-    items: [
-      { label: "Soluções", href: "#" },
-      { label: "Legal", href: "#" },
-      { label: "Carreiras", href: "#" },
+      { label: "Agendar vacinação", href: getWhatsAppHref("Olá! Vim pelo site da VacinaOne e quero agendar uma vacinação.") },
+      { label: "Vacinação para empresas", href: "/empresas" },
+      { label: "Check-up vacinal", href: "/calendario/vacinacao-para-imunidade-check-up" },
       { label: "Dúvidas frequentes", href: "/#faq" },
     ],
   },
@@ -38,58 +30,45 @@ const footerColumns = [
 
 export default function Footer() {
   return (
-    <motion.footer
-      className="w-full overflow-x-clip bg-[#1A3858] font-franie text-white"
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.65, ease: "easeOut" }}
-    >
-      <div className="mx-auto w-[85%] max-w-[1595px] overflow-x-clip py-16 md:py-20 lg:min-h-[600px] xl:min-h-[750px] 2xl:min-h-[882px] lg:pb-16 lg:pt-20 xl:pb-20 xl:pt-28 2xl:pb-[90px] 2xl:pt-[113px]">
-        <div className="relative h-[54px] w-[240px] md:h-[62px] md:w-[280px] lg:h-[65px] lg:w-[300px] xl:h-[70px] xl:w-[315px] 2xl:h-[73px] 2xl:w-[329px]">
-          <Image
-            src="/images/vacina-one-logo.png"
-            alt="VacinaOne"
-            fill
-            sizes="329px"
-            className="object-contain brightness-0 invert"
-          />
+    <motion.footer className="w-full overflow-x-clip bg-[#1A3858] font-franie text-white" initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.65, ease: "easeOut" }}>
+      <div className="mx-auto w-[85%] max-w-[1595px] overflow-x-clip py-14 md:py-16 lg:py-20">
+        <div className="relative h-[48px] w-[214px] md:h-[58px] md:w-[260px]">
+          <Image src="/images/vacina-one-logo.png" alt="VacinaOne" fill sizes="260px" className="object-contain brightness-0 invert" />
         </div>
 
-        <div className="mt-12 grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-12 lg:mt-16 xl:mt-20 2xl:mt-[100px] 2xl:grid-cols-[762px_669px] 2xl:gap-[129px]">
-          <div className="max-w-[762px]">
-            <h2 className="max-w-[596px] text-[clamp(34px,5vw,42px)] font-bold leading-[118.52%] tracking-[-0.02em] text-white lg:text-[42px] xl:text-[46px] 2xl:text-[52px]">
-              Ficou com alguma
-              <br />
-              dúvida? Fale com
-              <br />a gente.
+        <div className="mt-10 grid w-full gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-12">
+          <div className="max-w-[620px]">
+            <h2 className="max-w-[520px] text-[clamp(30px,4vw,44px)] font-bold leading-[1.12] tracking-[-0.03em] text-white">
+              Ficou com alguma dúvida? Fale com a gente.
             </h2>
-
-            <p className="mt-[30px] max-w-[762px] font-sans text-[16px] font-normal leading-[160.4%] tracking-[-0.02em] text-white md:text-[17px] lg:text-[18px] 2xl:text-[20px]">
-              Quer agendar, tirar uma dúvida ou entender como a VacinaOne pode ajudar sua família, equipe ou instituição? Envie uma
-              mensagem e retornamos em breve.
+            <p className="mt-5 max-w-[620px] font-sans text-[15px] font-normal leading-[1.6] tracking-[-0.02em] text-white/85 md:text-[17px]">
+              Agende sua vacinação, tire dúvidas, organize campanhas para empresas ou monte um plano vacinal personalizado.
             </p>
-
-            <Link
-              href="/contato"
-              className="mt-10 inline-flex h-[56px] w-full max-w-[262px] items-center justify-center rounded-full bg-[#56B0BB] px-10 font-sans text-[18px] font-medium leading-[102.52%] tracking-[-0.02em] text-[#1A3858] transition duration-300 hover:scale-[1.02] hover:brightness-105 md:h-[63px] xl:mt-[63px] xl:text-[22px]"
-            >
-              Entrar em contato
-            </Link>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a href={getWhatsAppHref("Olá! Vim pelo site da VacinaOne e gostaria de atendimento.")} target="_blank" rel="noopener noreferrer" className="inline-flex h-[42px] items-center justify-center rounded-[14px] bg-[#56B0BB] px-5 font-sans text-[14px] font-bold text-white transition duration-300 hover:brightness-105">
+                Falar no WhatsApp
+              </a>
+              <Link href="/contato#formulario-contato" className="inline-flex h-[42px] items-center justify-center rounded-[14px] border border-white/50 px-5 font-sans text-[14px] font-bold text-white transition duration-300 hover:border-white hover:bg-white/10">
+                Ir para formulário
+              </Link>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-2">
+              {siteSocialLinks.map((social) => (
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="flex h-9 min-w-9 items-center justify-center rounded-full border border-white/30 px-3 text-[12px] font-bold text-white transition hover:border-white hover:bg-white/10">
+                  {social.short}
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="grid w-full max-w-full gap-8 sm:gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:gap-8 xl:gap-10 2xl:flex 2xl:items-start 2xl:gap-[100px]">
+          <div className="grid w-full max-w-full gap-8 sm:grid-cols-2 xl:grid-cols-3">
             {footerColumns.map((column) => (
-              <div key={column.title} className="min-w-0 2xl:min-w-[120px]">
-                <h3 className="font-serif text-[24px] font-normal leading-[42px] tracking-[-0.03em] text-white">{column.title}</h3>
-
-                <ul className="mt-[30px] flex flex-col gap-5">
+              <div key={column.title} className="min-w-0">
+                <h3 className="font-sans text-[18px] font-bold leading-[1.2] tracking-[-0.02em] text-white">{column.title}</h3>
+                <ul className="mt-5 flex flex-col gap-3">
                   {column.items.map((item) => (
                     <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className="whitespace-pre-line font-sans text-[15px] font-normal leading-[160.4%] tracking-[-0.02em] text-white transition duration-300 hover:text-[#56B0BB] md:text-[16px] lg:text-[17px] 2xl:text-[20px]"
-                      >
+                      <Link href={item.href} className="whitespace-pre-line font-sans text-[14px] font-normal leading-[1.45] tracking-[-0.02em] text-white/82 transition duration-300 hover:text-[#56B0BB] md:text-[15px]">
                         {item.label}
                       </Link>
                     </li>
