@@ -8,6 +8,11 @@ import {
   WordPressCalendar,
   WordPressCorporateCampaign,
 } from '@/types/wordpress';
+import {
+  fallbackCorporateCampaigns,
+  fallbackVaccineCalendar,
+  fallbackVaccines,
+} from './vacinaone-fallback-content';
 
 const _WP_API = process.env.WORDPRESS_API_URL;
 const _WP_BASE = process.env.WP_BASE_URL;
@@ -170,7 +175,7 @@ export async function getCategories(): Promise<WordPressCategory[]> {
 // VACINAS (Custom Post Type)
 export async function getVaccines(): Promise<WordPressVaccine[]> {
   const data = await fetchFromWordPress<WordPressVaccine[]>('/vacinas?_embed=1&per_page=100');
-  return data || [];
+  return data && data.length > 0 ? data : fallbackVaccines;
 }
 
 export async function getVaccineBySlug(
@@ -179,7 +184,10 @@ export async function getVaccineBySlug(
   const vaccines = await fetchFromWordPress<WordPressVaccine[]>(
     `/vacinas?slug=${slug}&_embed=1`
   );
-  return vaccines && vaccines.length > 0 ? vaccines[0] : null;
+
+  if (vaccines && vaccines.length > 0) return vaccines[0];
+
+  return fallbackVaccines.find((vaccine) => vaccine.slug === slug) || null;
 }
 
 // UNIDADES (Custom Post Type)
@@ -208,7 +216,7 @@ export async function getCorporateCampaigns(): Promise<WordPressCorporateCampaig
   const data = await fetchFromWordPress<WordPressCorporateCampaign[]>(
     '/campanhas_empresas?_embed=1&per_page=100'
   );
-  return data || [];
+  return data && data.length > 0 ? data : fallbackCorporateCampaigns;
 }
 
 export async function getCorporateCampaignBySlug(
@@ -217,7 +225,10 @@ export async function getCorporateCampaignBySlug(
   const items = await fetchFromWordPress<WordPressCorporateCampaign[]>(
     `/campanhas_empresas?slug=${slug}&_embed=1`
   );
-  return items && items.length > 0 ? items[0] : null;
+
+  if (items && items.length > 0) return items[0];
+
+  return fallbackCorporateCampaigns.find((item) => item.slug === slug) || null;
 }
 
 // CALENDÁRIO VACINAL (Custom Post Type)
@@ -225,7 +236,7 @@ export async function getVaccineCalendar(): Promise<WordPressCalendar[]> {
   const data = await fetchFromWordPress<WordPressCalendar[]>(
     '/calendario_vacinal?_embed=1&per_page=100'
   );
-  return data || [];
+  return data && data.length > 0 ? data : fallbackVaccineCalendar;
 }
 
 export async function getVaccineCalendarBySlug(
@@ -234,5 +245,8 @@ export async function getVaccineCalendarBySlug(
   const items = await fetchFromWordPress<WordPressCalendar[]>(
     `/calendario_vacinal?slug=${slug}&_embed=1`
   );
-  return items && items.length > 0 ? items[0] : null;
+
+  if (items && items.length > 0) return items[0];
+
+  return fallbackVaccineCalendar.find((item) => item.slug === slug) || null;
 }
