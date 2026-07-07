@@ -1,21 +1,17 @@
 import { getUnits, getFaqs } from '@/lib/wordpress';
 import Link from 'next/link';
 import ContactForm from '@/components/contact/ContactForm';
-import ContactInfoCards from '@/components/contact/ContactInfoCards';
 import ContactFaq from '@/components/contact/ContactFaq';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 import {
   MessageCircle,
-  CalendarDays,
   Building2,
-  MapPin,
   Clock3,
   Phone,
   UsersRound,
   ClipboardList,
   Hospital,
-  Send,
   Zap,
-  CheckCircle2
 } from "lucide-react";
 
 export const metadata = {
@@ -26,6 +22,15 @@ export const metadata = {
 export default async function ContactPage() {
   const units = await getUnits();
   const faqs = await getFaqs();
+  const whatsappHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e gostaria de atendimento.'
+  );
+  const appointmentHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero agendar uma vacinação.'
+  );
+  const corporateHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero falar sobre vacinação para empresas.'
+  );
 
   // Filtrar unidades ativas
   const activeUnits = units.filter(unit => unit.acf?.unidade_ativa !== false);
@@ -51,18 +56,22 @@ export default async function ContactPage() {
                 Agende sua vacinação, tire dúvidas ou solicite orientação para sua família, empresa ou instituição.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="#formulario-contato"
+                <a
+                  href={appointmentHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                 >
                   Agendar Vacinação
-                </Link>
-                <Link
-                  href="#formulario-contato"
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
                 >
                   Falar no WhatsApp
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -133,7 +142,8 @@ export default async function ContactPage() {
                 title: 'WhatsApp',
                 text: 'Fale com a equipe para tirar dúvidas ou iniciar um agendamento.',
                 cta: 'Falar no WhatsApp',
-                href: '#formulario-contato',
+                href: whatsappHref,
+                external: true,
                 Icon: MessageCircle,
               },
               {
@@ -141,13 +151,15 @@ export default async function ContactPage() {
                 text: 'Envie seus dados e retornaremos com as próximas orientações.',
                 cta: 'Preencher formulário',
                 href: '#formulario-contato',
+                external: false,
                 Icon: ClipboardList,
               },
               {
                 title: 'Empresas',
                 text: 'Solicite informações para campanhas de vacinação corporativa.',
                 cta: 'Solicitar campanha',
-                href: '/empresas',
+                href: corporateHref,
+                external: true,
                 Icon: Building2,
               },
               {
@@ -155,6 +167,7 @@ export default async function ContactPage() {
                 text: 'Consulte atendimento, endereço e horário das unidades disponíveis.',
                 cta: 'Ver unidades',
                 href: '/unidades',
+                external: false,
                 Icon: Hospital,
               },
             ].map((card, index) => (
@@ -167,12 +180,23 @@ export default async function ContactPage() {
                 </div>
                 <h3 className="text-xl font-bold text-[#1A3858] mb-4">{card.title}</h3>
                 <p className="text-[#5A5A5A] mb-6 leading-relaxed">{card.text}</p>
-                <Link
-                  href={card.href}
-                  className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
-                >
-                  {card.cta}
-                </Link>
+                {card.external ? (
+                  <a
+                    href={card.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
+                  >
+                    {card.cta}
+                  </a>
+                ) : (
+                  <Link
+                    href={card.href}
+                    className="inline-flex items-center justify-center border border-[#56B0BB] text-[#56B0BB] font-semibold px-6 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
+                  >
+                    {card.cta}
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -249,13 +273,13 @@ export default async function ContactPage() {
             {[
               {
                 title: 'Unidade',
-                subtitle: 'Vacina One Campinas',
-                text: 'Endereço a definir · Campinas - SP',
+                subtitle: activeUnits[0]?.acf?.nome_da_unidade || 'VacinaOne Campinas',
+                text: activeUnits[0]?.acf?.endereco_completo || 'Endereço a definir · Campinas - SP',
                 Icon: Hospital,
               },
               {
                 title: 'Horário',
-                subtitle: 'Atendimento sob agendamento',
+                subtitle: activeUnits[0]?.acf?.horario_de_funcionamento || 'Atendimento sob agendamento',
                 text: 'Confirme disponibilidade antes de se deslocar.',
                 Icon: Clock3,
               },
@@ -316,12 +340,14 @@ export default async function ContactPage() {
               Fale com a VacinaOne e receba orientação para agendar sua vacinação com tranquilidade.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="#formulario-contato"
+              <a
+                href={appointmentHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
               >
                 Agendar Vacinação
-              </Link>
+              </a>
               <Link
                 href="/vacinas"
                 className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
