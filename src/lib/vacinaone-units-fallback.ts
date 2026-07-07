@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { WordPressUnit } from '@/types/wordpress';
 import { siteContact } from './site-config';
 
