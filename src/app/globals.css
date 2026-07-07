@@ -160,3 +160,106 @@
     text-decoration: none;
   }
 }
+
+@layer utilities {
+  @media (min-width: 1024px) and (max-width: 1440px), (max-height: 840px) {
+    body {
+      --tkn-compact-section-y: clamp(48px, 5vw, 88px);
+      --tkn-compact-card-pad: clamp(20px, 1.8vw, 30px);
+      --tkn-compact-button-y: 0.72rem;
+      --tkn-compact-button-x: 1.45rem;
+    }
+
+    main section {
+      padding-top: var(--tkn-compact-section-y) !important;
+      padding-bottom: var(--tkn-compact-section-y) !important;
+    }
+
+    main h1 {
+      font-size: clamp(32px, 4.4vw, 56px) !important;
+      line-height: 1.04 !important;
+      letter-spacing: -0.035em !important;
+    }
+
+    main h2 {
+      font-size: clamp(26px, 3.2vw, 42px) !important;
+      line-height: 1.1 !important;
+      letter-spacing: -0.03em !important;
+    }
+
+    main h3 {
+      font-size: clamp(17px, 1.7vw, 24px) !important;
+      line-height: 1.18 !important;
+    }
+
+    main p,
+    main li,
+    main span {
+      line-height: 1.48 !important;
+    }
+
+    main p {
+      font-size: clamp(14px, 1.05vw, 17px) !important;
+    }
+
+    main a[class*="rounded-full"],
+    main button[class*="rounded-full"]:not([class*="w-[36px]"]):not([class*="w-[44px]"]) {
+      min-height: 44px !important;
+      height: auto !important;
+      padding: var(--tkn-compact-button-y) var(--tkn-compact-button-x) !important;
+      font-size: clamp(14px, 1vw, 16px) !important;
+      line-height: 1.1 !important;
+    }
+
+    main [class*="rounded-[28px]"],
+    main [class*="rounded-[32px]"] {
+      border-radius: 22px !important;
+    }
+
+    main [class*="p-12"],
+    main [class*="p-10"],
+    main [class*="p-8"],
+    main [class*="p-7"],
+    main [class*="p-6"] {
+      padding: var(--tkn-compact-card-pad) !important;
+    }
+
+    main [class*="gap-12"],
+    main [class*="gap-10"],
+    main [class*="gap-8"] {
+      gap: clamp(20px, 2.5vw, 36px) !important;
+    }
+
+    main [class*="mt-16"],
+    main [class*="mt-14"],
+    main [class*="mt-12"],
+    main [class*="mt-10"] {
+      margin-top: clamp(24px, 3vw, 44px) !important;
+    }
+
+    main [class*="mb-16"],
+    main [class*="mb-12"],
+    main [class*="mb-10"] {
+      margin-bottom: clamp(20px, 2.5vw, 36px) !important;
+    }
+
+    main [class*="min-h-[calc(100vh-110px)]"] {
+      min-height: auto !important;
+    }
+
+    .prose-vacinaone {
+      font-size: 0.98rem !important;
+      line-height: 1.62 !important;
+    }
+
+    .prose-vacinaone h2 {
+      margin-top: 2rem !important;
+      font-size: clamp(1.45rem, 1.1rem + 1vw, 1.95rem) !important;
+    }
+
+    .prose-vacinaone h3 {
+      margin-top: 1.65rem !important;
+      font-size: clamp(1.18rem, 1rem + 0.6vw, 1.45rem) !important;
+    }
+  }
+}
