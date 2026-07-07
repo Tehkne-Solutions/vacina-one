@@ -1,6 +1,7 @@
 import { getCorporateCampaigns } from '@/lib/wordpress';
 import Link from 'next/link';
 import CampaignCard from '@/components/empresas/CampaignCard';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 export const metadata = {
   title: 'Vacinação para Empresas | VacinaOne',
@@ -9,6 +10,9 @@ export const metadata = {
 
 export default async function CorporatePage() {
   const campaigns = await getCorporateCampaigns();
+  const corporateHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero solicitar uma campanha de vacinação para empresa.'
+  );
 
   return (
     <main>
@@ -28,18 +32,22 @@ export default async function CorporatePage() {
                 Organize campanhas de vacinação com atendimento humanizado, controle das doses e orientação clara para colaboradores.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contato"
+                <a
+                  href={corporateHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                 >
                   Solicitar Campanha
-                </Link>
-                <Link
-                  href="/contato"
+                </a>
+                <a
+                  href={corporateHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
                 >
                   Falar no WhatsApp
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -119,12 +127,14 @@ export default async function CorporatePage() {
               <p className="text-lg text-[#5A5A5A] mb-6">
                 Em breve, você poderá consultar aqui as opções de vacinação para empresas e instituições.
               </p>
-              <Link
-                href="/contato"
+              <a
+                href={corporateHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
               >
                 Falar com a equipe
-              </Link>
+              </a>
             </div>
           ) : (
             <div
@@ -152,12 +162,14 @@ export default async function CorporatePage() {
             Nossa equipe pode ajudar sua empresa a planejar uma ação segura, clara e bem organizada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contato"
+            <a
+              href={corporateHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
             >
               Solicitar Campanha
-            </Link>
+            </a>
             <Link
               href="/vacinas"
               className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
