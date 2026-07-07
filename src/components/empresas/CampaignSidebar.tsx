@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface CampaignSidebarProps {
   campaignName: string;
@@ -6,6 +7,12 @@ interface CampaignSidebarProps {
 }
 
 export default function CampaignSidebar({ campaignName, whatsappUrl }: CampaignSidebarProps) {
+  const finalWhatsappUrl =
+    whatsappUrl ||
+    getWhatsAppHref(
+      `Olá! Vim pelo site da VacinaOne e quero falar sobre campanha para empresas: ${campaignName}.`
+    );
+
   return (
     <div className="flex flex-col gap-5 lg:sticky lg:top-[120px]">
       {/* CTA principal */}
@@ -17,24 +24,24 @@ export default function CampaignSidebar({ campaignName, whatsappUrl }: CampaignS
           A equipe VacinaOne pode orientar sua empresa sobre vacinas,
           organização, prazos e próximos passos.
         </p>
-        <Link
-          href="/contato"
+        <a
+          href={finalWhatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label={`Solicitar campanha — ${campaignName}`}
           className="inline-flex items-center justify-center bg-[#F0B954] text-white font-black text-[14px] px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
         >
           Solicitar Campanha
-        </Link>
-        {whatsappUrl && (
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Falar no WhatsApp"
-            className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-black text-[14px] px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
-          >
-            Falar no WhatsApp
-          </a>
-        )}
+        </a>
+        <a
+          href={finalWhatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Falar no WhatsApp"
+          className="inline-flex items-center justify-center bg-[#56B0BB] text-white font-black text-[14px] px-6 py-3 rounded-full hover:scale-105 transition-transform duration-200"
+        >
+          Falar no WhatsApp
+        </a>
       </div>
 
       {/* Links secundários */}
