@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const footerColumns = [
   {
-    title: "Our address",
+    title: "Nosso endereço",
     items: [
       { label: "piodoc@example.com", href: "mailto:piodoc@example.com" },
       { label: "+01-234-56789", href: "tel:+0123456789" },
@@ -17,21 +17,21 @@ const footerColumns = [
     ],
   },
   {
-    title: "Uselink",
+    title: "Links úteis",
     items: [
-      { label: "Home", href: "/" },
-      { label: "How it works", href: "#" },
-      { label: "Specialist", href: "#" },
-      { label: "Services", href: "#" },
+      { label: "Início", href: "/" },
+      { label: "Como funciona", href: "#" },
+      { label: "Especialistas", href: "#" },
+      { label: "Serviços", href: "#" },
     ],
   },
   {
-    title: "Company",
+    title: "Institucional",
     items: [
-      { label: "Solution", href: "#" },
+      { label: "Soluções", href: "#" },
       { label: "Legal", href: "#" },
-      { label: "Career", href: "#" },
-      { label: "FAQ", href: "/#faq" },
+      { label: "Carreiras", href: "#" },
+      { label: "Dúvidas frequentes", href: "/#faq" },
     ],
   },
 ];

@@ -28,7 +28,7 @@ export default function PopularVaccines() {
           </h2>
 
           <p className="text-[clamp(16px,1.2vw,20px)] font-medium leading-[160.4%] tracking-[-0.02em] text-white">
-            We work with doctors who are specialist in their fields to help you
+            Encontre as principais vacinas para crianças, adultos, idosos, gestantes e empresas.
           </p>
         </motion.div>
 
