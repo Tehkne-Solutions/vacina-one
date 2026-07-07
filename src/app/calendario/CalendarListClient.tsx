@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import CalendarCard from '@/components/calendario/CalendarCard';
 import { WordPressCalendar } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 const PUBLICOS = ['Bebê', 'Crianças', 'Adultos', 'Gestante', '60+', 'Empresas'];
 
@@ -12,6 +13,13 @@ interface CalendarListClientProps {
 }
 
 export default function CalendarListClient({ items }: CalendarListClientProps) {
+  const appointmentHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero agendar vacinação pelo calendário vacinal.'
+  );
+  const teamHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e quero falar com a equipe sobre calendário vacinal.'
+  );
+
   return (
     <main>
       {/* Hero */}
@@ -52,12 +60,14 @@ export default function CalendarListClient({ items }: CalendarListClientProps) {
                 transition={{ duration: 0.45, delay: 0.24 }}
                 className="flex flex-wrap gap-3"
               >
-                <Link
-                  href="/contato"
+                <a
+                  href={appointmentHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
                 >
                   Agendar Vacinação
-                </Link>
+                </a>
                 <Link
                   href="/vacinas"
                   className="inline-flex items-center border-2 border-[#1A3858] text-[#1A3858] font-black text-[15px] px-8 py-4 rounded-full hover:bg-[#1A3858] hover:text-white transition-colors duration-200"
@@ -111,12 +121,14 @@ export default function CalendarListClient({ items }: CalendarListClientProps) {
                 Em breve, você poderá consultar aqui os calendários vacinais por
                 fase da vida.
               </p>
-              <Link
-                href="/contato"
+              <a
+                href={teamHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
               >
                 Falar com a equipe
-              </Link>
+              </a>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -139,13 +151,15 @@ export default function CalendarListClient({ items }: CalendarListClientProps) {
               <p className="text-[17px] text-white/80 mb-8 max-w-[500px] mx-auto leading-relaxed">
                 Nossa equipe pode orientar você com cuidado, clareza e segurança.
               </p>
-              <Link
-                href="/contato"
+              <a
+                href={appointmentHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Agendar vacinação na VacinaOne"
                 className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
               >
                 Agendar Vacinação
-              </Link>
+              </a>
             </div>
           </div>
         </section>
