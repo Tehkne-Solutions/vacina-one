@@ -2,6 +2,7 @@ import { getCorporateCampaignBySlug } from '@/lib/wordpress';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import CampaignSidebar from '@/components/empresas/CampaignSidebar';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,11 +39,14 @@ export default async function CorporateCampaignPage({ params }: PageProps) {
   const acf = campaign.acf ?? {};
   const title = acf.titulo_publico || campaign.title.rendered;
   const description = acf.descricao_curta || campaign.excerpt.rendered.replace(/<[^>]*>/g, '');
+  const defaultWhatsAppUrl = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero falar sobre campanha para empresas: ${title.replace(/<[^>]*>/g, '')}.`
+  );
   const primaryCtaText = acf.cta_primario_texto || 'Solicitar Campanha';
-  const primaryCtaUrl = acf.cta_primario_url || '/contato';
-  const secondaryCtaText = acf.cta_secundario_texto || 'Falar com a equipe';
-  const secondaryCtaUrl = acf.cta_secundario_url || '/contato';
-  const whatsappUrl = acf.whatsapp_cta && acf.whatsapp_cta.startsWith('http') ? acf.whatsapp_cta : null;
+  const primaryCtaUrl = acf.cta_primario_url || defaultWhatsAppUrl;
+  const secondaryCtaText = acf.cta_secundario_texto || 'Falar no WhatsApp';
+  const secondaryCtaUrl = acf.cta_secundario_url || defaultWhatsAppUrl;
+  const whatsappUrl = acf.whatsapp_cta && acf.whatsapp_cta.startsWith('http') ? acf.whatsapp_cta : defaultWhatsAppUrl;
 
   const summaryItems = [
     acf.publico_alvo && { label: 'Público-alvo', value: acf.publico_alvo },
@@ -68,18 +72,22 @@ export default async function CorporateCampaignPage({ params }: PageProps) {
                 {description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
+                <a
                   href={primaryCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
                 >
                   {primaryCtaText}
-                </Link>
-                <Link
+                </a>
+                <a
                   href={secondaryCtaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-lg px-8 py-4 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
                 >
                   {secondaryCtaText}
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -206,7 +214,7 @@ export default async function CorporateCampaignPage({ params }: PageProps) {
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <CampaignSidebar campaignName={title} whatsappUrl={whatsappUrl} />
+              <CampaignSidebar campaignName={title.replace(/<[^>]*>/g, '')} whatsappUrl={whatsappUrl} />
             </div>
           </div>
         </div>
@@ -221,12 +229,14 @@ export default async function CorporateCampaignPage({ params }: PageProps) {
           <p className="text-lg text-[#5A5A5A] mb-8 max-w-2xl mx-auto">
             Fale com a VacinaOne e planeje uma campanha de vacinação com cuidado, clareza e segurança.
           </p>
-          <Link
-            href="/contato"
+          <a
+            href={defaultWhatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
           >
             Solicitar Campanha
-          </Link>
+          </a>
         </div>
       </section>
     </main>
