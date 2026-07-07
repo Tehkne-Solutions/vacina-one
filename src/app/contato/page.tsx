@@ -1,6 +1,6 @@
 import { getUnits, getFaqs } from '@/lib/wordpress';
 import Link from 'next/link';
-import ContactForm from '@/components/contact/ContactForm';
+import WhatsAppContactBox from '@/components/contact/WhatsAppContactBox';
 import ContactFaq from '@/components/contact/ContactFaq';
 import { getWhatsAppHref } from '@/lib/whatsapp';
 import { MessageCircle, Building2, Clock3, Phone, ClipboardList, Hospital, MapPin } from 'lucide-react';
@@ -34,14 +34,14 @@ export default async function ContactPage() {
               <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Contato VacinaOne</span>
               <h1 className="text-3xl font-black leading-tight text-[#1A3858] md:text-5xl">Fale com a nossa equipe</h1>
               <p className="max-w-[640px] text-[17px] leading-relaxed text-[#5A5A5A]">
-                Escolha o WhatsApp para atendimento rápido ou preencha o formulário para deixar seu interesse detalhado.
+                Escolha o WhatsApp para atendimento rápido ou preencha o caminho de interesse para falar com a equipe.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#F0B954] px-6 text-[15px] font-black text-white transition hover:brightness-105">
                   Agendar agora
                 </a>
                 <Link href="#formulario-contato" className="inline-flex h-[44px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-6 text-[15px] font-black text-[#56B0BB] transition hover:bg-[#56B0BB] hover:text-white">
-                  Ir para o formulário
+                  Ver opções
                 </Link>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default async function ContactPage() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
             {[
               { title: 'WhatsApp', text: 'Atendimento rápido para dúvidas e agendamentos.', cta: 'Abrir WhatsApp', href: whatsappHref, external: true, Icon: MessageCircle },
-              { title: 'Formulário', text: 'Deixe seus dados e interesses organizados.', cta: 'Preencher', href: '#formulario-contato', external: false, Icon: ClipboardList },
+              { title: 'Opções', text: 'Veja os assuntos atendidos pela equipe.', cta: 'Ver opções', href: '#formulario-contato', external: false, Icon: ClipboardList },
               { title: 'Empresas', text: 'Campanhas para empresas, escolas e instituições.', cta: 'Solicitar', href: corporateHref, external: true, Icon: Building2 },
               { title: 'Unidades', text: 'Endereço, horário e rota de atendimento.', cta: 'Ver unidades', href: '/unidades', external: false, Icon: Hospital },
             ].map((card) => (
@@ -102,10 +102,10 @@ export default async function ContactPage() {
         <div className="mx-auto w-[85%] max-w-[1180px]">
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="space-y-5">
-              <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Formulário</span>
+              <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Atendimento</span>
               <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Cadastro de interesse</h2>
               <p className="text-[16px] leading-relaxed text-[#5A5A5A]">
-                Use este espaço para enviar dados, perfil de atendimento e dúvidas. O WhatsApp continua sendo o canal principal para retorno rápido.
+                Use o WhatsApp para falar diretamente com a equipe sobre agendamento, famílias, empresas, escolas, domicílio ou check-up vacinal.
               </p>
               <div className="space-y-3">
                 {[
@@ -125,7 +125,7 @@ export default async function ContactPage() {
                 ))}
               </div>
             </div>
-            <ContactForm />
+            <WhatsAppContactBox />
           </div>
         </div>
       </section>
@@ -145,7 +145,7 @@ export default async function ContactPage() {
         <div className="mx-auto w-[85%] max-w-[960px] rounded-[28px] border border-[#DDEFEA] bg-[#F2FBFA] p-8 text-center shadow-sm md:p-10">
           <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Pronto para falar com a equipe?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-[16px] leading-relaxed text-[#5A5A5A]">
-            Use o WhatsApp para atendimento imediato ou envie o formulário com seus dados.
+            Use o WhatsApp para atendimento imediato ou consulte a lista de vacinas disponíveis.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#56B0BB] px-6 text-[15px] font-black text-white transition hover:brightness-105">Falar no WhatsApp</a>
