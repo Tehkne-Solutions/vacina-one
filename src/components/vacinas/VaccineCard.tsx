@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { WordPressVaccine } from '@/types/wordpress';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface VaccineCardProps {
   vaccine: WordPressVaccine;
@@ -15,6 +16,9 @@ export default function VaccineCard({ vaccine, index = 0 }: VaccineCardProps) {
   const desc = acf.descricao_curta || vaccine.excerpt.rendered.replace(/<[^>]*>/g, '').slice(0, 140);
   const available = acf.disponivel_para_agendamento !== false;
   const ctaText = acf.cta_texto || 'Agendar Vacinação';
+  const appointmentHref = getWhatsAppHref(
+    `Olá! Vim pelo site da VacinaOne e quero agendar a vacina ${name}.`
+  );
 
   const chips = [
     acf.faixa_etaria && { label: 'Faixa etária', value: acf.faixa_etaria },
@@ -74,13 +78,15 @@ export default function VaccineCard({ vaccine, index = 0 }: VaccineCardProps) {
         </Link>
 
         {available && (
-          <Link
-            href="/contato"
+          <a
+            href={appointmentHref}
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label={`Agendar vacinação: ${name}`}
             className="flex-1 inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-[14px] px-5 py-3 rounded-full hover:scale-105 transition-transform duration-200"
           >
             {ctaText}
-          </Link>
+          </a>
         )}
       </div>
     </motion.div>
