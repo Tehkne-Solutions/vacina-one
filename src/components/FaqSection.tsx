@@ -11,21 +11,21 @@ const faqColumns = [
       question: "Vocês atendem crianças de qual idade?",
       answer:
         "Atendemos desde os primeiros meses de vida. Seguimos o calendário vacinal da Sociedade Brasileira de Pediatria e orientamos os pais sobre cada etapa com muita atenção e calma.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
     {
       id: "medical-prescription",
       question: "Preciso de receita médica para tomar uma vacina?",
       answer:
         "Na maioria dos casos, não é necessário apresentar receita médica. Nossa equipe avalia o calendário vacinal, a idade, o histórico de saúde e orienta sobre a melhor conduta. Quando alguma vacina exigir indicação ou cuidado específico, avisamos antes da aplicação.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
     {
       id: "corporate-vaccination",
       question: "Como funciona a vacinação para empresas?",
       answer:
         "Organizamos campanhas de vacinação para empresas, escolas, condomínios e instituições. A equipe da VacinaOne pode ir até o local ou receber os colaboradores na clínica, com agendamento, controle das doses e emissão dos comprovantes de vacinação.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
   ],
   [
@@ -34,28 +34,28 @@ const faqColumns = [
       question: "As vacinas são seguras e registradas?",
       answer:
         "Sim. Trabalhamos apenas com vacinas de laboratórios reconhecidos, registradas e aprovadas pelos órgãos competentes. Também seguimos protocolos rigorosos de conservação, armazenamento e aplicação para garantir segurança em todas as etapas.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
     {
       id: "appointment-needed",
       question: "Preciso agendar ou posso chegar sem hora marcada?",
       answer:
         "Recomendamos o agendamento para garantir mais conforto, organização e menor tempo de espera. Assim, nossa equipe consegue preparar o atendimento com antecedência e confirmar a disponibilidade da vacina desejada.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
     {
       id: "international-travel",
       question: "Vocês têm vacinas para viagem internacional?",
       answer:
         "Sim. A VacinaOne orienta sobre vacinas importantes para viagens nacionais e internacionais, de acordo com o destino, idade e histórico vacinal. Nossa equipe ajuda você a revisar o calendário antes da viagem para embarcar com mais segurança.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
     {
       id: "vaccination-card",
       question: "Vocês emitem carteirinha ou comprovante de vacinação?",
       answer:
         "Sim. Após a aplicação, emitimos o comprovante de vacinação com as informações necessárias sobre a dose aplicada. Também orientamos sobre o registro no calendário vacinal e próximos reforços, quando houver necessidade.",
-      link: "Learn more",
+      link: "Saiba mais",
     },
   ],
 ];
