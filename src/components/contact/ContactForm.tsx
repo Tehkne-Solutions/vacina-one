@@ -18,7 +18,6 @@ export default function ContactForm() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
 
-    // Limpar erro quando usuário começa a digitar
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -27,25 +26,11 @@ export default function ContactForm() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.nome.trim()) {
-      newErrors.nome = 'Nome é obrigatório';
-    }
-
-    if (!formData.whatsapp.trim()) {
-      newErrors.whatsapp = 'WhatsApp é obrigatório';
-    }
-
-    if (!formData.tipo) {
-      newErrors.tipo = 'Tipo de atendimento é obrigatório';
-    }
-
-    if (!formData.mensagem.trim()) {
-      newErrors.mensagem = 'Mensagem é obrigatória';
-    }
-
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'E-mail inválido';
-    }
+    if (!formData.nome.trim()) newErrors.nome = 'Nome é obrigatório';
+    if (!formData.whatsapp.trim()) newErrors.whatsapp = 'WhatsApp é obrigatório';
+    if (!formData.tipo) newErrors.tipo = 'Tipo de atendimento é obrigatório';
+    if (!formData.mensagem.trim()) newErrors.mensagem = 'Mensagem é obrigatória';
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'E-mail inválido';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -53,144 +38,68 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    // TODO: Integrar envio real quando canal oficial for definido
-    // Por enquanto, apenas mostra mensagem de sucesso
+    if (!validateForm()) return;
     setIsSubmitted(true);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        nome: '',
-        email: '',
-        whatsapp: '',
-        tipo: '',
-        mensagem: '',
-      });
-    }, 3000);
   };
 
   if (isSubmitted) {
     return (
-      <div className="bg-white border border-[#EAF4EB] rounded-[32px] p-8 text-center">
-        <div className="text-4xl mb-4">✅</div>
-        <h3 className="text-xl font-bold text-[#1A3858] mb-2">
-          Mensagem enviada!
-        </h3>
-        <p className="text-[#5A5A5A]">
-          Obrigado pelo contato. Nossa equipe retornará em breve.
-        </p>
+      <div className="rounded-[24px] border border-[#DDEFEA] bg-white p-7 text-center shadow-sm">
+        <h3 className="mb-2 text-xl font-bold text-[#1A3858]">Mensagem registrada</h3>
+        <p className="text-[#5A5A5A]">Obrigado pelo contato. Nossa equipe retornará em breve.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-[#EAF4EB] rounded-[32px] p-6 md:p-8 space-y-6">
-      <div>
-        <label htmlFor="nome" className="block text-sm font-semibold text-[#1A3858] mb-2">
-          Nome completo *
-        </label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          value={formData.nome}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 bg-[#F9FCFB] border rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] transition-colors ${
-            errors.nome ? 'border-red-300' : 'border-[#EAF4EB]'
-          }`}
-          placeholder="Seu nome completo"
-        />
-        {errors.nome && <p className="text-red-500 text-sm mt-1">{errors.nome}</p>}
+    <form onSubmit={handleSubmit} className="space-y-5 rounded-[24px] border border-[#DDEFEA] bg-white p-5 shadow-sm md:p-7">
+      <div className="rounded-[18px] bg-[#F2FBFA] p-4">
+        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#56B0BB]">Formulário de atendimento</p>
+        <h3 className="mt-1 text-[22px] font-black leading-tight text-[#1A3858]">Fale com a VacinaOne</h3>
+        <p className="mt-2 text-[14px] leading-relaxed text-[#5A5A5A]">Preencha seus dados para a equipe retornar com orientação e próximos passos.</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <label htmlFor="nome" className="mb-2 block text-sm font-semibold text-[#1A3858]">Nome completo *</label>
+          <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} className={`w-full rounded-[14px] border bg-[#F9FCFB] px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] ${errors.nome ? 'border-red-300' : 'border-[#EAF4EB]'}`} placeholder="Seu nome completo" />
+          {errors.nome && <p className="mt-1 text-sm text-red-500">{errors.nome}</p>}
+        </div>
+        <div>
+          <label htmlFor="whatsapp" className="mb-2 block text-sm font-semibold text-[#1A3858]">WhatsApp *</label>
+          <input type="tel" id="whatsapp" name="whatsapp" value={formData.whatsapp} onChange={handleChange} className={`w-full rounded-[14px] border bg-[#F9FCFB] px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] ${errors.whatsapp ? 'border-red-300' : 'border-[#EAF4EB]'}`} placeholder="(19) 99999-9999" />
+          {errors.whatsapp && <p className="mt-1 text-sm text-red-500">{errors.whatsapp}</p>}
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <label htmlFor="email" className="mb-2 block text-sm font-semibold text-[#1A3858]">E-mail</label>
+          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className={`w-full rounded-[14px] border bg-[#F9FCFB] px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] ${errors.email ? 'border-red-300' : 'border-[#EAF4EB]'}`} placeholder="seu@email.com" />
+          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+        </div>
+        <div>
+          <label htmlFor="tipo" className="mb-2 block text-sm font-semibold text-[#1A3858]">Tipo de atendimento *</label>
+          <select id="tipo" name="tipo" value={formData.tipo} onChange={handleChange} className={`w-full rounded-[14px] border bg-[#F9FCFB] px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] ${errors.tipo ? 'border-red-300' : 'border-[#EAF4EB]'}`}>
+            <option value="">Selecione uma opção</option>
+            <option value="agendamento">Agendamento</option>
+            <option value="familia">Família</option>
+            <option value="empresas">Empresas</option>
+            <option value="escolas">Escolas</option>
+            <option value="domiciliar">Domiciliar</option>
+            <option value="outros">Outros</option>
+          </select>
+          {errors.tipo && <p className="mt-1 text-sm text-red-500">{errors.tipo}</p>}
+        </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-[#1A3858] mb-2">
-          E-mail
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 bg-[#F9FCFB] border rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] transition-colors ${
-            errors.email ? 'border-red-300' : 'border-[#EAF4EB]'
-          }`}
-          placeholder="seu@email.com"
-        />
-        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+        <label htmlFor="mensagem" className="mb-2 block text-sm font-semibold text-[#1A3858]">Mensagem *</label>
+        <textarea id="mensagem" name="mensagem" value={formData.mensagem} onChange={handleChange} rows={4} className={`w-full resize-none rounded-[14px] border bg-[#F9FCFB] px-4 py-3 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] ${errors.mensagem ? 'border-red-300' : 'border-[#EAF4EB]'}`} placeholder="Digite sua mensagem" />
+        {errors.mensagem && <p className="mt-1 text-sm text-red-500">{errors.mensagem}</p>}
       </div>
 
-      <div>
-        <label htmlFor="whatsapp" className="block text-sm font-semibold text-[#1A3858] mb-2">
-          WhatsApp *
-        </label>
-        <input
-          type="tel"
-          id="whatsapp"
-          name="whatsapp"
-          value={formData.whatsapp}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 bg-[#F9FCFB] border rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] transition-colors ${
-            errors.whatsapp ? 'border-red-300' : 'border-[#EAF4EB]'
-          }`}
-          placeholder="(11) 99999-9999"
-        />
-        {errors.whatsapp && <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="tipo" className="block text-sm font-semibold text-[#1A3858] mb-2">
-          Tipo de atendimento *
-        </label>
-        <select
-          id="tipo"
-          name="tipo"
-          value={formData.tipo}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 bg-[#F9FCFB] border rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] transition-colors ${
-            errors.tipo ? 'border-red-300' : 'border-[#EAF4EB]'
-          }`}
-        >
-          <option value="">Selecione uma opção</option>
-          <option value="agendamento">Agendamento de vacinação</option>
-          <option value="duvidas">Dúvidas sobre vacinas</option>
-          <option value="empresas">Vacinação para empresas</option>
-          <option value="calendario">Calendário vacinal</option>
-          <option value="unidades">Unidades</option>
-          <option value="outros">Outros</option>
-        </select>
-        {errors.tipo && <p className="text-red-500 text-sm mt-1">{errors.tipo}</p>}
-      </div>
-
-      <div>
-        <label htmlFor="mensagem" className="block text-sm font-semibold text-[#1A3858] mb-2">
-          Mensagem *
-        </label>
-        <textarea
-          id="mensagem"
-          name="mensagem"
-          value={formData.mensagem}
-          onChange={handleChange}
-          rows={4}
-          className={`w-full px-4 py-3 bg-[#F9FCFB] border rounded-[16px] focus:outline-none focus:ring-2 focus:ring-[#56B0BB] transition-colors resize-none ${
-            errors.mensagem ? 'border-red-300' : 'border-[#EAF4EB]'
-          }`}
-          placeholder="Digite sua mensagem..."
-        />
-        {errors.mensagem && <p className="text-red-500 text-sm mt-1">{errors.mensagem}</p>}
-      </div>
-
-      <button
-        type="submit"
-        className="w-full bg-[#F0B954] text-white font-bold text-lg px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-[#F0B954] focus:ring-offset-2"
-      >
+      <button type="submit" className="inline-flex h-[46px] w-full items-center justify-center rounded-[14px] bg-[#F0B954] px-7 text-[15px] font-black text-white transition duration-200 hover:brightness-105">
         Enviar mensagem
       </button>
     </form>

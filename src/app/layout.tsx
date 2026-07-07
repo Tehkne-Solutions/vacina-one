@@ -6,12 +6,17 @@ import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-franie", // Usando como fallback para Franie
+  variable: "--font-franie",
 });
 
 export const metadata: Metadata = {
-  title: "Vacina One",
+  title: "VacinaOne",
   description: "Proteção e cuidado para todas as fases da vida",
+  icons: {
+    icon: "/images/vacina-one-logo.png",
+    shortcut: "/images/vacina-one-logo.png",
+    apple: "/images/vacina-one-logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +28,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${plusJakartaSans.variable} font-franie overflow-x-clip`}>
         <Header />
-        <div className="pt-[80px] md:pt-[110px] overflow-x-clip">
+        <div className="overflow-x-clip pt-[72px] md:pt-[88px]">
           {children}
         </div>
         <Footer />

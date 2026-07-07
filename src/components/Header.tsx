@@ -3,78 +3,74 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'VacinaOne', href: '/#sobre' },
-  { label: 'Unidades', href: '/unidades' },
-  { label: 'Vacinas', href: '/vacinas' },
-  { label: 'Calendário', href: '/calendario' },
-  { label: 'Empresas', href: '/empresas' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contato', href: '/contato' },
-];
+import { getWhatsAppHref } from '@/lib/whatsapp';
+import { mainNavLinks } from '@/lib/site-config';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const franchiseHref = getWhatsAppHref(
+    'Olá! Vim pelo site da VacinaOne e tenho interesse em falar sobre franquia.'
+  );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-      {/* Container 85% */}
-      <div className="w-[85%] h-[80px] md:h-[110px] mx-auto flex items-center justify-between">
+    <header className="fixed left-0 top-0 z-[100] w-full border-b border-[#EAF4EB] bg-white/95 shadow-[0_2px_10px_rgba(0,0,0,0.05)] backdrop-blur">
+      <div className="mx-auto flex h-[72px] w-[85%] items-center justify-between md:h-[88px]">
+        <Link href="/" aria-label="Ir para a página inicial da VacinaOne" className="relative h-[34px] w-[142px] shrink-0 md:h-[42px] md:w-[176px]">
+          <Image src="/images/vacina-one-logo.png" alt="VacinaOne" fill className="object-contain" priority />
+        </Link>
 
-        {/* Logo */}
-        <div className="relative w-[150px] h-[36px] md:w-[221px] md:h-[53px] shrink-0">
-          <Image src="/images/vacina-one-logo.png" alt="Vacina One" fill className="object-contain" priority />
-        </div>
-
-        {/* Nav desktop — gap menor em xl, maior em 2xl */}
-        <nav className="hidden xl:flex items-center gap-4 2xl:gap-8 font-franie font-medium text-[15px] 2xl:text-[16px]">
-          {navLinks.map((item) => (
+        <nav className="hidden items-center gap-5 font-franie text-[14px] font-semibold text-[#1A3858] xl:flex 2xl:gap-7 2xl:text-[15px]">
+          {mainNavLinks.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`whitespace-nowrap transition-colors ${item.label === 'Home' ? 'text-black' : 'text-vacina-gray hover:text-vacina-teal'}`}
+              className="whitespace-nowrap transition-colors hover:text-[#56B0BB]"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA desktop */}
-        <button className="hidden xl:flex items-center justify-center px-6 h-[50px] border border-vacina-teal rounded-full font-franie font-medium text-[15px] 2xl:text-[18px] text-vacina-teal hover:bg-vacina-teal hover:text-white hover:scale-[1.02] transition-all duration-300 shrink-0">
+        <a
+          href={franchiseHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden h-[40px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-5 font-franie text-[14px] font-bold text-[#56B0BB] transition-all duration-300 hover:bg-[#56B0BB] hover:text-white xl:inline-flex"
+        >
           Seja um Franqueado
-        </button>
+        </a>
 
-        {/* Hamburger mobile */}
         <button
-          className="xl:hidden flex flex-col justify-center items-center w-10 h-10 gap-[6px]"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-[6px] xl:hidden"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
         >
-          <span className={`block w-6 h-[2px] bg-vacina-dark transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-6 h-[2px] bg-vacina-dark transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-[2px] bg-vacina-dark transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`block h-[2px] w-6 bg-[#1A3858] transition-all duration-300 ${isOpen ? 'translate-y-2 rotate-45' : ''}`} />
+          <span className={`block h-[2px] w-6 bg-[#1A3858] transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+          <span className={`block h-[2px] w-6 bg-[#1A3858] transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`} />
         </button>
       </div>
 
-      {/* Menu mobile overlay */}
-      <div className={`xl:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'} bg-white shadow-xl`}>
-        <div className="w-[85%] mx-auto flex flex-col py-4 gap-3">
-          {navLinks.map((item) => (
+      <div className={`overflow-hidden bg-white shadow-xl transition-all duration-300 xl:hidden ${isOpen ? 'max-h-[460px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="mx-auto flex w-[85%] flex-col gap-1 py-3">
+          {mainNavLinks.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="text-[18px] font-medium text-vacina-dark border-b border-gray-100 pb-3 hover:text-vacina-teal transition-colors"
+              className="border-b border-[#EAF4EB] py-3 text-[16px] font-semibold text-[#1A3858] transition-colors hover:text-[#56B0BB]"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
             </Link>
           ))}
-          {/* Botao que estava sumindo */}
-          <button className="w-full h-[55px] bg-vacina-teal text-white rounded-full font-franie font-medium text-[18px] mt-3 hover:brightness-105 hover:scale-[1.02] transition-all duration-300">
+          <a
+            href={franchiseHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex h-[42px] w-full items-center justify-center rounded-[14px] bg-[#56B0BB] font-franie text-[15px] font-bold text-white transition-all duration-300 hover:brightness-105"
+          >
             Seja um Franqueado
-          </button>
+          </a>
         </div>
       </div>
     </header>
