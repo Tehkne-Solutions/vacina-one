@@ -1,23 +1,30 @@
 import { getWhatsAppHref } from './whatsapp';
 
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contato@vacinaone.com.br';
+const contactPhone = process.env.NEXT_PUBLIC_CONTACT_PHONE_LABEL || '+55 19 99893-0846';
+const contactAddress = process.env.NEXT_PUBLIC_CONTACT_ADDRESS || 'Taquaral · Campinas - SP';
+const contactHours = process.env.NEXT_PUBLIC_CONTACT_HOURS || 'Atendimento sob agendamento';
+const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/vacinaone/';
+const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://www.facebook.com/vacinaone/';
+
 export const siteContact = {
-  email: 'contato@vacinaone.com.br',
-  phone: '+55 19 99893-0846',
+  email: contactEmail,
+  phone: contactPhone,
   phoneHref: 'tel:+5519998930846',
-  address: 'Taquaral · Campinas - SP',
+  address: contactAddress,
   mapsHref: 'https://www.google.com/maps/search/?api=1&query=VacinaOne%20Taquaral%20Campinas%20SP',
-  hours: 'Atendimento sob agendamento',
+  hours: contactHours,
 };
 
 export const siteSocialLinks = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/vacinaone/',
+    href: instagramUrl,
     short: 'IG',
   },
   {
     label: 'Facebook',
-    href: 'https://www.facebook.com/vacinaone/',
+    href: facebookUrl,
     short: 'FB',
   },
   {

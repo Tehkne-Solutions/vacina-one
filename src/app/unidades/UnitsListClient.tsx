@@ -3,15 +3,18 @@
 import { motion } from 'framer-motion';
 import UnitCard from '@/components/unidades/UnitCard';
 import { WordPressUnit } from '@/types/wordpress';
+import { siteContact } from '@/lib/site-config';
+import { getWhatsAppHref } from '@/lib/whatsapp';
 
 interface UnitsListClientProps {
   units: WordPressUnit[];
 }
 
 export default function UnitsListClient({ units }: UnitsListClientProps) {
+  const appointmentHref = getWhatsAppHref('Olá! Vim pelo site da VacinaOne e quero agendar vacinação.');
+
   return (
     <main>
-      {/* Hero */}
       <section className="bg-white border-b border-[#EAF4EB] py-16">
         <div className="w-[85%] mx-auto max-w-[1570px]">
           <motion.p
@@ -45,23 +48,38 @@ export default function UnitsListClient({ units }: UnitsListClientProps) {
         </div>
       </section>
 
-      {/* Grid */}
       <section className="py-16">
         <div className="w-[85%] mx-auto max-w-[1570px]">
           {units.length === 0 ? (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="text-center py-20"
+              className="mx-auto max-w-[720px] rounded-[28px] border border-[#DDEFEA] bg-white p-7 shadow-sm"
             >
-              <p className="text-[20px] text-[#5A5A5A] mb-2">
-                Nenhuma unidade cadastrada ainda.
+              <span className="inline-flex rounded-full bg-[rgba(86,176,187,0.12)] px-3 py-1 text-[12px] font-bold uppercase tracking-[0.12em] text-[#56B0BB]">
+                Unidade principal
+              </span>
+              <h2 className="mt-4 text-[26px] font-black text-[#1A3858]">VacinaOne Campinas</h2>
+              <p className="mt-3 text-[15px] leading-relaxed text-[#5A5A5A]">
+                Atendimento em Campinas, região do Taquaral, com agendamento para famílias, empresas, escolas e instituições.
               </p>
-              <p className="text-[16px] text-[#5A5A5A]">
-                Em breve, você poderá consultar aqui as unidades disponíveis da
-                VacinaOne.
-              </p>
+
+              <div className="mt-6 grid gap-3 text-[14px] text-[#5A5A5A] sm:grid-cols-2">
+                <p><span className="font-bold text-[#1A3858]">Endereço: </span>{siteContact.address}</p>
+                <p><span className="font-bold text-[#1A3858]">Horário: </span>{siteContact.hours}</p>
+                <p><span className="font-bold text-[#1A3858]">Telefone: </span>{siteContact.phone}</p>
+                <p><span className="font-bold text-[#1A3858]">E-mail: </span>{siteContact.email}</p>
+              </div>
+
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#F0B954] px-6 text-[15px] font-black text-white transition hover:brightness-105">
+                  Agendar vacinação
+                </a>
+                <a href={siteContact.mapsHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-6 text-[15px] font-black text-[#56B0BB] transition hover:bg-[#56B0BB] hover:text-white">
+                  Ver no mapa
+                </a>
+              </div>
             </motion.div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
