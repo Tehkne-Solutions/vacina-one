@@ -4,8 +4,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
 import FamilyCareCarousel from "@/components/FamilyCareCarousel";
+import { getWhatsAppHref } from "@/lib/whatsapp";
 
 export default function FamilyCareAndCorporate() {
+  const scheduleHref = getWhatsAppHref(
+    "Olá! Vim pelo site da VacinaOne e quero agendar vacinação."
+  );
+  const corporateHref = getWhatsAppHref(
+    "Olá! Vim pelo site da VacinaOne e quero falar sobre vacinação para empresas."
+  );
+
   return (
     <motion.section
       className="w-full bg-white py-[clamp(64px,7vw,130px)] font-franie"
@@ -49,14 +57,18 @@ export default function FamilyCareAndCorporate() {
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row">
               <a
-                href="#"
+                href={scheduleHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-[48px] w-full items-center justify-center rounded-full bg-[#56B0BB] px-8 text-[clamp(15px,1vw,18px)] font-bold tracking-[-0.02em] text-white transition hover:scale-[1.02] hover:brightness-105 sm:w-auto sm:h-[50px]"
               >
                 Agendar Vacinação
               </a>
 
               <a
-                href="#"
+                href={corporateHref}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex h-[48px] w-full items-center justify-center rounded-full bg-[#F0B954] px-8 text-[clamp(15px,1vw,18px)] font-bold tracking-[-0.02em] text-white transition hover:scale-[1.02] hover:brightness-105 sm:w-auto sm:h-[50px]"
               >
                 Falar no WhatsApp
