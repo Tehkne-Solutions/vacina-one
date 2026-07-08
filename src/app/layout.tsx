@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -13,9 +14,9 @@ export const metadata: Metadata = {
   title: "VacinaOne",
   description: "Proteção e cuidado para todas as fases da vida",
   icons: {
-    icon: "/images/vacina-one-logo.png",
-    shortcut: "/images/vacina-one-logo.png",
-    apple: "/images/vacina-one-logo.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

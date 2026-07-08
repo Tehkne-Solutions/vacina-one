@@ -8,7 +8,7 @@ import { siteContact } from '@/lib/site-config';
 
 export const metadata = {
   title: 'Contato | VacinaOne',
-  description: 'Fale com a VacinaOne para agendar atendimento, tirar dúvidas ou solicitar orientação para famílias, empresas e instituições.',
+  description: 'Fale com a VacinaOne pelo WhatsApp oficial para agendar atendimento, tirar dúvidas ou solicitar orientação para famílias, empresas e instituições.',
 };
 
 export default async function ContactPage() {
@@ -31,27 +31,27 @@ export default async function ContactPage() {
         <div className="mx-auto w-[85%] max-w-[1280px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_420px] lg:items-center">
             <div className="space-y-5">
-              <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Contato VacinaOne</span>
+              <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Contato oficial VacinaOne</span>
               <h1 className="text-3xl font-black leading-tight text-[#1A3858] md:text-5xl">Fale com a nossa equipe</h1>
               <p className="max-w-[640px] text-[17px] leading-relaxed text-[#5A5A5A]">
-                Escolha o WhatsApp para atendimento rápido ou preencha o caminho de interesse para falar com a equipe.
+                Atendimento pelo WhatsApp oficial da VacinaOne para agendamentos, dúvidas, empresas, escolas e instituições.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#F0B954] px-6 text-[15px] font-black text-white transition hover:brightness-105">
-                  Agendar agora
+                <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#25D366] px-6 text-[15px] font-black text-white transition hover:brightness-105">
+                  Falar no WhatsApp
                 </a>
-                <Link href="#formulario-contato" className="inline-flex h-[44px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-6 text-[15px] font-black text-[#56B0BB] transition hover:bg-[#56B0BB] hover:text-white">
-                  Ver opções
+                <Link href="#atendimento-whatsapp" className="inline-flex h-[44px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-6 text-[15px] font-black text-[#56B0BB] transition hover:bg-[#56B0BB] hover:text-white">
+                  Ver assuntos atendidos
                 </Link>
               </div>
             </div>
 
             <div className="rounded-[26px] border border-[#DDEFEA] bg-white p-6 shadow-sm">
-              <h2 className="text-[20px] font-black text-[#1A3858]">Atendimento direto</h2>
+              <h2 className="text-[20px] font-black text-[#1A3858]">Dados oficiais</h2>
               <div className="mt-5 space-y-4">
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB]">
-                  <MessageCircle className="h-5 w-5 text-[#56B0BB]" />
-                  <span className="text-[14px] font-bold text-[#1A3858]">Falar no WhatsApp</span>
+                  <MessageCircle className="h-5 w-5 text-[#25D366]" />
+                  <span className="text-[14px] font-bold text-[#1A3858]">{siteContact.phone}</span>
                 </a>
                 <a href={siteContact.mapsHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB]">
                   <MapPin className="mt-0.5 h-5 w-5 text-[#56B0BB]" />
@@ -72,14 +72,14 @@ export default async function ContactPage() {
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Escolha o melhor caminho</h2>
             <p className="mx-auto mt-3 max-w-2xl text-[16px] leading-relaxed text-[#5A5A5A]">
-              Mantemos poucos canais na tela para deixar a jornada mais simples e rápida.
+              Use o WhatsApp oficial para atendimento imediato ou acesse as áreas do site.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
             {[
               { title: 'WhatsApp', text: 'Atendimento rápido para dúvidas e agendamentos.', cta: 'Abrir WhatsApp', href: whatsappHref, external: true, Icon: MessageCircle },
-              { title: 'Opções', text: 'Veja os assuntos atendidos pela equipe.', cta: 'Ver opções', href: '#formulario-contato', external: false, Icon: ClipboardList },
+              { title: 'Assuntos', text: 'Veja os temas atendidos pela equipe.', cta: 'Ver assuntos', href: '#atendimento-whatsapp', external: false, Icon: ClipboardList },
               { title: 'Empresas', text: 'Campanhas para empresas, escolas e instituições.', cta: 'Solicitar', href: corporateHref, external: true, Icon: Building2 },
               { title: 'Unidades', text: 'Endereço, horário e rota de atendimento.', cta: 'Ver unidades', href: '/unidades', external: false, Icon: Hospital },
             ].map((card) => (
@@ -98,14 +98,14 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <section id="formulario-contato" className="bg-[#EAF4EB] py-12 md:py-16">
+      <section id="atendimento-whatsapp" className="bg-[#EAF4EB] py-12 md:py-16">
         <div className="mx-auto w-[85%] max-w-[1180px]">
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="space-y-5">
               <span className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#56B0BB]">Atendimento</span>
-              <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Cadastro de interesse</h2>
+              <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Atendimento pelo WhatsApp</h2>
               <p className="text-[16px] leading-relaxed text-[#5A5A5A]">
-                Use o WhatsApp para falar diretamente com a equipe sobre agendamento, famílias, empresas, escolas, domicílio ou check-up vacinal.
+                Fale diretamente com a equipe sobre agendamento, famílias, empresas, escolas, domicílio ou check-up vacinal.
               </p>
               <div className="space-y-3">
                 {[
@@ -145,10 +145,10 @@ export default async function ContactPage() {
         <div className="mx-auto w-[85%] max-w-[960px] rounded-[28px] border border-[#DDEFEA] bg-[#F2FBFA] p-8 text-center shadow-sm md:p-10">
           <h2 className="text-3xl font-black text-[#1A3858] md:text-4xl">Pronto para falar com a equipe?</h2>
           <p className="mx-auto mt-3 max-w-2xl text-[16px] leading-relaxed text-[#5A5A5A]">
-            Use o WhatsApp para atendimento imediato ou consulte a lista de vacinas disponíveis.
+            Use o WhatsApp oficial para atendimento imediato ou consulte a lista de vacinas disponíveis.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#56B0BB] px-6 text-[15px] font-black text-white transition hover:brightness-105">Falar no WhatsApp</a>
+            <a href={appointmentHref} target="_blank" rel="noopener noreferrer" className="inline-flex h-[44px] items-center justify-center rounded-[14px] bg-[#25D366] px-6 text-[15px] font-black text-white transition hover:brightness-105">Falar no WhatsApp</a>
             <Link href="/vacinas" className="inline-flex h-[44px] items-center justify-center rounded-[14px] border border-[#56B0BB] px-6 text-[15px] font-black text-[#56B0BB] transition hover:bg-[#56B0BB] hover:text-white">Ver lista de vacinas</Link>
           </div>
         </div>
