@@ -162,6 +162,11 @@
 }
 
 @layer utilities {
+  a[aria-label="Falar no WhatsApp da VacinaOne"] {
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+
   @media (min-width: 1024px) and (max-width: 1440px), (max-height: 840px) {
     body {
       --tkn-compact-section-y: clamp(48px, 5vw, 88px);
@@ -258,8 +263,8 @@
     }
 
     .prose-vacinaone h3 {
-      margin-top: 1.65rem !important;
-      font-size: clamp(1.18rem, 1rem + 0.6vw, 1.45rem) !important;
+      margin-top: 1.5rem !important;
+      font-size: clamp(1.18rem, 1rem + 0.6vw, 1.55rem) !important;
     }
   }
 }
