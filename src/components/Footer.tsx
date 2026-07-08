@@ -13,7 +13,7 @@ const footerColumns = [
       { label: siteContact.email, href: `mailto:${siteContact.email}` },
       { label: siteContact.phone, href: siteContact.phoneHref },
       { label: siteContact.address, href: siteContact.mapsHref },
-      { label: siteContact.hours, href: "/contato#formulario-contato" },
+      { label: siteContact.hours, href: "/contato#atendimento-whatsapp" },
     ],
   },
   {
@@ -66,15 +66,15 @@ export default function Footer() {
                 href={getWhatsAppHref("Olá! Vim pelo site da VacinaOne e gostaria de atendimento.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-[42px] items-center justify-center rounded-[14px] bg-[#56B0BB] px-5 font-sans text-[14px] font-bold text-white transition duration-300 hover:brightness-105"
+                className="inline-flex h-[42px] items-center justify-center rounded-[14px] bg-[#25D366] px-5 font-sans text-[14px] font-bold text-white transition duration-300 hover:brightness-105"
               >
                 Falar no WhatsApp
               </a>
               <Link
-                href="/contato#formulario-contato"
+                href="/contato#atendimento-whatsapp"
                 className="inline-flex h-[42px] items-center justify-center rounded-[14px] border border-white/50 px-5 font-sans text-[14px] font-bold text-white transition duration-300 hover:border-white hover:bg-white/10"
               >
-                Ir para formulário
+                Ver atendimento
               </Link>
             </div>
 
