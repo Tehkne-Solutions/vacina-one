@@ -13,10 +13,10 @@ export default function Hero() {
 
         {/* COLUNA TEXTO — order-1 mobile */}
         <div className="w-full xl:max-w-[560px] 2xl:max-w-[750px] text-center xl:text-left order-1 xl:order-2 z-50 flex flex-col items-center xl:items-start gap-4 md:gap-6 justify-self-center xl:justify-self-end">
-          <h1 className="font-black leading-[1.05] text-[#1A3858]
-            text-[36px]
-            lg:text-[60px]
-            2xl:text-[80px]">
+          <h1 className="hero-title font-black leading-[1.05] tracking-[-0.035em] text-[#1A3858]
+            text-[25px]
+            lg:text-[42px]
+            2xl:text-[56px]">
             <span className="text-[#56B0BB]">Prote&#231;&#227;o</span> e<br />
             <span className="text-[#56B0BB]">cuidado</span> para <br />
             todas as fases <br />
