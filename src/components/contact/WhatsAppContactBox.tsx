@@ -19,10 +19,10 @@ export default function WhatsAppContactBox() {
   return (
     <div className="space-y-5 rounded-[24px] border border-[#DDEFEA] bg-white p-5 shadow-sm md:p-7">
       <div className="rounded-[18px] bg-[#F2FBFA] p-4">
-        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#56B0BB]">Atendimento direto</p>
-        <h3 className="mt-1 text-[22px] font-black leading-tight text-[#1A3858]">Continue pelo WhatsApp</h3>
+        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-[#56B0BB]">Atendimento oficial</p>
+        <h3 className="mt-1 text-[22px] font-black leading-tight text-[#1A3858]">Fale com a VacinaOne</h3>
         <p className="mt-2 text-[14px] leading-relaxed text-[#5A5A5A]">
-          Para retorno rápido, fale diretamente com a equipe da VacinaOne pelo WhatsApp.
+          Atendimento pelo WhatsApp oficial da clínica para agendamentos, dúvidas e orientações.
         </p>
       </div>
 
@@ -37,8 +37,8 @@ export default function WhatsAppContactBox() {
         </div>
       </div>
 
-      <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex h-[46px] w-full items-center justify-center rounded-[14px] bg-[#F0B954] px-7 text-[15px] font-black text-white transition duration-200 hover:brightness-105">
-        Abrir WhatsApp
+      <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex h-[46px] w-full items-center justify-center rounded-[14px] bg-[#25D366] px-7 text-[15px] font-black text-white transition duration-200 hover:brightness-105">
+        Falar no WhatsApp
       </a>
     </div>
   );
