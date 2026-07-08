@@ -1,4 +1,4 @@
-const DEFAULT_WHATSAPP_NUMBER = '5519998930846';
+const DEFAULT_WHATSAPP_NUMBER = '5519971010707';
 const DEFAULT_WHATSAPP_MESSAGE =
   'Olá! Vim pelo site da VacinaOne e gostaria de atendimento.';
 
