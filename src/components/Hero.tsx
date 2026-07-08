@@ -14,26 +14,20 @@ export default function Hero() {
         {/* COLUNA TEXTO — order-1 mobile */}
         <div className="w-full xl:max-w-[560px] 2xl:max-w-[750px] text-center xl:text-left order-1 xl:order-2 z-50 flex flex-col items-center xl:items-start gap-4 md:gap-6 justify-self-center xl:justify-self-end">
           <h1 className="font-black leading-[1.05] text-[#1A3858]
-            text-[36px]
+            text-[38px]
             lg:text-[60px]
             2xl:text-[80px]">
-            <span className="text-[#56B0BB]">Prote&#231;&#227;o</span> e<br />
-            <span className="text-[#56B0BB]">cuidado</span> para <br />
-            todas as fases <br />
-            da vida
+            Nova Cl&#237;nica de <br />
+            Vacina&#231;&#227;o em <br />
+            <span className="text-[#56B0BB]">Campinas</span>
           </h1>
 
-          <div className="flex flex-col items-center xl:items-start leading-[1.05] font-black tracking-[-0.035em] text-[36px] lg:text-[60px] 2xl:text-[80px]">
-            <span className="text-[#F0B954]">
-              EM BREVE
-            </span>
-            <span className="text-[#56B0BB]">
-              EM CAMPINAS
-            </span>
-          </div>
+          <p className="font-black italic leading-[1.05] tracking-[-0.035em] text-[#F0B954] text-[38px] lg:text-[60px] 2xl:text-[80px]">
+            Em breve
+          </p>
 
           <p className="text-vacina-gray text-lg md:text-[22px] font-medium leading-relaxed max-w-[550px] mx-auto xl:mx-0">
-            Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas.
+            A <span className="bg-[#56B0BB]/35 px-1 font-bold text-[#1A3858]">VacinaOne</span> est&#225; chegando ao <span className="bg-[#56B0BB]/35 px-1 font-bold text-[#1A3858]">Taquaral, pr&#243;ximo ao Mans&#245;es Santo Ant&#244;nio</span>, em Campinas.
           </p>
 
           <a
