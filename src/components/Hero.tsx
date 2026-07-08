@@ -23,11 +23,11 @@ export default function Hero() {
             da vida
           </h1>
 
-          <div className="flex flex-col items-center xl:items-start leading-none">
-            <span className="text-[clamp(28px,3.4vw,54px)] font-black italic tracking-[-0.04em] text-[#F0B954]">
+          <div className="flex flex-col items-center xl:items-start leading-[1.05] font-black tracking-[-0.035em] text-[36px] lg:text-[60px] 2xl:text-[80px]">
+            <span className="text-[#F0B954]">
               EM BREVE
             </span>
-            <span className="mt-2 text-[clamp(30px,3.6vw,58px)] font-black tracking-[-0.04em] text-[#56B0BB]">
+            <span className="text-[#56B0BB]">
               EM CAMPINAS
             </span>
           </div>
