@@ -11,6 +11,26 @@ export const metadata = {
   description: 'Fale com a VacinaOne pelo WhatsApp oficial para agendar atendimento, tirar dúvidas ou solicitar orientação para famílias, empresas e instituições.',
 };
 
+function isPlaceholder(value?: string | null) {
+  if (!value) return true;
+  const normalized = value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+  return (
+    normalized.includes('a definir') ||
+    normalized.includes('definir') ||
+    normalized.includes('placeholder') ||
+    normalized.includes('sem endereco') ||
+    normalized.includes('sem horario')
+  );
+}
+
+function officialOr(value: string | undefined | null, fallback: string) {
+  return isPlaceholder(value) ? fallback : value || fallback;
+}
+
 export default async function ContactPage() {
   const units = await getUnits();
   const faqs = await getFaqs();
@@ -21,9 +41,16 @@ export default async function ContactPage() {
   const activeUnits = units.filter(unit => unit.acf?.unidade_ativa !== false);
   const contactFaqs = faqs.filter(faq => faq.acf?.exibir_em_contato && faq.acf?.ativo_no_site);
   const primaryUnit = activeUnits[0];
-  const unitAddress = primaryUnit?.acf?.endereco_completo || siteContact.address;
-  const unitHours = primaryUnit?.acf?.horario_de_funcionamento || siteContact.hours;
-  const unitName = primaryUnit?.acf?.nome_da_unidade || 'VacinaOne Campinas';
+  const unitAddress = officialOr(primaryUnit?.acf?.endereco_completo, siteContact.address);
+  const unitHours = officialOr(primaryUnit?.acf?.horario_de_funcionamento, siteContact.hours);
+  const unitName = officialOr(primaryUnit?.acf?.nome_da_unidade, 'VacinaOne Campinas');
+  const unitMapHref = isPlaceholder(primaryUnit?.acf?.google_maps_url) ? siteContact.mapsHref : primaryUnit?.acf?.google_maps_url || siteContact.mapsHref;
+
+  const supportCards = [
+    { title: 'Retorno claro', text: 'A equipe responde com orientação objetiva.', Icon: MessageCircle, href: whatsappHref, external: true },
+    { title: 'Atendimento completo', text: 'Família, empresas, escolas e casas de repouso.', Icon: Phone, href: whatsappHref, external: true },
+    { title: unitName, text: `${unitAddress} · ${unitHours}`, Icon: Hospital, href: unitMapHref, external: true },
+  ];
 
   return (
     <main>
@@ -49,18 +76,18 @@ export default async function ContactPage() {
             <div className="rounded-[26px] border border-[#DDEFEA] bg-white p-6 shadow-sm">
               <h2 className="text-[20px] font-black text-[#1A3858]">Dados oficiais</h2>
               <div className="mt-5 space-y-4">
-                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB]">
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB] hover:shadow-sm">
                   <MessageCircle className="h-5 w-5 text-[#25D366]" />
                   <span className="text-[14px] font-bold text-[#1A3858]">{siteContact.phone}</span>
                 </a>
-                <a href={siteContact.mapsHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB]">
+                <a href={unitMapHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB] hover:shadow-sm">
                   <MapPin className="mt-0.5 h-5 w-5 text-[#56B0BB]" />
                   <span className="text-[14px] font-bold text-[#1A3858]">{unitAddress}</span>
                 </a>
-                <div className="flex items-start gap-3 rounded-[18px] border border-[#EAF4EB] p-4">
+                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 rounded-[18px] border border-[#EAF4EB] p-4 transition hover:border-[#56B0BB] hover:shadow-sm">
                   <Clock3 className="mt-0.5 h-5 w-5 text-[#56B0BB]" />
                   <span className="text-[14px] font-bold text-[#1A3858]">{unitHours}</span>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -108,12 +135,8 @@ export default async function ContactPage() {
                 Fale diretamente com a equipe sobre agendamento, famílias, empresas, escolas, domicílio ou check-up vacinal.
               </p>
               <div className="space-y-3">
-                {[
-                  { title: 'Retorno claro', text: 'A equipe responde com orientação objetiva.', Icon: MessageCircle },
-                  { title: 'Atendimento completo', text: 'Família, empresas, escolas e casas de repouso.', Icon: Phone },
-                  { title: unitName, text: `${unitAddress} · ${unitHours}`, Icon: Hospital },
-                ].map((item) => (
-                  <div key={item.title} className="rounded-[18px] border border-[#DDEFEA] bg-white p-4 shadow-sm">
+                {supportCards.map((item) => (
+                  <a key={item.title} href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined} className="block rounded-[18px] border border-[#DDEFEA] bg-white p-4 shadow-sm transition hover:border-[#56B0BB] hover:shadow-md">
                     <div className="flex items-start gap-3">
                       <item.Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#56B0BB]" strokeWidth={1.8} />
                       <div>
@@ -121,7 +144,7 @@ export default async function ContactPage() {
                         <p className="text-sm text-[#5A5A5A]">{item.text}</p>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
