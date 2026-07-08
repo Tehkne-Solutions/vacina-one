@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer components {
+  h1,
+  h2,
+  h3,
+  .hero-title {
+    font-family: var(--font-lexend), var(--font-franie), sans-serif;
+  }
+
   .prose-vacinaone {
     width: 100%;
     color: #5a5a5a;
@@ -24,7 +31,7 @@
   .prose-vacinaone h2 {
     margin: 3rem 0 1rem;
     color: #1a3858;
-    font-family: var(--font-franie), sans-serif;
+    font-family: var(--font-lexend), var(--font-franie), sans-serif;
     font-weight: 700;
     font-size: clamp(1.75rem, 1.45rem + 1vw, 2.4rem);
     line-height: 1.18;
@@ -34,7 +41,7 @@
   .prose-vacinaone h3 {
     margin: 2.25rem 0 0.85rem;
     color: #1a3858;
-    font-family: var(--font-franie), sans-serif;
+    font-family: var(--font-lexend), var(--font-franie), sans-serif;
     font-weight: 700;
     font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.8rem);
     line-height: 1.25;
@@ -180,8 +187,14 @@
       padding-bottom: var(--tkn-compact-section-y) !important;
     }
 
-    main h1 {
+    main h1:not(.hero-title) {
       font-size: clamp(32px, 4.4vw, 56px) !important;
+      line-height: 1.04 !important;
+      letter-spacing: -0.035em !important;
+    }
+
+    .hero-title {
+      font-size: clamp(25px, 3.08vw, 39px) !important;
       line-height: 1.04 !important;
       letter-spacing: -0.035em !important;
     }
