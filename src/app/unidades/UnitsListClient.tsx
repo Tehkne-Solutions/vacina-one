@@ -57,8 +57,8 @@ export default function UnitsListClient({ units }: UnitsListClientProps) {
               transition={{ duration: 0.4 }}
               className="mx-auto max-w-[720px] rounded-[28px] border border-[#DDEFEA] bg-white p-7 shadow-sm"
             >
-              <span className="inline-flex rounded-full bg-[rgba(86,176,187,0.12)] px-3 py-1 text-[12px] font-bold uppercase tracking-[0.12em] text-[#56B0BB]">
-                Unidade principal
+              <span className="inline-flex rounded-full bg-[rgba(240,185,84,0.16)] px-3 py-1 text-[12px] font-black uppercase tracking-[0.12em] text-[#F0B954]">
+                Abre em breve
               </span>
               <h2 className="mt-4 text-[26px] font-black text-[#1A3858]">VacinaOne Campinas</h2>
               <p className="mt-3 text-[15px] leading-relaxed text-[#5A5A5A]">
@@ -67,7 +67,7 @@ export default function UnitsListClient({ units }: UnitsListClientProps) {
 
               <div className="mt-6 grid gap-3 text-[14px] text-[#5A5A5A] sm:grid-cols-2">
                 <p><span className="font-bold text-[#1A3858]">Endereço: </span>{siteContact.address}</p>
-                <p><span className="font-bold text-[#1A3858]">Horário: </span>{siteContact.hours}</p>
+                <p><span className="font-bold text-[#1A3858]">Horário: </span>Abre em breve · {siteContact.hours}</p>
                 <p><span className="font-bold text-[#1A3858]">Telefone: </span>{siteContact.phone}</p>
                 <p><span className="font-bold text-[#1A3858]">E-mail: </span>{siteContact.email}</p>
               </div>
