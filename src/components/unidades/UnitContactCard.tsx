@@ -1,13 +1,37 @@
 import { UnitAcf } from '@/types/wordpress';
 import { getWhatsAppHref } from '@/lib/whatsapp';
+import { siteContact } from '@/lib/site-config';
 
 interface UnitContactCardProps {
   acf: UnitAcf;
   unitName: string;
 }
 
+const OPENING_STATUS = 'Abre em breve';
+const OFFICIAL_HOURS = `${OPENING_STATUS} · ${siteContact.hours}`;
+
+function isPlaceholder(value?: string | null) {
+  if (!value) return true;
+  const normalized = value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+  return (
+    normalized.includes('a definir') ||
+    normalized.includes('definir') ||
+    normalized.includes('placeholder') ||
+    normalized.includes('sem endereco') ||
+    normalized.includes('sem horario')
+  );
+}
+
+function officialOr(value: string | undefined | null, fallback: string) {
+  return isPlaceholder(value) ? fallback : value || fallback;
+}
+
 function getUnitWhatsAppHref(whatsapp: string | undefined, unitName: string) {
-  if (whatsapp) {
+  if (whatsapp && !isPlaceholder(whatsapp)) {
     const number = whatsapp.replace(/\D/g, '');
     const message = encodeURIComponent(
       `Olá! Vim pelo site da VacinaOne e quero agendar vacinação na unidade ${unitName}.`
@@ -22,9 +46,15 @@ function getUnitWhatsAppHref(whatsapp: string | undefined, unitName: string) {
 
 export default function UnitContactCard({ acf, unitName }: UnitContactCardProps) {
   const whatsappUrl = getUnitWhatsAppHref(acf.whatsapp, unitName);
+  const phone = officialOr(acf.telefone || acf.whatsapp, siteContact.phone);
+  const email = officialOr(acf.email, siteContact.email);
+  const hours = officialOr(acf.horario_de_funcionamento, OFFICIAL_HOURS);
 
   return (
     <aside className="bg-[#F2FBFA] rounded-[24px] p-8 flex flex-col gap-5 h-fit">
+      <span className="inline-flex w-fit rounded-full bg-[rgba(240,185,84,0.16)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#F0B954]">
+        {OPENING_STATUS}
+      </span>
       <h2 className="text-[20px] font-black text-[#1A3858]">
         Quer agendar sua vacinação nesta unidade?
       </h2>
@@ -35,24 +65,18 @@ export default function UnitContactCard({ acf, unitName }: UnitContactCardProps)
 
       {/* Informações rápidas */}
       <div className="flex flex-col gap-2 text-[13px] text-[#5A5A5A]">
-        {acf.telefone && (
-          <p>
-            <span className="font-semibold text-[#1A3858]">Telefone: </span>
-            {acf.telefone}
-          </p>
-        )}
-        {acf.email && (
-          <p>
-            <span className="font-semibold text-[#1A3858]">E-mail: </span>
-            {acf.email}
-          </p>
-        )}
-        {acf.horario_de_funcionamento && (
-          <p>
-            <span className="font-semibold text-[#1A3858]">Horário: </span>
-            {acf.horario_de_funcionamento}
-          </p>
-        )}
+        <p>
+          <span className="font-semibold text-[#1A3858]">Telefone: </span>
+          {phone}
+        </p>
+        <p>
+          <span className="font-semibold text-[#1A3858]">E-mail: </span>
+          {email}
+        </p>
+        <p>
+          <span className="font-semibold text-[#1A3858]">Horário: </span>
+          {hours}
+        </p>
       </div>
 
       {/* CTAs */}
