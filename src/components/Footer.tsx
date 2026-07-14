@@ -54,6 +54,35 @@ function FooterColumn({ title, items }: { title: string; items: { label: string;
   );
 }
 
+function SocialIcon({ label }: { label: string }) {
+  const normalized = label.toLowerCase();
+
+  if (normalized.includes("instagram")) {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="4.6" stroke="currentColor" strokeWidth="1.9" />
+        <circle cx="12" cy="12" r="3.6" stroke="currentColor" strokeWidth="1.9" />
+        <circle cx="17" cy="7" r="1.15" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  if (normalized.includes("facebook")) {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14.2 8.3H16V5.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.4H6.7v3.1h2.7v7h3.3v-7h2.7l.4-3.1h-3.1V10c0-.9.2-1.7 1.5-1.7Z" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20 11.7a8 8 0 0 1-11.8 7l-3.6 1 1-3.5A8 8 0 1 1 20 11.7Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8.8 8.7c.2-.4.4-.5.7-.5h.5c.2 0 .4.1.5.4l.6 1.4c.1.3 0 .5-.2.7l-.3.4c.6 1.1 1.4 1.9 2.5 2.5l.5-.4c.2-.2.4-.2.7-.1l1.4.6c.3.1.4.3.4.6v.5c0 .3-.2.6-.5.7-.5.2-1.3.3-2.3 0-2.8-.9-4.7-2.9-5.5-5.5-.3-.9-.1-1.7.1-2.2Z" fill="currentColor" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
     <motion.footer
@@ -109,9 +138,10 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex h-9 min-w-9 items-center justify-center rounded-full border border-white/30 px-3 text-[12px] font-bold text-white transition hover:border-white hover:bg-white/10"
+                  title={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-white hover:bg-white/10 hover:text-[#56B0BB]"
                 >
-                  {social.short}
+                  <SocialIcon label={social.label} />
                 </a>
               ))}
             </div>
