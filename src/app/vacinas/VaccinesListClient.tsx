@@ -19,17 +19,15 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
 
   return (
     <main>
-      {/* Hero */}
-      <section className="bg-white border-b border-[#EAF4EB] py-16">
-        <div className="w-[85%] mx-auto max-w-[1570px]">
-          <div className="bg-[#EAF4EB] rounded-[32px] px-10 py-14 md:py-16 flex flex-col md:flex-row md:items-center gap-10">
-            {/* Texto */}
+      <section className="border-b border-[#EAF4EB] bg-white py-12 md:py-14">
+        <div className="mx-auto w-[85%] max-w-[1500px]">
+          <div className="flex flex-col gap-8 rounded-[28px] bg-[#EAF4EB] px-7 py-10 md:flex-row md:items-center md:px-10 md:py-12">
             <div className="flex-1">
               <motion.p
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="text-[#56B0BB] text-[13px] font-semibold uppercase tracking-widest mb-3"
+                className="mb-3 text-[12px] font-semibold uppercase tracking-widest text-[#56B0BB]"
               >
                 Proteção para cada fase da vida
               </motion.p>
@@ -37,7 +35,7 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.08 }}
-                className="text-[44px] md:text-[64px] font-black text-[#1A3858] leading-[1.05] tracking-tight mb-5"
+                className="mb-4 text-[38px] font-black leading-[1.05] tracking-tight text-[#1A3858] md:text-[54px]"
               >
                 Vacinas
               </motion.h1>
@@ -45,30 +43,26 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.16 }}
-                className="text-[18px] text-[#5A5A5A] max-w-[600px] leading-relaxed"
+                className="max-w-[600px] text-[16px] leading-relaxed text-[#5A5A5A]"
               >
-                Encontre informações sobre vacinas, indicações, reforços e
-                cuidados importantes para cada fase da vida.
+                Encontre informações sobre vacinas, indicações, reforços e cuidados importantes para cada fase da vida.
               </motion.p>
             </div>
 
-            {/* Card visual direita */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-[24px] p-7 shadow-sm border border-[rgba(86,176,187,0.2)] min-w-[260px] max-w-[320px] w-full"
+              className="w-full min-w-[250px] max-w-[300px] rounded-[22px] border border-[rgba(86,176,187,0.2)] bg-white p-6 shadow-sm"
             >
-              <p className="text-[13px] font-black text-[#1A3858] mb-4">
-                Atendimento com orientação
-              </p>
-              <p className="text-[13px] text-[#5A5A5A] mb-5 leading-relaxed">
+              <p className="mb-3 text-[13px] font-black text-[#1A3858]">Atendimento com orientação</p>
+              <p className="mb-4 text-[13px] leading-relaxed text-[#5A5A5A]">
                 Informações claras para ajudar você a cuidar melhor da sua saúde.
               </p>
               <ul className="flex flex-col gap-2">
                 {['Indicação', 'Reforços', 'Cuidados'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-[13px] text-[#1A3858] font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-[#56B0BB] flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-2 text-[13px] font-semibold text-[#1A3858]">
+                    <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[#56B0BB]" />
                     {item}
                   </li>
                 ))}
@@ -78,37 +72,28 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
         </div>
       </section>
 
-      {/* Grid */}
-      <section className="pt-[72px] pb-[96px]">
-        <div className="w-[85%] mx-auto max-w-[1570px]">
-          <div className="mb-10">
-            <h2 className="text-[28px] font-black text-[#1A3858] mb-2">
-              Vacinas disponíveis
-            </h2>
-            <p className="text-[16px] text-[#5A5A5A]">
-              Consulte as principais informações cadastradas pela equipe VacinaOne.
-            </p>
+      <section className="pb-[82px] pt-[58px]">
+        <div className="mx-auto w-[85%] max-w-[1500px]">
+          <div className="mb-8">
+            <h2 className="mb-2 text-[26px] font-black text-[#1A3858]">Vacinas disponíveis</h2>
+            <p className="text-[15px] text-[#5A5A5A]">Consulte as principais informações cadastradas pela equipe VacinaOne.</p>
           </div>
 
           {vaccines.length === 0 ? (
-            <div className="bg-[#EAF4EB] rounded-[28px] p-12 text-center">
-              <p className="text-[20px] font-bold text-[#1A3858] mb-3">
-                Nenhuma vacina cadastrada ainda.
-              </p>
-              <p className="text-[16px] text-[#5A5A5A] mb-7">
-                Em breve, você poderá consultar aqui as vacinas disponíveis na VacinaOne.
-              </p>
+            <div className="rounded-[26px] bg-[#EAF4EB] p-10 text-center">
+              <p className="mb-3 text-[20px] font-bold text-[#1A3858]">Nenhuma vacina cadastrada ainda.</p>
+              <p className="mb-7 text-[16px] text-[#5A5A5A]">Fale com a equipe para confirmar a disponibilidade.</p>
               <a
                 href={teamHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-[#F0B954] text-white font-black text-[15px] px-8 py-4 rounded-full hover:scale-105 transition-transform duration-200"
+                className="inline-flex h-[46px] items-center rounded-[14px] bg-[#FFB703] px-7 text-[15px] font-black text-[#1A3858] transition hover:-translate-y-0.5 hover:brightness-105"
               >
                 Falar com a equipe
               </a>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {vaccines.map((vaccine, i) => (
                 <VaccineCard key={vaccine.id} vaccine={vaccine} index={i} />
               ))}
@@ -117,15 +102,14 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
         </div>
       </section>
 
-      {/* CTA final */}
       {vaccines.length > 0 && (
-        <section className="pb-[96px]">
-          <div className="w-[85%] mx-auto max-w-[1570px]">
-            <div className="bg-[#1A3858] rounded-[32px] px-10 py-14 text-center">
-              <h2 className="text-[28px] md:text-[36px] font-black text-white mb-4">
+        <section className="pb-[82px]">
+          <div className="mx-auto w-[85%] max-w-[1500px]">
+            <div className="rounded-[28px] bg-[#1A3858] px-8 py-11 text-center">
+              <h2 className="mb-3 text-[27px] font-black text-white md:text-[34px]">
                 Quer saber qual vacina é indicada para você?
               </h2>
-              <p className="text-[17px] text-white/80 mb-8 max-w-[520px] mx-auto leading-relaxed">
+              <p className="mx-auto mb-7 max-w-[520px] text-[16px] leading-relaxed text-white/80">
                 A equipe da VacinaOne pode orientar você com cuidado, clareza e segurança.
               </p>
               <a
@@ -133,7 +117,7 @@ export default function VaccinesListClient({ vaccines }: VaccinesListClientProps
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Agendar vacinação na VacinaOne"
-                className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
+                className="inline-flex h-[48px] items-center rounded-[14px] bg-[#FFB703] px-8 text-[15px] font-black text-[#1A3858] shadow-md transition hover:-translate-y-0.5 hover:brightness-105"
               >
                 Agendar Vacinação
               </a>
