@@ -24,13 +24,12 @@ export async function generateStaticParams() {
   return vaccines.map((v) => ({ slug: v.slug }));
 }
 
-// Bloco informativo reutilizável
 function InfoBlock({ title, content }: { title: string; content: string }) {
   if (!content.trim()) return null;
   return (
-    <div className="bg-white border border-[#EAF4EB] rounded-[28px] p-8">
-      <h2 className="text-[22px] font-black text-[#1A3858] mb-4">{title}</h2>
-      <p className="text-[16px] text-[#5A5A5A] leading-[1.75] whitespace-pre-line">{content}</p>
+    <div className="rounded-[24px] border border-[#EAF4EB] bg-white p-7">
+      <h2 className="mb-3 text-[21px] font-black text-[#1A3858]">{title}</h2>
+      <p className="whitespace-pre-line text-[15px] leading-[1.7] text-[#5A5A5A]">{content}</p>
     </div>
   );
 }
@@ -63,66 +62,45 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
 
   return (
     <main>
-      {/* Hero */}
-      <section className="bg-white border-b border-[#EAF4EB] py-14">
-        <div className="w-[85%] mx-auto max-w-[1280px]">
-          <div className="bg-[#EAF4EB] rounded-[32px] px-10 py-14 flex flex-col lg:flex-row lg:items-start gap-10">
-            {/* Esquerda */}
+      <section className="border-b border-[#EAF4EB] bg-white py-12">
+        <div className="mx-auto w-[85%] max-w-[1240px]">
+          <div className="flex flex-col gap-8 rounded-[28px] bg-[#EAF4EB] px-7 py-10 lg:flex-row lg:items-start lg:px-9">
             <div className="flex-1">
-              <p className="text-[#56B0BB] text-[13px] font-semibold uppercase tracking-widest mb-3">
-                Vacinas VacinaOne
-              </p>
-              <h1 className="text-[40px] md:text-[60px] font-black text-[#1A3858] leading-[1.05] tracking-tight mb-5">
-                {name}
-              </h1>
-              {desc && (
-                <p className="text-[18px] text-[#5A5A5A] max-w-[640px] leading-relaxed mb-7">
-                  {desc}
-                </p>
-              )}
+              <p className="mb-3 text-[12px] font-semibold uppercase tracking-widest text-[#56B0BB]">Vacinas VacinaOne</p>
+              <h1 className="mb-4 text-[36px] font-black leading-[1.05] tracking-tight text-[#1A3858] md:text-[52px]">{name}</h1>
+              {desc && <p className="mb-6 max-w-[640px] text-[16px] leading-relaxed text-[#5A5A5A]">{desc}</p>}
               {available ? (
                 <a
                   href={appointmentHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Agendar vacinação: ${name}`}
-                  className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-9 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
+                  className="inline-flex h-[48px] items-center rounded-[14px] bg-[#FFB703] px-8 text-[15px] font-black text-[#1A3858] shadow-md transition hover:-translate-y-0.5 hover:brightness-105"
                 >
                   {ctaText}
                 </a>
               ) : (
-                <p className="text-[14px] text-[#5A5A5A] italic">
-                  Consulte nossa equipe para verificar disponibilidade.
-                </p>
+                <p className="text-[14px] italic text-[#5A5A5A]">Consulte nossa equipe para verificar disponibilidade.</p>
               )}
             </div>
 
-            {/* Direita — resumo no hero */}
-            <div className="lg:w-[300px] flex-shrink-0">
+            <div className="flex-shrink-0 lg:w-[300px]">
               <VaccineSummaryCard acf={acf} vaccineName={name} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Conteúdo */}
-      <div className="w-[85%] mx-auto max-w-[1280px] py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start">
-
-          {/* Coluna esquerda */}
-          <div className="flex flex-col gap-6">
-            {/* Visão geral (content.rendered) */}
+      <div className="mx-auto w-[85%] max-w-[1240px] py-11">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_300px]">
+          <div className="flex flex-col gap-5">
             {hasContent && (
-              <div className="bg-white border border-[#EAF4EB] rounded-[28px] p-8">
-                <h2 className="text-[22px] font-black text-[#1A3858] mb-4">Visão geral</h2>
-                <article
-                  className="prose-vacinaone"
-                  dangerouslySetInnerHTML={{ __html: vaccine.content.rendered }}
-                />
+              <div className="rounded-[24px] border border-[#EAF4EB] bg-white p-7">
+                <h2 className="mb-3 text-[21px] font-black text-[#1A3858]">Visão geral</h2>
+                <article className="prose-vacinaone" dangerouslySetInnerHTML={{ __html: vaccine.content.rendered }} />
               </div>
             )}
 
-            {/* Blocos ACF */}
             {infoBlocks.map(({ title, field }) => {
               const value = acf[field];
               if (!value || typeof value !== 'string') return null;
@@ -130,18 +108,14 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
             })}
           </div>
 
-          {/* Sidebar — oculta no mobile (já aparece no hero) */}
           <div className="hidden lg:block">
             <VaccineSummaryCard acf={acf} vaccineName={name} />
           </div>
         </div>
 
-        {/* CTA final */}
-        <div className="mt-14 bg-[#EAF4EB] rounded-[32px] px-10 py-14 text-center">
-          <h2 className="text-[26px] font-black text-[#1A3858] mb-3">
-            Quer orientação antes de se vacinar?
-          </h2>
-          <p className="text-[16px] text-[#5A5A5A] mb-7 max-w-[480px] mx-auto leading-relaxed">
+        <div className="mt-11 rounded-[28px] bg-[#EAF4EB] px-8 py-11 text-center">
+          <h2 className="mb-3 text-[25px] font-black text-[#1A3858]">Quer orientação antes de se vacinar?</h2>
+          <p className="mx-auto mb-6 max-w-[480px] text-[15px] leading-relaxed text-[#5A5A5A]">
             Nossa equipe pode ajudar você a entender indicações, cuidados e próximos passos com segurança.
           </p>
           <a
@@ -149,16 +123,15 @@ export default async function VaccinePage({ params }: { params: Promise<Params> 
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Agendar vacinação na VacinaOne"
-            className="inline-flex items-center bg-[#F0B954] text-white font-black text-[16px] px-10 py-4 rounded-full hover:scale-105 transition-transform duration-200 shadow-md"
+            className="inline-flex h-[48px] items-center rounded-[14px] bg-[#FFB703] px-8 text-[15px] font-black text-[#1A3858] shadow-md transition hover:-translate-y-0.5 hover:brightness-105"
           >
             Agendar Vacinação
           </a>
         </div>
 
-        {/* Voltar */}
-        <div className="mt-8 flex justify-center">
-          <Link href="/vacinas" className="text-[#56B0BB] text-[14px] font-semibold hover:underline">
-            ← Voltar para Vacinas
+        <div className="mt-7 flex justify-center">
+          <Link href="/vacinas" className="text-[14px] font-semibold text-[#56B0BB] hover:underline">
+            ← Ver outras Vacinas
           </Link>
         </div>
       </div>
