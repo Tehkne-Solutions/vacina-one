@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         vacina: {
           teal: "#56B0BB",
-          gold: "#F0B954",
+          gold: "#FFB703",
           dark: "#1A3858",
           gray: "#5A5A5A",
           border: "#EAF4EB",

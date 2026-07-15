@@ -59,26 +59,26 @@ export default function FaqSection() {
   return (
     <motion.section
       id="faq"
-      className="w-full bg-white py-[clamp(72px,7vw,120px)] font-franie"
+      className="w-full bg-white py-[clamp(54px,5.5vw,88px)] font-franie"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={staggerContainer}
     >
-      <div className="mx-auto w-[85%] max-w-[1594px]">
+      <div className="mx-auto w-[85%] max-w-[1450px]">
         <motion.h2
-          className="text-center text-[clamp(34px,3vw,52px)] font-bold leading-[118.52%] tracking-[-0.02em] text-[#1A3858]"
+          className="text-center text-[clamp(30px,2.7vw,44px)] font-bold leading-[1.12] tracking-[-0.02em] text-[#1A3858]"
           variants={fadeUp}
         >
           Dúvidas Frequentes
         </motion.h2>
 
         <motion.div
-          className="mt-[clamp(48px,5vw,82px)] grid grid-cols-1 gap-[20px] lg:grid-cols-2 lg:gap-x-[30px]"
+          className="mt-[clamp(36px,4vw,58px)] grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-x-5"
           variants={staggerContainer}
         >
           {faqColumns.map((column, columnIndex) => (
-            <div key={columnIndex} className="flex flex-col gap-[20px]">
+            <div key={columnIndex} className="flex flex-col gap-4">
               {column.map((item) => {
                 const isOpen = openItem === item.id;
 
@@ -86,24 +86,24 @@ export default function FaqSection() {
                   <motion.article
                     key={item.id}
                     variants={fadeUp}
-                    whileHover={{ y: -2 }}
+                    whileHover={{ y: -1 }}
                     transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="rounded-[20px] border border-[#56B0BB] bg-white p-[clamp(20px,1.6vw,30px)] transition duration-300 hover:border-[#1A3858]/60"
+                    className="rounded-[16px] border border-[#56B0BB] bg-white p-[clamp(18px,1.3vw,24px)] transition duration-300 hover:border-[#1A3858]/60"
                   >
                     <button
                       type="button"
                       aria-expanded={isOpen}
                       aria-controls={`${item.id}-panel`}
                       onClick={() => setOpenItem(isOpen ? "" : item.id)}
-                      className="flex w-full items-center justify-between gap-5 text-left"
+                      className="flex w-full items-center justify-between gap-4 text-left"
                     >
-                      <span className="text-[clamp(18px,1.45vw,25px)] font-medium leading-[120%] tracking-[-0.02em] text-[#333333]">
+                      <span className="text-[clamp(16px,1.15vw,20px)] font-medium leading-[1.25] tracking-[-0.02em] text-[#333333]">
                         {item.question}
                       </span>
 
                       <span
                         aria-hidden="true"
-                        className={`flex h-6 w-6 shrink-0 items-center justify-center text-[22px] leading-none text-[#333333] transition-transform duration-300 ${
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center text-[19px] leading-none text-[#333333] transition-transform duration-300 ${
                           isOpen ? "rotate-180" : "rotate-0"
                         }`}
                       >
@@ -121,8 +121,8 @@ export default function FaqSection() {
                           transition={{ duration: 0.28, ease: "easeOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="mt-5 border-t border-[#56B0BB] pt-5">
-                            <p className="text-[clamp(15px,1.05vw,18px)] font-medium leading-[160.4%] tracking-[-0.02em] text-[#5A5A5A]">
+                          <div className="mt-4 border-t border-[#56B0BB] pt-4">
+                            <p className="text-[clamp(14px,0.95vw,16px)] font-medium leading-[1.55] tracking-[-0.02em] text-[#5A5A5A]">
                               {item.answer}
                             </p>
                           </div>

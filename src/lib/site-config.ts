@@ -71,7 +71,7 @@ export const mainNavLinks = [
   { label: 'Home', href: '/' },
   { label: 'Unidades', href: '/unidades' },
   { label: 'Vacinas', href: '/vacinas' },
-  { label: 'Empresas', href: '/empresas' },
+  { label: 'VacinaOne até Você', href: '/empresas' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contato', href: '/contato' },
 ];

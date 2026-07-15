@@ -8,28 +8,19 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative w-full pt-[5vh] pb-[5vh] bg-white overflow-hidden font-franie min-h-[calc(100vh-110px)] flex flex-col justify-between">
-      <div className="w-[85%] max-w-[1220px] 2xl:max-w-[1560px] mx-auto grid grid-cols-1 xl:grid-cols-[minmax(0,520px)_minmax(0,560px)] 2xl:grid-cols-[minmax(0,650px)_minmax(0,750px)] items-center justify-between gap-6 xl:gap-16 2xl:gap-20 flex-1">
-
-        {/* COLUNA TEXTO — order-1 mobile */}
-        <div className="w-full xl:max-w-[560px] 2xl:max-w-[750px] text-center xl:text-left order-1 xl:order-2 z-50 flex flex-col items-center xl:items-start gap-4 md:gap-6 justify-self-center xl:justify-self-end">
-          <h1 className="hero-title font-black leading-[1.05] tracking-[-0.035em] text-[#1A3858]
-            text-[25px]
-            lg:text-[42px]
-            2xl:text-[56px]">
+    <section className="relative flex min-h-[calc(100vh-110px)] w-full flex-col justify-between overflow-hidden bg-white py-[4vh] font-franie">
+      <div className="mx-auto grid w-[85%] max-w-[1220px] flex-1 grid-cols-1 items-center justify-between gap-6 xl:grid-cols-[minmax(0,520px)_minmax(0,560px)] xl:gap-16 2xl:max-w-[1560px] 2xl:grid-cols-[minmax(0,650px)_minmax(0,750px)] 2xl:gap-20">
+        <div className="order-1 z-50 flex w-full flex-col items-center justify-self-center gap-4 text-center xl:order-2 xl:max-w-[560px] xl:items-start xl:justify-self-end xl:text-left 2xl:max-w-[750px]">
+          <h1 className="hero-title text-[25px] font-black leading-[1.05] tracking-[-0.035em] text-[#1A3858] lg:text-[42px] 2xl:text-[56px]">
             <span className="text-[#56B0BB]">Prote&#231;&#227;o</span> e<br />
             <span className="text-[#56B0BB]">cuidado</span> para <br />
             todas as fases <br />
             da vida
-            <span className="mt-4 block text-[#F0B954]">
-              Em breve
-            </span>
-            <span className="block text-[#56B0BB]">
-              Em Campinas
-            </span>
+            <span className="mt-3 block text-[#FFB703]">Em breve</span>
+            <span className="block text-[#56B0BB]">Em Campinas</span>
           </h1>
 
-          <p className="text-vacina-gray text-lg md:text-[22px] font-medium leading-relaxed max-w-[550px] mx-auto xl:mx-0">
+          <p className="mx-auto max-w-[520px] text-[16px] font-medium leading-relaxed text-vacina-gray md:text-[19px] xl:mx-0">
             Vacinas para crian&#231;as, adultos e empresas com atendimento humanizado em Campinas.
           </p>
 
@@ -37,51 +28,45 @@ export default function Hero() {
             href={appointmentHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full md:w-[339px] h-[65px] items-center justify-center bg-vacina-gold text-white text-xl md:text-[22px] font-black rounded-full shadow-lg hover:brightness-105 hover:scale-[1.02] transition-all duration-300"
+            className="inline-flex h-[48px] min-w-[230px] items-center justify-center rounded-[14px] bg-[#FFB703] px-7 text-[16px] font-black text-[#1A3858] shadow-[0_10px_24px_rgba(255,183,3,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 md:h-[52px] md:text-[18px]"
           >
             Agendar Vacina&#231;&#227;o
           </a>
         </div>
 
-        {/* COLUNA IMAGENS — order-2 mobile, aspect-ratio para manter coesao */}
-        <div className="relative w-full max-w-[500px] xl:max-w-[520px] 2xl:max-w-[740px] aspect-[739/657] order-2 xl:order-1 mt-4 xl:mt-0 justify-self-center xl:justify-self-start">
+        <div className="relative order-2 mt-4 aspect-[739/657] w-full max-w-[500px] justify-self-center xl:order-1 xl:mt-0 xl:max-w-[520px] xl:justify-self-start 2xl:max-w-[740px]">
           <div className="absolute inset-0">
-
-            {/* 1. Menino — superior esquerda */}
-            <div className="absolute top-0 left-0 w-[48%] aspect-square z-10">
+            <div className="absolute left-0 top-0 z-10 aspect-square w-[48%]">
               <Image
                 src="/images/vacina-one-homepage-hero-mosaico-imagem-menino.png"
                 alt="Menino"
                 fill
-                className="object-cover rounded-none"
+                className="object-cover"
                 priority
               />
             </div>
 
-            {/* 2. Pessoa sendo vacinada — direita, sobrepoe o menino */}
-            <div className="absolute top-[8.5%] right-0 w-[48%] aspect-[355/441] z-20">
+            <div className="absolute right-0 top-[8.5%] z-20 aspect-[355/441] w-[48%]">
               <Image
                 src="/images/vacina-one-homepage-hero-mosaico-imagem-pessoa-sendo-vacinada.png"
                 alt="Vacinação"
                 fill
-                className="object-cover rounded-none"
+                className="object-cover"
               />
             </div>
 
-            {/* 3. Bebe — canto inferior esquerdo, sem borda */}
-            <div className="absolute bottom-0 left-[11%] w-[37%] aspect-square z-30 shadow-2xl">
+            <div className="absolute bottom-0 left-[11%] z-30 aspect-square w-[37%] shadow-2xl">
               <Image
                 src="/images/vacina-one-homepage-hero-mosaico-imagem-bebe.png"
                 alt="Bebê"
                 fill
-                className="object-cover rounded-none"
+                className="object-cover"
               />
             </div>
 
-            {/* Badge 75% */}
-            <div className="absolute left-[56%] top-[70%] z-40 hidden h-[30%] w-[40%] flex-col bg-[#56B0BB] p-3 text-white shadow-2xl sm:flex 2xl:p-5">
-              <h3 className="text-[34px] font-black italic leading-none 2xl:text-[52px]">75%</h3>
-              <p className="mt-2 text-[10px] font-medium leading-tight 2xl:text-[16px] 2xl:leading-[144%]">
+            <div className="absolute left-[57%] top-[71%] z-40 hidden h-[26%] w-[37%] flex-col justify-center bg-[#56B0BB] p-3 text-white shadow-2xl sm:flex 2xl:p-4">
+              <h3 className="text-[27px] font-semibold leading-none 2xl:text-[40px]">75%</h3>
+              <p className="mt-2 text-[9px] font-medium leading-[1.18] 2xl:text-[13px]">
                 dos pacientes relatam mais confiança quando recebem orientação clara antes da vacinação.
               </p>
             </div>
@@ -89,9 +74,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Divisor + Carrossel */}
-      <div className="w-[85%] mx-auto mt-[5vh]">
-        <div className="w-full h-[2px] bg-vacina-border mb-8 md:mb-12" />
+      <div className="mx-auto mt-[4vh] w-[85%]">
+        <div className="mb-6 h-[2px] w-full bg-vacina-border md:mb-8" />
         <LaboratoryCarousel />
       </div>
     </section>

@@ -32,47 +32,34 @@ export default function VaccineCard({ vaccine, index = 0 }: VaccineCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.07 }}
-      whileHover={{ y: -6, borderColor: '#56B0BB' }}
-      className="bg-white border border-[#EAF4EB] rounded-[28px] p-7 flex flex-col gap-4 shadow-[0_18px_45px_rgba(26,56,88,0.08)] hover:shadow-[0_24px_56px_rgba(26,56,88,0.13)] transition-all duration-300"
+      whileHover={{ y: -5, borderColor: '#56B0BB' }}
+      className="flex flex-col gap-4 rounded-[24px] border border-[#EAF4EB] bg-white p-6 shadow-[0_16px_38px_rgba(26,56,88,0.07)] transition-all duration-300 hover:shadow-[0_22px_48px_rgba(26,56,88,0.12)]"
     >
-      {/* Badge */}
-      <span className="self-start text-[13px] font-semibold text-[#56B0BB] bg-[rgba(86,176,187,0.12)] px-3 py-1 rounded-full">
+      <span className="self-start rounded-full bg-[rgba(86,176,187,0.12)] px-3 py-1 text-[12px] font-semibold text-[#56B0BB]">
         Vacina
       </span>
 
-      {/* Nome */}
-      <h2 className="text-[22px] font-black text-[#1A3858] leading-snug">
-        {name}
-      </h2>
+      <h2 className="text-[21px] font-black leading-snug text-[#1A3858]">{name}</h2>
 
-      {/* Descrição */}
       {desc && (
-        <p className="text-[15px] text-[#5A5A5A] leading-relaxed line-clamp-3 flex-1">
-          {desc}
-        </p>
+        <p className="line-clamp-3 flex-1 text-[14px] leading-relaxed text-[#5A5A5A]">{desc}</p>
       )}
 
-      {/* Chips */}
       {chips.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {chips.map((chip) => (
-            <span
-              key={chip.label}
-              className="text-[12px] text-[#1A3858] border border-[#EAF4EB] rounded-full px-3 py-1"
-            >
-              <span className="text-[#5A5A5A]">{chip.label}: </span>
-              {chip.value}
+            <span key={chip.label} className="rounded-full border border-[#EAF4EB] px-3 py-1 text-[12px] text-[#1A3858]">
+              <span className="text-[#5A5A5A]">{chip.label}: </span>{chip.value}
             </span>
           ))}
         </div>
       )}
 
-      {/* CTAs */}
-      <div className="flex flex-col sm:flex-row gap-3 mt-auto pt-2">
+      <div className="mt-auto flex flex-col gap-3 pt-2 sm:flex-row">
         <Link
           href={`/vacinas/${vaccine.slug}`}
           aria-label={`Ver detalhes da vacina ${name}`}
-          className="flex-1 inline-flex items-center justify-center border-2 border-[#56B0BB] text-[#56B0BB] font-bold text-[14px] px-5 py-3 rounded-full hover:bg-[#56B0BB] hover:text-white transition-colors duration-200"
+          className="inline-flex h-[42px] flex-1 items-center justify-center rounded-[13px] border border-[#56B0BB] px-5 text-[14px] font-bold text-[#56B0BB] transition-colors duration-200 hover:bg-[#56B0BB] hover:text-white"
         >
           Ver detalhes
         </Link>
@@ -83,7 +70,7 @@ export default function VaccineCard({ vaccine, index = 0 }: VaccineCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Agendar vacinação: ${name}`}
-            className="flex-1 inline-flex items-center justify-center bg-[#F0B954] text-white font-bold text-[14px] px-5 py-3 rounded-full hover:scale-105 transition-transform duration-200"
+            className="inline-flex h-[42px] flex-1 items-center justify-center rounded-[13px] bg-[#FFB703] px-5 text-[14px] font-black text-[#1A3858] transition duration-200 hover:-translate-y-0.5 hover:brightness-105"
           >
             {ctaText}
           </a>
