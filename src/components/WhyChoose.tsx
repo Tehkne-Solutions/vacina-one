@@ -30,27 +30,25 @@ const features = [
 export default function WhyChoose() {
   return (
     <motion.section
-      className="bg-vacina-dark py-[56px] font-franie text-white md:py-[72px] xl:py-[80px] 2xl:py-[88px]"
+      className="bg-vacina-dark py-12 font-franie text-white md:py-14 xl:py-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeUp}
     >
-      <div className="mx-auto w-[85%] max-w-[1640px]">
+      <div className="mx-auto w-[85%] max-w-[1500px]">
         <motion.div className="mx-auto text-center" variants={fadeUp}>
-          <h2 className="text-[clamp(34px,3vw,52px)] font-black leading-[1.02] text-white md:whitespace-nowrap">
+          <h2 className="text-[clamp(30px,2.6vw,44px)] font-black leading-[1.04] text-white md:whitespace-nowrap">
             <span className="text-vacina-teal">Por que escolher a</span>{" "}
             <span>VacinaOne?</span>
           </h2>
-          <p className="mx-auto mt-[22px] max-w-[760px] text-[clamp(17px,1.2vw,20px)] font-medium leading-[1.18] text-white">
-            A VacinaOne nasceu para que cuidar da saúde da sua familia seja uma
-            <br className="hidden md:block" />
-            experiência que você queira repetir.
+          <p className="mx-auto mt-4 max-w-[700px] text-[clamp(15px,1vw,17px)] font-medium leading-[1.35] text-white/92">
+            A VacinaOne nasceu para que cuidar da saúde da sua família seja uma experiência que você queira repetir.
           </p>
         </motion.div>
 
         <motion.div
-          className="mt-[48px] grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:mt-[56px] xl:gap-8 2xl:gap-10"
+          className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6 xl:gap-8"
           variants={staggerContainer}
         >
           {features.map((feature) => (
@@ -58,30 +56,26 @@ export default function WhyChoose() {
               key={feature.titleLines.join(" ")}
               className="flex flex-col items-center text-center"
               variants={fadeUp}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -3 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
             >
               <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25, ease: "easeOut" }}>
                 <Image
                   src={feature.icon}
                   alt=""
-                  width={88}
-                  height={88}
-                  className="h-[clamp(64px,4.5vw,88px)] w-[clamp(64px,4.5vw,88px)]"
+                  width={72}
+                  height={72}
+                  className="h-[clamp(54px,3.8vw,72px)] w-[clamp(54px,3.8vw,72px)]"
                 />
               </motion.div>
-              <h3 className="mt-[28px] text-[clamp(24px,1.82vw,35px)] font-bold leading-[1.08] text-vacina-teal">
+              <h3 className="mt-5 text-[clamp(20px,1.45vw,28px)] font-bold leading-[1.08] text-vacina-teal">
                 {feature.titleLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
+                  <span key={line} className="block">{line}</span>
                 ))}
               </h3>
-              <p className="mt-[20px] text-[clamp(16px,1.2vw,23px)] font-normal leading-[1.24] text-white">
+              <p className="mt-4 text-[clamp(14px,0.9vw,17px)] font-normal leading-[1.35] text-white/92">
                 {feature.descriptionLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
+                  <span key={line} className="block">{line}</span>
                 ))}
               </p>
             </motion.article>
